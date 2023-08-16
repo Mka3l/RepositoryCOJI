@@ -136,7 +136,7 @@ const DashHeberge = (date) => {
          date.date.date === valeur.dateJOI && ( 
            valeur.totalSite !== null && (
                 <div style={styleHeberge} key={indexVal}>
-                  <div style={{ ...divStyle, background: 'rgb(218 179 255)' }}><h6>total Sites <span style={{ fontSize: '14pt', fontWeight: '700' }}>{numberWithThousandsSeparator(valeur.totalSite)}   </span></h6></div>
+                  <div style={{ ...divStyle, background: 'rgb(218 179 255)' }}><h6>Nombre total de Sites <span style={{ fontSize: '14pt', fontWeight: '700' }}>{numberWithThousandsSeparator(valeur.totalSite)}   </span></h6></div>
                   <div style={{ ...divStyle, background: 'rgb(255 255 167)' }}><h6>Capacité Totale <span style={{ fontSize: '14pt', fontWeight: '700' }}>{ numberWithThousandsSeparator(valeur.capaciteTotal)}</span></h6></div>
                   <div style={{ ...divStyle, background: 'rgb(195 255 195)' }}><h6>Lits occupés <span style={{ fontSize: '14pt', fontWeight: '700' }}>{numberWithThousandsSeparator(valeur.litOccupes)}</span></h6></div>
                   <div style={{ ...divStyle, background: 'rgb(255 158 158)' }}><h6>Taux d'occupation <span style={{ fontSize: '14pt', fontWeight: '700' }}>{numberWithThousandsSeparator(valeur.tauxOccupation)} %</span></h6></div>

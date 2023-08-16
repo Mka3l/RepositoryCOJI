@@ -1,22 +1,17 @@
-import React, { useEffect, useRef, useState } from 'react';
-import ApexCharts from 'apexcharts';
+import React, { useRef, useState } from 'react';
 
-const DashRestauration = (date) => {
-  const chartRef = useRef(null);
+const DashRestauration = ({ date }) => {
   const numberWithThousandsSeparator = (number) => {
     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
   };
 
-  const data = [ 
-    {'dateJOI': '2023-08-16','totalSite': 79, 'plat':4602},/////Date Current
-    {'dateJOI': '2023-08-17','totalSite': 79, 'plat':3602},
-    {'dateJOI': '2023-08-18','totalSite': 79, 'plat':5502},
-    {'dateJOI': '2023-08-19','totalSite': 80, 'plat':6702}
-  ]
+  const data = [
+    { 'dateJOI': '2023-08-16', 'EnCompetition': 15, 'platEnCompetition': 3002, 'AuRepos': 3, 'PlatAuRepos': 1600 },
+    { 'dateJOI': '2023-08-17', 'EnCompetition': 12, 'platEnCompetition': 4000, 'AuRepos': 3, 'PlatAuRepos': 602 },
+    { 'dateJOI': '2023-08-18', 'EnCompetition': 10, 'platEnCompetition': 3500, 'AuRepos': 3, 'PlatAuRepos': 1102 },
+    { 'dateJOI': '2023-08-19', 'EnCompetition': 14, 'platEnCompetition': 2602, 'AuRepos': 3, 'PlatAuRepos': 2000 },
+  ];
 
-  const totalSite =numberWithThousandsSeparator(data[0].totalSite);
-  const plat = numberWithThousandsSeparator(data[1].plat);
-  
   const colors = {
     violet: '#8A2BE2',
     jaune: '#FFFF00',
@@ -26,24 +21,25 @@ const DashRestauration = (date) => {
 
   const divStyle = {
     display: 'flex',
-    width: '200px',
+    width: '290px',
     height: '50px',
-    background:colors.violet,
+    background: colors.violet,
     borderRadius: '15px',
     justifyContent: 'center',
     alignItems: 'center',
-    marginRight: '10px',
-  }
+    marginRight: '20px',
+    marginBottom: '25px',
+  };
 
   const styleHeberge = {
-    margin: 'auto 50px',
+    marginTop: '50px',
+    marginRight: '170px',
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-start',
     width: '420px',
     height: '150px',
-    flexWrap: 'wrap',
-  }
+  };
 
   const compoGlade = {
     width: '100%',
@@ -52,38 +48,40 @@ const DashRestauration = (date) => {
     flexDirection: 'column',
     alignItems: 'center',
     marginTop: '10px',
-  }
-  
+  };
   var dateFiltre = useRef();
   const [dateAffichage,setDateAffiche] = useState(new Date().toLocaleDateString());
 
   console.log(date.date.date);
   const [dateChoix,setDateChoix] = useState(date.date.date);
   
-  
-  
-  
-  // const ChangeDataByDate =()=>{
-  //     var date = dateFiltre.current.value;
-  //      var ActuDT = new Date(date).toLocaleDateString();
-       
-  //      setDateAffiche(ActuDT); 
-  //      setDateChoix(date.date.date);
-  //     // console.log(date);
-  // }
 
-  return <div style={compoGlade}>
-
-       {data.map((valeur,indexVal)=> (
-         date.date.date === valeur.dateJOI && ( 
-           valeur.totalSite !== null && (
-        <div style={styleHeberge} key={indexVal}>
-          <div style={{ ...divStyle, background: 'rgb(129 255 222)' }}><h6>Sites Restauration <span style={{ fontSize:'14pt',fontWeight:'700' }}>{valeur.totalSite}</span></h6></div>
-          <div style={{ ...divStyle, background: 'rgb(218 255 251)' }}><h6>Plats Servis <span style={{ fontSize:'14pt',fontWeight:'700' }}>{numberWithThousandsSeparator(valeur.plat)}</span></h6></div>
-
-        </div>
-  ))))}
-  </div>
+  return (
+    <div style={compoGlade}>
+      {data.map((valeur, indexVal) => (
+        date.date.date === valeur.dateJOI && (
+          <div style={styleHeberge} key={indexVal}>
+            <div>
+              <div style={{ ...divStyle, background: 'rgb(129 255 222)' }}>
+                <h6>Pour les Athlètes en compétition <span style={{ fontSize: '14pt', fontWeight: '700' }}>{valeur.EnCompetition}</span></h6>
+              </div>
+              <div style={{ ...divStyle, background: 'rgb(129 255 222)' }}>
+                <h6>Plats Servis <span style={{ fontSize: '14pt', fontWeight: '700' }}>{numberWithThousandsSeparator(valeur.platEnCompetition)}</span></h6>
+              </div>
+            </div>
+            <div>
+              <div style={{ ...divStyle, background: 'rgb(218 255 251)' }}>
+                <h6>Pour les Athlètes au repos <span style={{ fontSize: '14pt', fontWeight: '700' }}>{valeur.AuRepos}</span></h6>
+              </div>
+              <div style={{ ...divStyle, background: 'rgb(218 255 251)' }}>
+                <h6>Plats Servis <span style={{ fontSize: '14pt', fontWeight: '700' }}>{numberWithThousandsSeparator(valeur.PlatAuRepos)}</span></h6>
+              </div>
+            </div>
+          </div>
+        )
+      ))}
+    </div>
+  );
 };
 
 export default DashRestauration;

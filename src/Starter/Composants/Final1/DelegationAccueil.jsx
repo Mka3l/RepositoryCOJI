@@ -56,9 +56,6 @@ const DelegationAccueil = ({ onPageChange }) => {
             <span className="text-success pt-1 fw-bold" style={cardTextValueStyle}>
               1459
             </span>
-            <span className="card-text" style={{ fontSize: '20px', color: '#555' }}>
-              Total Délégation Madagascar
-            </span>
           </div>
         </div>
       </div>
@@ -73,9 +70,7 @@ const DelegationAccueil = ({ onPageChange }) => {
             <span className="text-success pt-1 fw-bold" style={cardTextValueStyle}>
               290
             </span>
-            <span className="card-text" style={{ fontSize: '20px', color: '#555' }}>
-              Total délégation Comores
-            </span>
+           
           </div>
         </div>
       </div>
@@ -91,9 +86,7 @@ const DelegationAccueil = ({ onPageChange }) => {
             <span className="text-success pt-1 fw-bold" style={cardTextValueStyle}>
               361
             </span>
-            <span className="card-text" style={{ fontSize: '20px', color: '#555' }}>
-              Total délégation Mayotte
-            </span>
+            
           </div>
         </div>
       </div>
@@ -109,9 +102,7 @@ const DelegationAccueil = ({ onPageChange }) => {
             <span className="text-success pt-1 fw-bold" style={cardTextValueStyle}>
               649
             </span>
-            <span className="card-text" style={{ fontSize: '20px', color: '#555' }}>
-              Total délégation Maurice
-            </span>
+           
           </div>
         </div>
       </div>
@@ -126,9 +117,7 @@ const DelegationAccueil = ({ onPageChange }) => {
             <span className="text-success pt-1 fw-bold" style={cardTextValueStyle}>
               511
             </span>
-            <span className="card-text" style={{ fontSize: '20px', color: '#555' }}>
-              Total délégation Seychelles
-            </span>
+            
           </div>
         </div>
       </div>
@@ -142,9 +131,7 @@ const DelegationAccueil = ({ onPageChange }) => {
             <span className="text-success pt-1 fw-bold" style={cardTextValueStyle}>
               242
             </span>
-            <span className="card-text" style={{ fontSize: '20px', color: '#555' }}>
-              Total délégation Maldives
-            </span>
+           
           </div>
         </div>
       </div>
@@ -158,9 +145,7 @@ const DelegationAccueil = ({ onPageChange }) => {
             <span className="text-success small pt-1 fw-bold" style={cardTextValueStyle}>
               652
             </span>
-            <span className="card-text" style={{ fontSize: '20px', color: '#555' }}>
-              Total délégation La Réunion
-            </span>
+            
           </div>
         </div>
       </div>

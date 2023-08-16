@@ -772,15 +772,6 @@ const handleCheckboxChange = (rowIndex, cellIndex) => {
 const [expanded, setExpanded] = useState(false);
 const rowsToShow = expanded ? rows : [];
 
-const expandButtonStyle = {
-  cursor: 'pointer',
-  backgroundColor: expanded ? '#7d240c' : '#973116',
-  color: 'white',
-  padding: '5px 10px',
-  borderRadius: '5px',
-  transition: 'background-color 0.3s ease',
-};
-
 const tableStyle = {
   width: '100%',
   borderCollapse: 'collapse',
@@ -800,55 +791,64 @@ const tdStyle = {
   textAlign: 'center',
   border: '1px solid #ddd',
 };
+const buttonStyle = {
+    backgroundColor: expanded ? '#7d240c' : '#973116',
+    color: 'white',
+    border: 'none',
+    padding: '5px 10px',
+    borderRadius: '5px',
+    cursor: 'pointer',
+    transition: 'background-color 0.3s ease',
+  };
 
 return (
   <div>
-  <button
-      style={{ ...expandButtonStyle, fontSize: '20px' }} // Ajustez la taille de la police ici
-
-    
-    onClick={() => setExpanded(!expanded)}
-  >
-    {expanded ? '-' : '+'} <b>{expanded ? 'Réduire' : 'Situation premier acompte'}</b>
-  </button>
-  {expanded && (
-    <table style={tableStyle}>
-      <thead>
-        <tr>
-          {columns.map((column, index) => (
-            <th key={index} style={{ ...thStyle, textAlign: 'center' }}>
-              {column}
-            </th>
+  <table style={tableStyle}>
+    <thead>
+      <tr>
+        <td colSpan={columns.length}>
+          <button
+            style={buttonStyle}
+            onClick={() => setExpanded(!expanded)}
+          >
+            {expanded ? '-' : '+'} {expanded ? 'Réduire' : 'Afficher plus'}
+          </button>
+        </td>
+      </tr>
+      <tr>
+        {columns.map((column, index) => (
+          <th key={index} style={{ ...thStyle, textAlign: 'center' }}>
+            {column}
+          </th>
+        ))}
+      </tr>
+    </thead>
+    <tbody>
+      {rowsToShow.map((row, rowIndex) => (
+        <tr key={rowIndex}>
+          {row.map((cell, cellIndex) => (
+            <td key={cellIndex} style={{ ...tdStyle, textAlign: typeof cell === 'number' ? 'center' : 'center' }}>
+              {(rowIndex >= 0 && rowIndex <= 83) &&
+                (cellIndex >= 3 && cellIndex <= 7) ? (
+                <>
+                  <input
+                    type="checkbox"
+                    checked={checkboxStates[rowIndex][cellIndex]}
+                    onChange={() => handleCheckboxChange(rowIndex, cellIndex)}
+                  />
+                  {cell}
+                </>
+              ) : (
+                typeof cell === 'number'
+                  ? cell.toLocaleString()
+                  : cell
+              )}
+            </td>
           ))}
         </tr>
-      </thead>
-      <tbody>
-        {rowsToShow.map((row, rowIndex) => (
-          <tr key={rowIndex}>
-            {row.map((cell, cellIndex) => (
-              <td key={cellIndex} style={{ ...tdStyle, textAlign: typeof cell === 'number' ? 'center' : 'center' }}>
-                {(rowIndex >= 0 && rowIndex <= 83) &&
-                  (cellIndex >= 3 && cellIndex <= 7) ? (
-                  <>
-                    <input
-                      type="checkbox"
-                      checked={checkboxStates[rowIndex][cellIndex]}
-                      onChange={() => handleCheckboxChange(rowIndex, cellIndex)}
-                    />
-                    {cell}
-                  </>
-                ) : (
-                  typeof cell === 'number'
-                    ? cell.toLocaleString()
-                    : cell
-                )}
-              </td>
-            ))}
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  )}
+      ))}
+    </tbody>
+  </table>
 </div>
 
 );
