@@ -10,6 +10,9 @@ import SeychellesFlag from '../../assets/Images/flag/Seychelles.png'
 const Sidebar = ({ onPageChange }) => {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedSubcategory, setSelectedSubcategory] = useState(null);
+  const [selectedSubsubcategory, setSelectedSubsubcategory] = useState(null);
+
+
 
   const categoriesWithSubcategories = {
 
@@ -32,22 +35,28 @@ const Sidebar = ({ onPageChange }) => {
   };
 
   const handleCategoryClick = (category) => {
-    if (selectedCategory === category && !selectedSubcategory) {
-      setSelectedCategory(null);
-      setSelectedSubcategory(null);
-    } else {
-      setSelectedCategory(category);
-      setSelectedSubcategory(null);
-    }
-
-    onPageChange(getPageNameFromCategory(category, selectedSubcategory));
+    setSelectedCategory((prevCategory) =>
+      prevCategory === category ? null : category
+    );
+    setSelectedSubcategory(null);
+    setSelectedSubsubcategory(null);
+    onPageChange(getPageNameFromCategory(category));
   };
-
+  
   const handleSubcategoryClick = (subcategory) => {
-    setSelectedSubcategory(subcategory);
+    setSelectedSubcategory((prevSubcategory) =>
+      prevSubcategory === subcategory ? null : subcategory
+    );
+    setSelectedSubsubcategory(null);
     onPageChange(getPageNameFromCategory(selectedCategory, subcategory));
   };
-
+  const handleSubsubcategoryClick = (subsubsubcategory) => {
+    setSelectedSubsubcategory(subsubsubcategory);
+    onPageChange(getPageNameFromCategory(selectedCategory, selectedSubcategory, subsubsubcategory));
+  };
+  
+  
+  
   const getPageNameFromCategory = (category, subcategory) => {
     switch (category) {
       case 'Chiffres du jour':
@@ -107,28 +116,30 @@ const Sidebar = ({ onPageChange }) => {
   
 
 
-      case 'Facturation':
-        switch (subcategory) {
-
-          case 'Etat de paiement':
-            return 'Etat de paiement';
-
-          case 'Factures totalement payées':
-            return 'Factures totalement payées';
-
-          case 'Factures partiellement payées':
-            return 'Factures partiellement payées';
-
-          case 'Factures impayées':
-            return 'Factures impayées';
-
-          case 'Reçu':
-            return 'Reçu';
-
-          default:
-            return 'Facturation';
-        }
-
+          case 'Facturation':
+            if (subcategory === 'Etat de paiement') {
+              switch (selectedSubsubcategory) {
+                case '1er acompte':
+                  return '1er acompte';
+                case '2ème acompte':
+                  return '2ème acompte';
+                case 'Situation Financière':
+                  return 'Situation Financière';
+                default:
+                  return 'Etat de paiement';
+              }
+            } else if (subcategory === 'Factures totalement payées') {
+              return 'Factures totalement payées';
+            } else if (subcategory === 'Factures partiellement payées') {
+              return 'Factures partiellement payées';
+            } else if (subcategory === 'Factures impayées') {
+              return 'Factures impayées';
+            } else if (subcategory === 'Reçu') {
+              return 'Reçu';
+            } else {
+              return 'Facturation';
+            }
+      
       case 'Autres':
         switch (subcategory) {
           case 'Liste des Athlètes par Discipline':
@@ -141,12 +152,11 @@ const Sidebar = ({ onPageChange }) => {
       }
     }
   };
+
   return (
     <div className="card sidebar bg-light rounded border-0">
-
       <div className="card-body" style={{ boxShadow: '0px 5px 20px -5px' }}>
         <h2 className="card-title sidebar-title text-center">Menu</h2>
-
         <div className="list-group">
           {Object.keys(categoriesWithSubcategories).map((category, index) => (
             <div key={index}>
@@ -156,7 +166,7 @@ const Sidebar = ({ onPageChange }) => {
                 style={{
                   fontWeight: 'bold',
                   backgroundColor: selectedCategory === category ? '#000000' : '',
-                  color:selectedCategory === category ? '#ffffff' : '',
+                  color: selectedCategory === category ? '#ffffff' : '',
                   outline: 'none',
                   boxShadow: '0px 2px 5px rgba(0, 0, 0, 0.4)',
                   transition: 'box-shadow 0.3s ease',
@@ -167,47 +177,138 @@ const Sidebar = ({ onPageChange }) => {
               </button>
               {selectedCategory === category && (
                 <div className="pl-4 mt-3 text-center">
-                  {categoriesWithSubcategories[category].map((subcategory, subIndex) => (
-                    <button
-                      key={subIndex}
-                      onClick={() => handleSubcategoryClick(subcategory)}
-                      className={`list-group-item list-group-item-action ${selectedSubcategory === subcategory ? '#0B6C42' : ''}`}
-                      style={{
-                        display: "flex",
-                        justifyContent: 'space-between', // Adjust alignment
-                        alignItems: 'center', // Center vertically
-                        backgroundColor: selectedSubcategory === subcategory ? 'rgb(197 255 230)' : '',
-                        outline: 'none',
-                        transition: 'box-shadow 0.3s ease',
-                        padding: '10px', // Adjust padding
-                      }}
-                      onFocus={(e) => e.target.blur()}
-                    >
-
-                      {category === 'Délégation' && (
-
-                        <div style={{ display: 'flex', alignItems: 'center' }}>
-                          <span className={dataFlag.flag[subIndex]}></span>
-                          <img src={dataFlag.flag[subIndex]} alt={subcategory} style={dataFlagStyle} /> {/* Add the image */}
-                          <span style={{ marginLeft: '5px' }}>{subcategory}</span>
-                        </div>
+                <ul style={{ listStyle: 'none', paddingLeft: '0' }}>
+                  {Array.isArray(categoriesWithSubcategories[category])
+                    ? categoriesWithSubcategories[category].map((subcategory, subIndex) => (
+                        <li key={subIndex}>
+                          <button
+                            onClick={() => handleSubcategoryClick(subcategory)}
+                            className={`list-group-item list-group-item-action ${
+                              selectedSubcategory === subcategory ? 'active-sub' : ''
+                            }`}
+                            style={{
+                              display: 'flex',
+                              justifyContent: 'space-between',
+                              alignItems: 'center',
+                              backgroundColor:
+                                selectedSubcategory === subcategory
+                                  ? 'rgb(197, 255, 230)'
+                                  : '',
+                              outline: 'none',
+                              transition: 'box-shadow 0.3s ease',
+                              padding: '10px',
+                            }}
+                            onFocus={(e) => e.target.blur()}
+                          >
+                            {category === 'Délégation' && (
+                              <div style={{ display: 'flex', alignItems: 'center' }}>
+                                <span className={dataFlag.flag[subIndex]}></span>
+                                <img
+                                  src={dataFlag.flag[subIndex]}
+                                  alt={subcategory}
+                                  style={dataFlagStyle}
+                                />
+                                <span style={{ marginLeft: '5px' }}>{subcategory}</span>
+                              </div>
+                            )}
+                            {category !== 'Délégation' && <span>{subcategory}</span>}
+                          </button>
+                          {Array.isArray(categoriesWithSubcategories[category][subcategory]) && (
+                            <ul style={{ listStyle: 'none', paddingLeft: '0' }}>
+                              {categoriesWithSubcategories[category][subcategory].map(
+                                (subsubsubcategory, subsubIndex) => (
+                                  <li key={subsubIndex}>
+                                    <button
+                                      onClick={() =>
+                                        handleSubsubcategoryClick(subsubsubcategory)
+                                      }
+                                      className={`list-group-item list-group-item-action ${
+                                        selectedSubsubcategory === subsubsubcategory
+                                          ? 'active-subsub'
+                                          : ''
+                                      }`}
+                                    >
+                                      {subsubsubcategory}
+                                    </button>
+                                  </li>
+                                )
+                              )}
+                            </ul>
+                          )}
+                        </li>
+                      ))
+                    : Object.keys(categoriesWithSubcategories[category]).map(
+                        (subcategory, subIndex) => (
+                          <li key={subIndex}>
+                            <button
+                              onClick={() => handleSubcategoryClick(subcategory)}
+                              className={`list-group-item list-group-item-action ${
+                                selectedSubcategory === subcategory ? 'active-sub' : ''
+                              }`}
+                              style={{
+                                display: 'flex',
+                                justifyContent: 'space-between',
+                                alignItems: 'center',
+                                backgroundColor:
+                                  selectedSubcategory === subcategory
+                                    ? 'rgb(197, 255, 230)'
+                                    : '',
+                                outline: 'none',
+                                transition: 'box-shadow 0.3s ease',
+                                padding: '10px',
+                              }}
+                              onFocus={(e) => e.target.blur()}
+                            >
+                              {category === 'Délégation' && (
+                                <div style={{ display: 'flex', alignItems: 'center' }}>
+                                  <span className={dataFlag.flag[subIndex]}></span>
+                                  <img
+                                    src={dataFlag.flag[subIndex]}
+                                    alt={subcategory}
+                                    style={dataFlagStyle}
+                                  />
+                                  <span style={{ marginLeft: '5px' }}>{subcategory}</span>
+                                </div>
+                              )}
+                              {category !== 'Délégation' && <span>{subcategory}</span>}
+                            </button>
+                            {Array.isArray(categoriesWithSubcategories[category][subcategory]) && (
+                              <ul style={{ listStyle: 'none', paddingLeft: '16px',  paddingRight: '22px' }}>
+                                {categoriesWithSubcategories[category][subcategory].map(
+                                  (subsubsubcategory, subsubIndex) => (
+                                    <li key={subsubIndex}>
+                                      <button
+                                        onClick={() =>
+                                          handleSubsubcategoryClick(subsubsubcategory)
+                                        }
+                                        className={`list-group-item list-group-item-action ${
+                                          selectedSubsubcategory === subsubsubcategory
+                                            ? 'active-subsub'
+                                            : ''
+                                        }`}
+                                      >
+                                        {subsubsubcategory}
+                                      </button>
+                                    </li>
+                                  )
+                                )}
+                              </ul>
+                            )}
+                          </li>
+                        )
                       )}
-
-                      {category !== 'Délégation' && (
-
-                        <span>{subcategory}</span>
-                      )}
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
+                </ul>
+              </div>
+            )}
+          </div>
+        ))}
       </div>
     </div>
+  </div>
+  
   );
 };
+
 
 
 

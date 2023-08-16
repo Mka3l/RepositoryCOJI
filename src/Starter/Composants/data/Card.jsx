@@ -19,7 +19,8 @@ const Card = (date) => {
 
   const fontSizeH6 = {
     fontSize: '14pt',
-    color: 'rebeccapurple'
+    color: 'rebeccapurple',
+    
   };
 
   const fontSizeCard = {
@@ -123,7 +124,7 @@ const Card = (date) => {
                         </div>
                         <div className="vide">
 
-                          <h6 style={fontSizeH6}>Nombre total Sites d'Hébergement <br /> <span className="small pt-1 fw-bold" style={fontSizeTEXT}>{numberWithThousandsSeparator(valeur.hebergement)}</span>  </h6>
+                          <h6 className='ms-4' style={fontSizeH6}>Nombre total Sites<br /> <span className="small pt-1 fw-bold" style={fontSizeTEXT}>{numberWithThousandsSeparator(valeur.hebergement)}</span>  </h6>
 
 
                         </div>
@@ -184,7 +185,7 @@ const Card = (date) => {
 
 
 
-                          <h6 style={fontSizeH6}>Nombre disponible le {date.date.date.date}  <br /> <span className="small pt-1 fw-bold" style={fontSizeTEXT}>{valeur.transport}</span>  </h6>
+                          <h6 style={fontSizeH6}>Véhicules disponibles <br /> <span className="small pt-1 fw-bold" style={fontSizeTEXT}>{valeur.transport}</span>  </h6>
                           <div className="icon">
                             <i className="ri-bar-chart-2-fill"></i>
                           </div>

@@ -169,7 +169,7 @@ const FactureParDelegation = () => {
         <Page size="A4" style={styles.page}>
           <View style={styles.section}>
             <View style={styles.header}>
-              <Text>Facture</Text>
+              <Text>Reçu</Text>
               <Text>Date : {dateValue} jusqu'au {dateValueVR}</Text>
             </View>
             <View style={styles.info}>
@@ -365,7 +365,6 @@ const FactureParDelegation = () => {
   return (
     <div style={containerStyle}>
 
-      <h1 style={{ textAlign: 'center', fontSize: '24px', marginBottom: '20px' }}>Edition nouvelle facture <span style={{ fontWeight:"lighter", color:"brown"}}> {currentDate}</span> </h1>
       <div style={{ ...styleInputDate }}>
          Facture du <input style={inputStyle} type='date' onChange={setDate1} ref={date1} />  au  <input style={inputStyle} type='date'ref={date2} onChange={setDate2}/>
 

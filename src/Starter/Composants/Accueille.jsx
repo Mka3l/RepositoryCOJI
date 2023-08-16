@@ -46,7 +46,7 @@ const Accueille = (date) => {
     justifyContent: 'space-between',
     alignItems: 'flex-start',
     borderRadius: '10px',
-    padding: '20px',
+    padding: '10px',
     width:'45%',
     boxShadow: '0px 0px 20px -5px'
   }
@@ -81,7 +81,7 @@ const Accueille = (date) => {
           <div id="dash" style={{ ...styleDash, }}>
             <h4 style={{ ...fontH4, backgroundColor:'rgb(182, 181, 181)'}}>Hébergement </h4>
             <DashHeberge date={date}/>
-            <h4 style={fontH4}>Restauration </h4>
+            <h4 style={fontH4}>Sites de Restauration </h4>
             <DashRestauration date={date}/>
           </div>
         </div>

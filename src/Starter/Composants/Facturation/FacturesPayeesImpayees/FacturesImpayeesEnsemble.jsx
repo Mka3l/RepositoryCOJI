@@ -6,11 +6,29 @@ const FacturesImpayeesEnsemble = () => {
     return (
         <div>
             <div className="mb-5 text-center">
-                <h2>Récapitulatifs des factures impayées</h2>
+                <h2 style={{
+          fontSize: '2.5rem',
+          fontWeight: '700',
+          boxShadow: '0px 5px 10px 4px #9f9f9f',
+          color: 'rgb(255 255 255)',
+          textShadow: 'rgb(0 0 0 / 30%) 2px 2px 4px',
+          padding: '15px',
+          background:' #973116',
+          textAlign: 'center',
+        }}>Récapitulatifs des factures impayées</h2>
                 < RecapFacturesImpayees/>
             </div>
             <div>
-                <h2 className="mb-3 text-center">Factures impayées </h2>
+                <h2  style={{
+          fontSize: '2.5rem',
+          fontWeight: '700',
+          boxShadow: '0px 5px 10px 4px #9f9f9f',
+          color: 'rgb(255 255 255)',
+          textShadow: 'rgb(0 0 0 / 30%) 2px 2px 4px',
+          padding: '15px',
+          background:' #973116',
+          textAlign: 'center',
+        }}className="mb-5 text-center">Factures impayées </h2>
                 < FacturesImpayees />
             </div>
         </div>

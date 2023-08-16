@@ -4,22 +4,20 @@ import FactureParDelegation from './Delegation';
 
 
 const VisuelFacture = () => {
-  const containerStyle = {
-    maxWidth: '800px',
-    margin: '0 auto',
-    paddingTop: '20px',
-    textAlign: 'center',
-  };
-
-  const titleStyle = {
-    fontSize: '32px',
-    fontWeight: 'bold',
-    marginBottom: '20px',
-  };
 
   return (
-    <div style={containerStyle}>
-      <h1 style={titleStyle}>FACTURE</h1>
+    <div>
+      <h1  style={{
+          fontSize: '2.5rem',
+          fontWeight: '700',
+          boxShadow: '0px 5px 10px 4px #9f9f9f',
+          color: 'rgb(255 255 255)',
+          textShadow: 'rgb(0 0 0 / 30%) 2px 2px 4px',
+          padding: '15px',
+          background:' #973116',
+          textAlign: 'center',
+          marginBottom:'50px'
+        }}>Reçu</h1>
       <FactureParDelegation />
       {/*<EtatDePaiementParent/>*/}
     </div>

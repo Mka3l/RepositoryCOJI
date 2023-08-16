@@ -17,7 +17,7 @@ const EtatPaiementGeneral = () => {
     "Montant Facture (Ariary)",
     "Ecart Facture et Pro-forma",
     "N°Facture"
-    ];
+  ];
   const rows = [
     [
       1,
@@ -1434,11 +1434,12 @@ const EtatPaiementGeneral = () => {
   const [expanded, setExpanded] = useState(false);
   const rowsToShow = expanded ? rows : rows.slice(0, 0);
   const firstRowStyle = {
-    
+
   };
 
   const tableStyle = {
     width: '100%',
+    margin: 'auto', // Centrer horizontalement
     borderCollapse: 'collapse',
     borderRadius: '5px',
     boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
@@ -1459,57 +1460,56 @@ const EtatPaiementGeneral = () => {
     whiteSpace: 'nowrap',
   };
 
-  const expandButtonStyle = {
-    cursor: 'pointer',
+  const buttonStyle = {
     backgroundColor: expanded ? '#7d240c' : '#973116',
     color: 'white',
+    border: 'none',
     padding: '5px 10px',
     borderRadius: '5px',
+    cursor: 'pointer',
     transition: 'background-color 0.3s ease',
   };
   return (
-    <div style={{ marginTop: '20px' }}>
+    <div>
     <table style={tableStyle}>
       <thead>
         <tr>
-          {columns.map((column, index) => (
-            <th key={index} style={{ ...thStyle, textAlign: 'center' }}>
-              {column}
-            </th>
-          ))}
+          <td colSpan={columns.length}>
+            <button
+              style={buttonStyle}
+              onClick={() => setExpanded(!expanded)}
+            >
+              {expanded ? '-' : '+'} {expanded ? 'Réduire' : 'Afficher plus'}
+            </button>
+          </td>
         </tr>
-      </thead>
-      <tbody>
-        {rowsToShow.map((row, rowIndex) => (
-          <tr key={rowIndex} style={rowIndex === 0 ? firstRowStyle : {}}>
-            {row.map((cell, cellIndex) => (
-              <td key={cellIndex} style={{ ...tdStyle, textAlign: 'center' }}>
-                {typeof cell === 'number'
-                  ? cell.toLocaleString()
-                  : cell}
-              </td>
+        <tr>
+            {columns.map((column, index) => (
+              <th key={index} style={{ ...thStyle, textAlign: 'center' }}> {/* Ajout du style textAlign */}
+                {column}
+              </th>
             ))}
           </tr>
-        ))}
-        {!expanded ? (
-          <tr>
-            <td colSpan={columns.length} style={{ ...expandButtonStyle, maxWidth: '50px', textAlign: 'center' }} onClick={() => setExpanded(true)}>
-              <b>Afficher détails</b>
-            </td>
-          </tr>
-        ) : (
-          <tr>
-            <td colSpan={columns.length} style={{ ...expandButtonStyle, maxWidth: '50px', textAlign: 'center' }} onClick={() => setExpanded(false)}>
-              <b>Réduire</b>
-            </td>
-          </tr>
-        )}
-      </tbody>
-    </table>
-  </div>
-  
-
+        </thead>
+        <tbody>
+          {rowsToShow.map((row, rowIndex) => (
+            <tr key={rowIndex} style={rowIndex === 0 ? firstRowStyle : {}}>
+              {row.map((cell, cellIndex) => (
+                <td key={cellIndex} style={cellIndex === 0 ? (rowIndex === 0 ? { ...tdStyle, textAlign: 'right' } : { ...tdStyle, textAlign: 'center' }) : { ...tdStyle, textAlign: 'center' }}>
+                  {typeof cell === 'number'
+                    ? cell.toLocaleString()
+                    : rowIndex >= 1 && cellIndex === 0 // Vérification pour les lignes à partir de la troisième et première cellule (nom de fonction)
+                      ? <i>{cell}</i> // Appliquez le style italique
+                      : cell}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
-};
 
+
+};
 export default EtatPaiementGeneral;
