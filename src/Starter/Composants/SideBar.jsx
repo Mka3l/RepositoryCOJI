@@ -36,14 +36,12 @@ const Sidebar = ({ onPageChange }) => {
     'flag': [MadagascarFlag, ComoresFlag, FranceFlag, MauriceFlag, SeychellesFlag, MaldivesFlag, FranceFlag]
   }
   const dataFlagStyle = {
-    width: '30px', // Ajustez la taille de l'icône du drapeau
-    height: '30px', // Ajustez la taille de l'icône du drapeau
+    width: '30px', 
+    height: '30px', 
   };
 
   const handleCategoryClick = (category) => {
-    setSelectedCategory((prevCategory) =>
-      prevCategory === category ? null : category
-    );
+    setSelectedCategory(category);
     setSelectedSubcategory(null);
     setSelectedSubsubcategory(null);
     onPageChange(getPageNameFromCategory(category));
@@ -56,6 +54,7 @@ const Sidebar = ({ onPageChange }) => {
     setSelectedSubsubcategory(null);
     onPageChange(getPageNameFromCategory(selectedCategory, subcategory));
   };
+  
   const handleSubsubcategoryClick = (subsubsubcategory) => {
     setSelectedSubsubcategory(subsubsubcategory);
     onPageChange(getPageNameFromCategory(selectedCategory, selectedSubcategory, subsubsubcategory));
@@ -121,28 +120,28 @@ const Sidebar = ({ onPageChange }) => {
 
 
           case 'Facturation':
-            if (subcategory === 'Etat de paiement') {
-              switch (selectedSubsubcategory) {
-                case '1er acompte':
-                  return '1er acompte';
-                case '2ème acompte':
-                  return '2ème acompte';
-                case 'Situation Financière':
-                  return 'Situation Financière';
-                default:
-                  return 'Etat de paiement';
-              }
-            } else if (subcategory === 'Factures totalement payées') {
-              return 'Factures totalement payées';
-            } else if (subcategory === 'Factures partiellement payées') {
-              return 'Factures partiellement payées';
-            } else if (subcategory === 'Factures impayées') {
-              return 'Factures impayées';
-            } else if (subcategory === 'Reçu') {
-              return 'Reçu';
-            } else {
-              return 'Facturation';
-            }
+  if (subcategory === 'Etat de paiement') {
+    if (selectedSubsubcategory === '1er acompte') {
+      return '1er acompte';
+    } else if (selectedSubsubcategory === '2ème acompte') {
+      return '2ème acompte';
+    } else if (selectedSubsubcategory === 'Situation Financière') {
+      return 'Situation Financière';
+    } else {
+      return 'Etat de paiement';
+    }
+  } else if (subcategory === 'Factures totalement payées') {
+    return 'Factures totalement payées';
+  } else if (subcategory === 'Factures partiellement payées') {
+    return 'Factures partiellement payées';
+  } else if (subcategory === 'Factures impayées') {
+    return 'Factures impayées';
+  } else if (subcategory === 'Reçu') {
+    return 'Reçu';
+  } else {
+    return 'Facturation';
+  }
+
       
       case 'Autres':
         switch (subcategory) {
@@ -276,28 +275,26 @@ const Sidebar = ({ onPageChange }) => {
                               )}
                               {category !== 'Délégation' && <span>{subcategory}</span>}
                             </button>
-                            {Array.isArray(categoriesWithSubcategories[category][subcategory]) && (
-                              <ul style={{ listStyle: 'none', paddingLeft: '16px',  paddingRight: '22px' }}>
-                                {categoriesWithSubcategories[category][subcategory].map(
-                                  (subsubsubcategory, subsubIndex) => (
-                                    <li key={subsubIndex}>
-                                      <button
-                                        onClick={() =>
-                                          handleSubsubcategoryClick(subsubsubcategory)
-                                        }
-                                        className={`list-group-item list-group-item-action ${
-                                          selectedSubsubcategory === subsubsubcategory
-                                            ? 'active-subsub'
-                                            : ''
-                                        }`}
-                                      >
-                                        {subsubsubcategory}
-                                      </button>
-                                    </li>
-                                  )
-                                )}
-                              </ul>
+                            {subcategory === 'Etat de paiement' && selectedSubcategory === subcategory && (
+                          <ul style={{ listStyle: 'none', paddingLeft: '0' }}>
+                            {categoriesWithSubcategories[category][subcategory].map(
+                              (subsubsubcategory, subsubIndex) => (
+                                <li key={subsubIndex}>
+                                  <button
+                                    onClick={() => handleSubsubcategoryClick(subsubsubcategory)}
+                                    className={`list-group-item list-group-item-action ${
+                                      selectedSubsubcategory === subsubsubcategory
+                                        ? 'active-subsub'
+                                        : ''
+                                    }`}
+                                  >
+                                    {subsubsubcategory}
+                                  </button>
+                                </li>
+                              )
                             )}
+                          </ul>
+                        )}
                           </li>
                         )
                       )}
