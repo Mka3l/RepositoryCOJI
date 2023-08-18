@@ -5,7 +5,7 @@ import FacturesImpayees from './FacturesImpayees';
 const FacturesImpayeesEnsemble = () => {
     return (
         <div>
-            <div className="mb-5 text-center">
+            <div className="mb-5">
                 <h2 style={{
           fontSize: '2.5rem',
           fontWeight: '700',
