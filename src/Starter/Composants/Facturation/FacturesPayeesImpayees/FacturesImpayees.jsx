@@ -1139,7 +1139,45 @@ const FacturesImpayees = () => {
   };
 
   const [expanded, setExpanded] = useState(false);
-  const rowsToShow = expanded ? rows : [];
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const columnRanges = [
+    { start: 0, end: 6 },
+    { start: 7, end: 15 },
+    { start: 16, end: 25 },
+    { start: 26, end: 30 }
+  ]; // Personnalisez les plages de colonnes ici
+
+  const visibleColumns = columns.slice(columnRanges[currentIndex].start, columnRanges[currentIndex].end + 1);
+
+  const [rowsToShow, setRowsToShow] = useState(
+    rows.map(row =>
+      row.slice(columnRanges[currentIndex].start, columnRanges[currentIndex].end + 1)
+    )
+  );
+
+  const showNextColumns = () => {
+    const nextIndex = currentIndex + 1;
+    if (nextIndex < columnRanges.length) {
+      setCurrentIndex(nextIndex);
+      setCheckboxStates(rows.map(row => row.map(() => false))); // Réinitialiser les états des cases à cocher
+      const newRowsToShow = rows.map(row =>
+        row.slice(columnRanges[nextIndex].start, columnRanges[nextIndex].end + 1)
+      );
+      setRowsToShow(newRowsToShow);
+    }
+  };
+  const showPreviousColumns = () => {
+    const previousIndex = currentIndex - 1;
+    if (previousIndex >= 0) {
+      setCurrentIndex(previousIndex);
+      setCheckboxStates(rows.map(row => row.map(() => false))); // Réinitialiser les états des cases à cocher
+      const newRowsToShow = rows.map(row =>
+        row.slice(columnRanges[previousIndex].start, columnRanges[previousIndex].end + 1)
+      );
+      setRowsToShow(newRowsToShow);
+    }
+  };
 
   const expandButtonStyle = {
     cursor: 'pointer',
@@ -1169,7 +1207,16 @@ const FacturesImpayees = () => {
     textAlign: 'left',
     border: '1px solid #ddd',
   };
-
+  const buttonStyle2 = {
+    backgroundColor: expanded ? '#7d240c' : '#973116',
+    color: 'white',
+    border: 'none',
+    float: 'right',
+    borderRadius: '5px',
+    cursor: 'pointer',
+    transition: 'background-color 0.3s ease',
+    marginRight: '10px'
+  };
   return (
     <div>
       <button
@@ -1179,48 +1226,53 @@ const FacturesImpayees = () => {
         {expanded ? '-' : '+'} {expanded ? 'Réduire' : 'Afficher plus de détails'}
       </button>
       {expanded && (
-        <table style={tableStyle}>
-          <thead>
-            <tr>
-              {columns.map((column, index) => (
-                <th key={index} style={thStyle}>
-                  {column}
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {rowsToShow.map((row, rowIndex) => (
-              <tr key={rowIndex}>
-                {row.map((cell, cellIndex) => (
-                  <td key={cellIndex} style={{ ...tdStyle, textAlign: typeof cell === 'number' ? 'center' : 'center' }}>
-                    {(rowIndex >= 1 && rowIndex <= 83) &&
-                      ((cellIndex >= 17 && cellIndex <= 20) ||
-                      (cellIndex >= 22 && cellIndex <= 25) ||
-                      (cellIndex >= 27 && cellIndex <= 30)) ? (
-                      <>
-                        <input
-                          type="checkbox"
-                          checked={checkboxStates[rowIndex][cellIndex]}
-                          onChange={() => handleCheckboxChange(rowIndex, cellIndex)}
-                        />
-                        {cell}
-                      </>
-                    ) : (
-                      typeof cell === 'number'
-                        ? cell.toLocaleString()
-                        : cell
-                    )}
-                  </td>
+        <>
+          
+          <button style={buttonStyle2} onClick={showNextColumns}>Suivants</button>
+          <button style={buttonStyle2} onClick={showPreviousColumns}>Précédents</button>
+          <table style={tableStyle}>
+            <thead>
+              <tr>
+                {visibleColumns.map((column, index) => (
+                  <th key={index} style={{ ...thStyle, textAlign: 'center' }}>
+                    {column}
+                  </th>
                 ))}
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {rowsToShow.map((row, rowIndex) => (
+                <tr key={rowIndex}>
+                  {row.map((cell, cellIndex) => (
+                    <td key={cellIndex} style={{ ...tdStyle, textAlign: typeof cell === 'number' ? 'center' : 'center' }}>
+                      {(rowIndex >= 1 && rowIndex <= 83) &&
+                        ((cellIndex >= 17 && cellIndex <= 20) ||
+                          (cellIndex >= 22 && cellIndex <= 25) ||
+                          (cellIndex >= 27 && cellIndex <= 30)) ? (
+                        <>
+                          <input
+                            type="checkbox"
+                            checked={checkboxStates[rowIndex][cellIndex]}
+                            onChange={() => handleCheckboxChange(rowIndex, cellIndex)}
+                          />
+                          {cell}
+                        </>
+                      ) : (
+                        typeof cell === 'number'
+                          ? cell.toLocaleString()
+                          : cell
+                      )}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </>
       )}
     </div>
-
   );
+
 };
 
 export default FacturesImpayees;

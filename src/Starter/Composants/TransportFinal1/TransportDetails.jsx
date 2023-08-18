@@ -8,7 +8,7 @@ const TransportDispo = () => {
       depart: 'Ankadimbahoaka',
       arrivee: 'Stade Mahamasina',
       distance: '10 km',
-      consommation: '10 L/100km',
+    
     },
     {
       immatriculation: 'EF456GH',
@@ -16,7 +16,7 @@ const TransportDispo = () => {
       depart: 'Ambohipo',
       arrivee: 'Complexe de la CNaPS',
       distance: '15 km',
-      consommation: '8 L/100km',
+     
     },
     {
       immatriculation: 'IJ789KL',
@@ -24,7 +24,7 @@ const TransportDispo = () => {
       depart: 'Soarano',
       arrivee: 'Terrain de rugby d\'Ankorondrano',
       distance: '7 km',
-      consommation: '9 L/100km',
+   
     },
     {
       immatriculation: 'MN012OP',
@@ -32,7 +32,7 @@ const TransportDispo = () => {
       depart: 'Ankadifotsy',
       arrivee: 'Patinoire d\'Andohalo',
       distance: '12 km',
-      consommation: '11 L/100km',
+    
     },
     {
       immatriculation: 'QR345ST',
@@ -40,7 +40,7 @@ const TransportDispo = () => {
       depart: 'Ivandry',
       arrivee: 'Centre de Tir Tsaralalàna',
       distance: '8 km',
-      consommation: '8.5 L/100km',
+   
     },
   ];
   
@@ -100,7 +100,7 @@ const TransportDispo = () => {
             <th style={thStyle}>Lieu de départ</th>
             <th style={thStyle}>Lieu d'arrivée</th>
             <th style={thStyle}>Distance</th>
-            <th style={thStyle}>Consommation estimée</th>
+           
           </tr>
         </thead>
         <tbody>
@@ -111,14 +111,23 @@ const TransportDispo = () => {
               <td style={tdStyle}>{car.depart}</td>
               <td style={tdStyle}>{car.arrivee}</td>
               <td style={tdStyle}>{car.distance}</td>
-              <td style={tdStyle}>{car.consommation}</td>
+            
             </tr>
           ))}
         </tbody>
       </table>
 
       <div className="vehicle-info">
-        <h2 className="m-4 text-center">Informations sur les véhicules</h2>
+        <h2  style={{
+          fontSize: '2.5rem',
+          fontWeight: '700',
+          boxShadow: '0px 5px 10px 4px #9f9f9f',
+          color: 'rgb(255 255 255)',
+          textShadow: 'rgb(0 0 0 / 30%) 2px 2px 4px',
+          padding: '15px',
+          background:' #973116',
+          textAlign: 'center',
+        }}className="mb-5 mt-5 text-center">Informations sur les véhicules</h2>
         <table style={{ ...tableStyle, ...taille}}>
           <tbody>
             <tr>

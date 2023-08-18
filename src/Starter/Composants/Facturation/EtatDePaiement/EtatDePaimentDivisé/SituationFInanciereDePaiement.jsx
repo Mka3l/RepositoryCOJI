@@ -10,11 +10,13 @@ const SituationFinanciereDePaiment = () => {
     "1 ère acomptes (35%) (Ariary)",
     "Reception facture 1ère acomptes ",
     "Contrôle pièce 1ère acomptes ",
+    "disponibilité de soldes",
     "Validation paiement 1ère acomptes ",
     "Paiement 1ère acomptes ",
     "2ème acomptes (35%) (Ariary)",
     "Récéption facture 2ème acomptes ",
     "Contrôle pièce 2ème acomptes ",
+    "disponibilité de soldes",
     "Validation paiement 2ème acomptes ",
     "Paiment 2ème acomptes ",
     "Restes à payer (30%) (Ariary)",
@@ -35,7 +37,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       124535039.99999999,
+      null,
       null,
       null,
       null,
@@ -57,7 +61,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       30315039.999999996,
+      null,
       null,
       null,
       null,
@@ -79,7 +85,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       15203999.999999998,
+      null,
       null,
       null,
       null,
@@ -102,7 +110,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       73000550,
+      null,
       null,
       null,
       null,
@@ -124,7 +134,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       103316500,
+      null,
       null,
       null,
       null,
@@ -146,7 +158,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       52212192.9,
+      null,
       null,
       null,
       null,
@@ -168,7 +182,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       157994684.39999998,
+      null,
       null,
       null,
       null,
@@ -190,7 +206,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       132826399.99999999,
+      null,
       null,
       null,
       null,
@@ -212,7 +230,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       9996000,
+      null,
       null,
       null,
       null,
@@ -234,7 +254,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       15209599.999999998,
+      null,
       null,
       null,
       null,
@@ -256,7 +278,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       205453459.04999998,
+      null,
       null,
       null,
       null,
@@ -278,7 +302,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       30102239.999999996,
+      null,
       null,
       null,
       null,
@@ -300,7 +326,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       44800000,
+      null,
       null,
       null,
       null,
@@ -322,7 +350,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       194215840,
+      null,
       null,
       null,
       null,
@@ -344,7 +374,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       63702239.99999999,
+      null,
       null,
       null,
       null,
@@ -366,7 +398,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       7627199.999999999,
+      null,
       null,
       null,
       null,
@@ -388,7 +422,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       24696000,
+      null,
       null,
       null,
       null,
@@ -410,7 +446,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       538064609.6,
+      null,
       null,
       null,
       null,
@@ -432,7 +470,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       360233664,
+      null,
       null,
       null,
       null,
@@ -454,7 +494,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       22196160,
+      null,
       null,
       null,
       null,
@@ -476,7 +518,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       19320000,
+      null,
       null,
       null,
       null,
@@ -498,7 +542,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       13104000,
+      null,
       null,
       null,
       null,
@@ -520,7 +566,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       26572000,
+      null,
       null,
       null,
       null,
@@ -542,7 +590,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       45427200,
+      null,
       null,
       null,
       null,
@@ -564,7 +614,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       24528000,
+      null,
       null,
       null,
       null,
@@ -586,7 +638,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       48225800,
+      null,
       null,
       null,
       null,
@@ -608,7 +662,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       7280000,
+      null,
       null,
       null,
       null,
@@ -630,7 +686,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       35112448,
+      null,
       null,
       null,
       null,
@@ -652,7 +710,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       57525720,
+      null,
       null,
       null,
       null,
@@ -674,7 +734,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       77197680,
+      null,
       null,
       null,
       null,
@@ -696,7 +758,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       41034000,
+      null,
       null,
       null,
       null,
@@ -718,7 +782,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       29567999.999999996,
+      null,
       null,
       null,
       null,
@@ -740,7 +806,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       101156160,
+      null,
       null,
       null,
       null,
@@ -762,7 +830,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       33169499.999999996,
+      null,
       null,
       null,
       null,
@@ -784,7 +854,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       660998134.3,
+      null,
       null,
       null,
       null,
@@ -806,7 +878,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       16630249.999999998,
+      null,
       null,
       null,
       null,
@@ -828,7 +902,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       17712800,
+      null,
       null,
       null,
       null,
@@ -850,7 +926,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       14411250,
+      null,
       null,
       null,
       null,
@@ -872,7 +950,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       236848499.99999997,
+      null,
       null,
       null,
       null,
@@ -894,7 +974,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       14632800,
+      null,
       null,
       null,
       null,
@@ -916,7 +998,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       9072000,
+      null,
       null,
       null,
       null,
@@ -938,7 +1022,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       5320000,
+      null,
       null,
       null,
       null,
@@ -960,7 +1046,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       11424000,
+      null,
       null,
       null,
       null,
@@ -982,7 +1070,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       8400000,
+      null,
       null,
       null,
       null,
@@ -1004,7 +1094,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       14923999.999999998,
+      null,
       null,
       null,
       null,
@@ -1026,7 +1118,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       29403499.999999996,
+      null,
       null,
       null,
       null,
@@ -1048,7 +1142,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       24137750,
+      null,
       null,
       null,
       null,
@@ -1070,7 +1166,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       62147399.99999999,
+      null,
       null,
       null,
       null,
@@ -1092,7 +1190,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       376392273.59999996,
+      null,
       null,
       null,
       null,
@@ -1114,7 +1214,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       6496875,
+      null,
       null,
       null,
       null,
@@ -1136,7 +1238,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       18873750,
+      null,
       null,
       null,
       null,
@@ -1158,7 +1262,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       7193760,
+      null,
       null,
       null,
       null,
@@ -1180,7 +1286,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       23660000,
+      null,
       null,
       null,
       null,
@@ -1202,7 +1310,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       12012000,
+      null,
       null,
       null,
       null,
@@ -1224,7 +1334,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       25043550,
+      null,
       null,
       null,
       null,
@@ -1246,7 +1358,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       29707999.999999996,
+      null,
       null,
       null,
       null,
@@ -1268,7 +1382,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       19845000,
+      null,
       null,
       null,
       null,
@@ -1290,7 +1406,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       5355000,
+      null,
       null,
       null,
       null,
@@ -1312,7 +1430,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       11608800,
+      null,
       null,
       null,
       null,
@@ -1334,7 +1454,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       6820800,
+      null,
       null,
       null,
       null,
@@ -1356,7 +1478,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       13447000,
+      null,
       null,
       null,
       null,
@@ -1378,7 +1502,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       25667600,
+      null,
       null,
       null,
       null,
@@ -1400,7 +1526,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       8131199.999999999,
+      null,
       null,
       null,
       null,
@@ -1422,7 +1550,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       10024000,
+      null,
       null,
       null,
       null,
@@ -1444,7 +1574,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       19706400,
+      null,
       null,
       null,
       null,
@@ -1466,7 +1598,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       4368000,
+      null,
       null,
       null,
       null,
@@ -1488,7 +1622,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       22344000,
+      null,
       null,
       null,
       null,
@@ -1510,7 +1646,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       9603300,
+      null,
       null,
       null,
       null,
@@ -1532,7 +1670,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       16616249.999999998,
+      null,
       null,
       null,
       null,
@@ -1554,7 +1694,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       4860800,
+      null,
       null,
       null,
       null,
@@ -1576,7 +1718,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       28901600,
+      null,
       null,
       null,
       null,
@@ -1598,7 +1742,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       11662000,
+      null,
       null,
       null,
       null,
@@ -1620,7 +1766,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       24472000,
+      null,
       null,
       null,
       null,
@@ -1642,7 +1790,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       10024000,
+      null,
       null,
       null,
       null,
@@ -1664,7 +1814,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       8306199.999999999,
+      null,
       null,
       null,
       null,
@@ -1686,6 +1838,8 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
+      null,
       10570000,
       null,
       null,
@@ -1703,7 +1857,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       6979000,
+      null,
       null,
       null,
       null,
@@ -1725,7 +1881,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       6238400,
+      null,
       null,
       null,
       null,
@@ -1747,7 +1905,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       14707321.999999998,
+      null,
       null,
       null,
       null,
@@ -1769,7 +1929,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       30701999.999999996,
+      null,
       null,
       null,
       null,
@@ -1791,7 +1953,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       7559999.999999999,
+      null,
       null,
       null,
       null,
@@ -1813,7 +1977,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       16575999.999999998,
+      null,
       null,
       null,
       null,
@@ -1835,7 +2001,9 @@ const SituationFinanciereDePaiment = () => {
       null,
       null,
       null,
+      null,
       16463999.999999998,
+      null,
       null,
       null,
       null,
@@ -1859,9 +2027,54 @@ const SituationFinanciereDePaiment = () => {
   };
 
   const [expanded, setExpanded] = useState(false);
-  const rowsToShow = expanded ? rows : [];
+  const [currentIndex, setCurrentIndex] = useState(0);
 
+  const columnRanges = [
+    { start: 0, end: 4 },
+    { start: 5, end: 16 },
+    { start: 17, end: 20 },
+    
+  ]; // Personnalisez les plages de colonnes ici
 
+  const visibleColumns = columns.slice(columnRanges[currentIndex].start, columnRanges[currentIndex].end + 1);
+
+  const [rowsToShow, setRowsToShow] = useState(
+    rows.map(row =>
+      row.slice(columnRanges[currentIndex].start, columnRanges[currentIndex].end + 1)
+    )
+  );
+
+  const showNextColumns = () => {
+    const nextIndex = currentIndex + 1;
+    if (nextIndex < columnRanges.length) {
+      setCurrentIndex(nextIndex);
+      setCheckboxStates(rows.map(row => row.map(() => false))); // Réinitialiser les états des cases à cocher
+      const newRowsToShow = rows.map(row =>
+        row.slice(columnRanges[nextIndex].start, columnRanges[nextIndex].end + 1)
+      );
+      setRowsToShow(newRowsToShow);
+    }
+  };
+  const showPreviousColumns = () => {
+    const previousIndex = currentIndex - 1;
+    if (previousIndex >= 0) {
+      setCurrentIndex(previousIndex);
+      setCheckboxStates(rows.map(row => row.map(() => false))); // Réinitialiser les états des cases à cocher
+      const newRowsToShow = rows.map(row =>
+        row.slice(columnRanges[previousIndex].start, columnRanges[previousIndex].end + 1)
+      );
+      setRowsToShow(newRowsToShow);
+    }
+  };
+
+  const expandButtonStyle = {
+    cursor: 'pointer',
+    backgroundColor: expanded ? '#7d240c' : '#973116',
+    color: 'white',
+    padding: '5px 10px',
+    borderRadius: '5px',
+    transition: 'background-color 0.3s ease',
+  };
 
   const tableStyle = {
     width: '100%',
@@ -1882,69 +2095,71 @@ const SituationFinanciereDePaiment = () => {
     textAlign: 'left',
     border: '1px solid #ddd',
   };
-  const buttonStyle = {
+  const buttonStyle2 = {
     backgroundColor: expanded ? '#7d240c' : '#973116',
     color: 'white',
     border: 'none',
-    padding: '5px 10px',
+    float: 'right',
     borderRadius: '5px',
     cursor: 'pointer',
     transition: 'background-color 0.3s ease',
+    marginRight: '10px'
   };
-
-
   return (
     <div>
-      <table style={tableStyle}>
-        <thead>
-          <tr>
-            <td colSpan={columns.length}>
-              <button
-                style={buttonStyle}
-                onClick={() => setExpanded(!expanded)}
-              >
-                {expanded ? '-' : '+'} {expanded ? 'Réduire' : 'Afficher plus'}
-              </button>
-            </td>
-          </tr>
-          <tr>
-            {columns.map((column, index) => (
-              <th key={index} style={{ ...thStyle, textAlign: 'center' }}>
-                {column}
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {rowsToShow.map((row, rowIndex) => (
-            <tr key={rowIndex}>
-              {row.map((cell, cellIndex) => (
-                <td key={cellIndex} style={{ ...tdStyle, textAlign: typeof cell === 'number' ? 'center' : 'center' }}>
-                  {(rowIndex >= 1 && rowIndex <= 83) &&
-                    ((cellIndex >= 6 && cellIndex <= 9) ||
-                      (cellIndex >= 11 && cellIndex <= 14) ||
-                      (cellIndex >= 16 && cellIndex <= 19)) ? (
-                    <>
-                      <input
-                        type="checkbox"
-                        checked={checkboxStates[rowIndex][cellIndex]}
-                        onChange={() => handleCheckboxChange(rowIndex, cellIndex)}
-                      />
-                      {cell}
-                    </>
-                  ) : (
-                    typeof cell === 'number'
-                      ? cell.toLocaleString()
-                      : cell
-                  )}
-                </td>
+      <button
+        style={expandButtonStyle}
+        onClick={() => setExpanded(!expanded)}
+      >
+        {expanded ? '-' : '+'} {expanded ? 'Réduire' : 'Afficher plus de détails'}
+      </button>
+      {expanded && (
+        <>
+          
+          <button style={buttonStyle2} onClick={showNextColumns}>Suivants</button>
+          <button style={buttonStyle2} onClick={showPreviousColumns}>Précédents</button>
+          <table style={tableStyle}>
+            <thead>
+              <tr>
+                {visibleColumns.map((column, index) => (
+                  <th key={index} style={{ ...thStyle, textAlign: 'center' }}>
+                    {column}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {rowsToShow.map((row, rowIndex) => (
+                <tr key={rowIndex}>
+                  {row.map((cell, cellIndex) => (
+                    <td key={cellIndex} style={{ ...tdStyle, textAlign: typeof cell === 'number' ? 'center' : 'center' }}>
+                     {(rowIndex >= 0 && rowIndex <= 83) &&
+                    ((cellIndex >= 12 && cellIndex <= 13) ||
+                      (cellIndex >= 12 && cellIndex <= 16) ||
+                      (cellIndex >= 18 && cellIndex <= 21)) ? (
+                        <>
+                          <input
+                            type="checkbox"
+                            checked={checkboxStates[rowIndex][cellIndex]}
+                            onChange={() => handleCheckboxChange(rowIndex, cellIndex)}
+                          />
+                          {cell}
+                        </>
+                      ) : (
+                        typeof cell === 'number'
+                          ? cell.toLocaleString()
+                          : cell
+                      )}
+                    </td>
+                  ))}
+                </tr>
               ))}
-            </tr>
-          ))}
-        </tbody>
-      </table>
+            </tbody>
+          </table>
+        </>
+      )}
     </div>
   );
-};
 
+};
 export default SituationFinanciereDePaiment;

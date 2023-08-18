@@ -1219,8 +1219,9 @@ const RepartitionHebergement = () => {
   const [expanded, setExpanded] = useState(false);
   const [showAllColumns, setShowAllColumns] = useState(false);
   const rowsToShow = expanded ? rows : [];
-  const buttonStyle = {
 
+
+  const buttonStyle = {
     backgroundColor: expanded ? '#7d240c' : '#973116',
     color: 'white',
     border: 'none',
@@ -1228,6 +1229,7 @@ const RepartitionHebergement = () => {
     borderRadius: '5px',
     cursor: 'pointer',
     transition: 'background-color 0.3s ease',
+    marginBottom: '0px'
   };
   const buttonStyle2 = {
     backgroundColor: expanded ? '#7d240c' : '#973116',
@@ -1260,28 +1262,33 @@ const RepartitionHebergement = () => {
   };
 
   return (
-<div style={{ marginTop: '20px' }}>
-      {expanded && (
-        <button
-          style={buttonStyle2}
-          onClick={() => setShowAllColumns(!showAllColumns)}
-        >
-          {showAllColumns ? '-' : '+'}
-        </button>
-      )}
+    
+    <div>
+      {/* Bouton pour afficher/masquer les détails */}
       <button
         style={buttonStyle}
         onClick={() => setExpanded(!expanded)}
       >
         {expanded ? '-' : '+'} {expanded ? 'Réduire' : 'Afficher plus de détails'}
       </button>
+      
+      {/* Bouton pour afficher/masquer les colonnes 8 à 12 */}
       {expanded && (
         <div>
+          <button
+            style={buttonStyle2}
+            onClick={() => setShowAllColumns(!showAllColumns)}
+          >
+            {showAllColumns ? 'Masquer colonnes 8-12' : 'Afficher colonnes 8-12'}
+          </button>
           <table style={tableStyle}>
             <thead>
               <tr>
                 {columns.map((column, index) => (
-                  (showAllColumns || (index <= 7 && expanded)) && (
+                  // Modifie les conditions pour afficher les colonnes en fonction des états des boutons
+                  ((showAllColumns && index >= 8 && index <= 12) ||
+                    (!showAllColumns && index <= 7) ||
+                    (showAllColumns && index === 0)) && (
                     <th key={index} style={thStyle}>
                       {column}
                     </th>
@@ -1293,7 +1300,10 @@ const RepartitionHebergement = () => {
               {rowsToShow.map((row, rowIndex) => (
                 <tr key={rowIndex}>
                   {row.map((cell, cellIndex) => (
-                    (showAllColumns || (cellIndex <= 7 && expanded)) && (
+                    // Modifie les conditions pour afficher les colonnes en fonction des états des boutons
+                    ((showAllColumns && cellIndex >= 8 && cellIndex <= 12) ||
+                      (!showAllColumns && cellIndex <= 7) ||
+                      (showAllColumns && cellIndex === 0)) && (
                       <td key={cellIndex} style={tdStyle}>
                         {cellIndex === 0 ? cell : (
                           <div>
@@ -1321,6 +1331,7 @@ const RepartitionHebergement = () => {
         </div>
       )}
     </div>
+
   );
 };
 export default RepartitionHebergement;
