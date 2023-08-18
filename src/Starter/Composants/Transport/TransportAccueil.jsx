@@ -1,0 +1,186 @@
+import React, { useEffect, useRef, useState } from 'react';
+import AjoutHebergement from '../HebergementFinal/AjoutHebergement';
+
+const TransportCard = ({ onPageChange }) => {
+
+  var urlHtpp = "http://127.0.0.1:9090/";
+
+  const [delegations, setDelegations] = useState([]);
+
+  useEffect(() => {
+    fetch(urlHtpp + 'delegations', {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
+    }).then(response => response.json())
+      .then(data => { setDelegations(data) })
+      .catch(error => { console.log(error) });
+  }, []);
+
+  const anne = useRef();
+  const immatriculation = useRef();
+  const kilometrage = useRef();
+  const modele = useRef();
+  const delegationV = useRef();
+
+
+
+  const delegationVeh = {
+    "id": "",
+    "nom": "",
+    "nombre": ""
+  }
+  const transport = {
+    "annee": '',
+    "immatriculation": '',
+    "kilometrage": '',
+    "modele": '',
+    "photo_vehicule": '',
+    "delegation_id": ''
+  }
+
+  const AddTransport = () => {
+    transport.annee = anne.current.value;
+    transport.kilometrage = kilometrage.current.value;
+    transport.immatriculation = immatriculation.current.value;
+    transport.modele = modele.current.value;
+   
+    transport.delegation = delegationV;
+    fetch(urlHtpp + "vehicules", {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(transport)
+    }).then(response => response.json())
+      .then(data => { console.log(data) })
+      .catch(error => { console.log(error) })
+  }
+
+  const cardContainerStyle = {
+    display: 'flex',
+    flexWrap: 'wrap', // Permet aux éléments de passer à la ligne
+    marginTop: '20px',
+    padding: '50px',
+    justifyContent: 'center', // Centre les éléments horizontalement
+  };
+  const handleCardClick = (pageName) => {
+    onPageChange(pageName);
+  };
+
+  const cardStyle = {
+    width: '25%',
+    border: "none",
+    borderRadius: '10px',
+    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)', // Nouveau style de box shadow
+    backgroundColor: '#dadada',
+    padding: '20px',
+    marginRight: '50px',
+    marginBottom: '20px',
+    textAlign: 'center', // Centre le contenu du texte horizontalement
+  };
+
+  const cardTitleStyle = {
+    fontSize: '25px',
+    fontWeight: 'bold',
+    marginBottom: '5px',
+  };
+
+  const cardTextContentStyle = {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center', // Centre les contenus horizontalement
+    marginBottom: '15px',
+  };
+
+  const cardTextValueStyle = {
+    fontSize: '35px',
+    fontWeight: 'bold',
+    color: '#7d240c',
+  };
+
+
+
+  return ( <>
+      <div style={cardContainerStyle}>
+        <div className="col-xxl-4 col-md-6" style={{ ...cardStyle }} onClick={() => handleCardClick('Disponibilité des véhicules')}>
+          <div className="card-body">
+            <h5 className="card-title" style={cardTitleStyle}>
+              Total véhicules
+            </h5>
+            
+              <div style={cardTextContentStyle}>
+                <span className="text-success pt-1 fw-bold" style={cardTextValueStyle}>
+                  100
+                </span>
+                <span className="card-text" style={{ fontSize: '20px', color: '#555', textAlign: 'center' }}>
+                  Nombre total véhicules
+                </span>
+              </div>
+          </div>
+        </div>
+
+        
+        <div className="col-xxl-4 col-md-6" style={{ ...cardStyle }}>
+          <div className="card-body">
+            <h5 className="card-title" style={cardTitleStyle}>
+              Véhicules occupées
+            </h5>
+            
+              <div style={cardTextContentStyle}>
+                <span className="text-success pt-1 fw-bold" style={cardTextValueStyle}>
+                  43
+                </span>
+                <span className="card-text" style={{ fontSize: '20px', color: '#555', textAlign: 'center' }}>
+                  Nombre total véhicules
+                </span>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div className="col-xxl-4 col-md-6" style={{ ...cardStyle }}>
+          <div className="card-body">
+            <h5 className="card-title" style={cardTitleStyle}>
+              Véhicules disponibles
+            </h5>
+           
+              <div style={cardTextContentStyle}>
+                <span className="text-success pt-1 fw-bold" style={cardTextValueStyle}>
+                  57
+                </span>
+                <span className="card-text" style={{ fontSize: '20px', color: '#555', textAlign: 'center' }}>
+                  Nombre total véhicules
+                </span>
+              </div>
+            
+          </div>
+        </div>
+        {/* Les autres cartes vont ici... */}
+      </div>
+      <div>
+        <AjoutHebergement Action={"Ajout Transport"} Titre={"Ajout Transport"}>
+            <p>Anne</p>
+            <p>
+              <input type='text' className='form-control' ref={anne} />
+            </p>
+            <p>Immatriculation</p>
+            <input type='text' className='form-control' ref={immatriculation} />
+            <p>Kilometrage</p>
+            <input type='number' className='form-control' ref={kilometrage} />
+            <p>Modele</p>
+            <p><input type='text' className='form-control' ref={modele} /></p>
+            <p>Delegation</p>
+            <p>
+              <select className='form-control' ref={delegationV} >
+                {delegations.map((deg, indexV) =>
+                  <option value={deg.id} key={indexV}>{deg.nom}</option>
+                )};
+              </select>
+            </p>
+            <p><button className='btn btn-success' onClick={AddTransport}> Ajout</button></p>
+          </AjoutHebergement>
+      </div>
+    </>
+  );
+};
+
+export default TransportCard;
