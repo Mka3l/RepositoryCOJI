@@ -1,7 +1,10 @@
 import React from 'react';
 
-import TableauRecapitulatifRepartitionHebergement from './TableauRecapitulatifRepartition';
+import RecapRepartitionHebergement from './TableauRecapitulatifRepartition';
 import RepartitionHebergement from './RepartitionHebergement';
+import HebergementFormulaire from '../EtatHebergement/RepartitionHebergement/HebergementFormulaire';
+import Delegation from '../EtatHebergement/RepartitionHebergement/HebergementFormulaireHebergement';
+import HebergementFormulaireSite from '../EtatHebergement/RepartitionHebergement/HebergementFormulaireSite';
 
 const RepartitionHebergementEnsemble = () => {
   return (
@@ -18,11 +21,13 @@ const RepartitionHebergementEnsemble = () => {
         }} className="mb-5 text-center">Répartition des Délégations par Site d'Hébergement</h2>
 
       <div className="mb-5"> {/* Ajout de la classe de marge */}
-        <TableauRecapitulatifRepartitionHebergement /> 
+        <RecapRepartitionHebergement /> 
       </div>
+      <div><Delegation/></div>
 
       <div>
-        <RepartitionHebergement />
+        <div><HebergementFormulaireSite/></div>
+        <div><HebergementFormulaire /></div>
       </div>
     </div>
   );

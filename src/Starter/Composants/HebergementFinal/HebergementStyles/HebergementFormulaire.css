@@ -1,0 +1,123 @@
+/* HebergementFormulaire.css */
+
+/* Styles pour le formulaire */
+form {
+    background-color: #f2f2f2;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+  }
+  
+  input[type="text"],
+  input[type="date"],
+  select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+  
+  button[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Styles pour la table */
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .table th,
+  .table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .table th {
+    background-color: #f2f2f2;
+  }
+  
+  /* Styles pour le lien "Ajouter d'Hébergement par Délégation" */
+  .add-link {
+    display: inline-block;
+    margin-top: 10px;
+    cursor: pointer;
+    color: #007bff;
+    text-decoration: underline;
+    transition: color 0.3s ease;
+  }
+  
+  .add-link:hover {
+    color: #0056b3;
+  }
+  .form-container {
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  
+  .form-container.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  /* styles.css */
+.firstRow {
+  font-weight: bold;
+}
+
+.buttonStyle {
+  background-color: #973116;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.expandedButtonStyle {
+  background-color: #7d240c;
+}
+
+.tableStyle {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.thStyle {
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #ddd;
+  background-color: #f5f5f5;
+}
+
+.tdStyle {
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+  
