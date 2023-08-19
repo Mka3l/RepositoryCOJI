@@ -1,44 +1,35 @@
 import React, { useState } from 'react';
 
-const RecapRepartitionHebergement = () => {
+const RecapEtatOccupation = ({data}) => {
   const columns = [
+      "SITE D'HEBERGEMENT",
+      "CAPACITE \r\nTOTALE (EN LITS)",
+      "LITS \r\nOCCUPES",
+      "LITS \r\nRESTANTS",
+      "TAUX D'OCCUPATION (%)"
+    ];
+
+    // "nombre_total":79,
+    // "capacite_total_lit":12042,
+    // "nombre_lit_occupe":4602,
+    // "taux_occupation":38
     
-    "MAYOTTE",
-    "MALDIVES",
-    "COMORES",
-    "MADAGASCAR",
-    "MAURICE",
-    "LA REUNION",
-    "SEYCHELLES",
-    "VVIP\r\n&VIP",
-    "OFFICIELS \r\nTECHNIQUES",
-    "REPRESENTANT \r\nDES FEDERATIONS",
-    "ANTI-\r\nDOPAGE",
-    "TOTAL"
-  ];
   const rows = [
     [
-        358,
-        231,
-        289,
-        670,
-        633,
-        646,
-        506,
-        122,
-        1020,
-        118,
-        9,
-        4602
-      ]
+      79,
+      12042,
+      4602,
+      7050,
+      38
+    ]
   ];
   const [expanded, setExpanded] = useState(false);
   const rowsToShow = expanded ? rows : rows.slice(0, 1);
   const firstRowStyle = {
-    fontWeight: 'bold',
-    color: '#333', // Couleur de police plus foncée
+    fontWeight: 'bold', // Utiliser une valeur plus légère que 'bold'
+    color: '#332', // Couleur de police
   };
-
+  
   return (
     <div>
       <style>
@@ -56,7 +47,7 @@ const RecapRepartitionHebergement = () => {
         <thead>
           <tr>
             {columns.map((column, index) => (
-              <th className='align-center' key={index}>{column}</th>
+              <th key={index} className='text-center'>{column}</th>
             ))}
           </tr>
         </thead>
@@ -64,8 +55,8 @@ const RecapRepartitionHebergement = () => {
           {rowsToShow.map((row, rowIndex) => (
             <tr key={rowIndex} style={rowIndex === 0 ? firstRowStyle : {}}>
             {row.map((cell, cellIndex) => (
-                <td key={cellIndex} className="table-cell-auto text-center">
-                  {typeof cell === 'number'
+                <td key={cellIndex} className={`table-cell-auto ${typeof cell === 'number' ? 'text-center' : ''}`}>
+                {typeof cell === 'number'
                     ? cell.toLocaleString() // Formate les nombres avec des séparateurs de milliers
                     : cell}
                 </td>
@@ -78,4 +69,4 @@ const RecapRepartitionHebergement = () => {
   );
 };
 
-export default RecapRepartitionHebergement;
+export default RecapEtatOccupation;
