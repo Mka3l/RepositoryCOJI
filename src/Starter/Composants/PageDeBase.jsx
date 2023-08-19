@@ -36,8 +36,9 @@ import EtatPaiementEnsemble from './Facturation/EtatDePaiement/EtatDePaimentDivi
 import DelegationEnsemble from './Final1/DelegationEnsemble';
 import TransportCard from './Transport/TransportAccueil';
 import TransportClic from './Transport/TransportClic';
-import PlanDejeuner from './DashboardRestauration/PlanDejeuner';
-import PlanDiner from './DashboardRestauration/PlanDiner';
+import PlanDejeuner from './DashboardRestauration/PlanDejeuner/PlanDejeuner';
+import VisualisationRestauration from './DashboardRestauration/Visualisation/VisualisationRestauration';
+import PlanDiner from './DashboardRestauration/PlanDiner/PlanDiner';
 
 const getFlagForCountry = (country) => {
   const countryFlags = {
@@ -301,7 +302,7 @@ const PageDeBase = () => {
 
             {currentPage === 'Hébergement' && < CardHebergement />}
             {currentPage === 'Transport' && <TransportClic />}
-            {currentPage === 'Restauration' && <RestaurationCard />}
+            {currentPage === 'Restauration' && <RestaurationCard date ={dateChoix} />}
             {currentPage === 'Facturation' && <FactureAccueil />}
             {currentPage === 'Autres' && <Accueille date={dateChoix} />}
 
@@ -322,8 +323,9 @@ const PageDeBase = () => {
             {currentPage === 'Répartition des délégations par site d\'hébergement' && <RepartitionHebergementEnsemble />}
 
             {/* Restauration*/}
-            {currentPage === 'Planification Restauration Déjeuner' && <PlanDejeuner />}
-            {currentPage === 'Planification Restauration Dîner' && <PlanDiner />}
+            {currentPage === 'Planning Déjeuner' && <PlanDejeuner />}
+            {currentPage === 'Planning Dîner' && <PlanDiner />}
+            {currentPage == 'Visualisation de la Restauration' && <VisualisationRestauration />}
 
 
             {/* Transport */}

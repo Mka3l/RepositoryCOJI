@@ -1,8 +1,8 @@
-import React, { useRef } from 'react';
+import React, { useRef,useState,useEffect } from 'react';
 import DelegationAfficherDetails from './DelegationAfficherDetails';
 import DelegationClic from './DelegationClic';
 import AjoutHebergement from '../HebergementFinal/AjoutHebergement';
-
+import url from '../../urlHtpp';
 const DelegationEnsemble = () => {
 
   var urlHtpp = "http://127.0.0.1:9090/";
@@ -51,9 +51,25 @@ const DelegationEnsemble = () => {
     fontSize: '16pt',
     fontWeight: '300',
   }
+
+
+  const [repartitionTotal, setRepartitionTotal] = useState([]);
+  const [getPLAN,setGetPlan] = useState(true)
+
+  useEffect(()=>{
+    console.log("ENTRER")
+    fetch(url.urlHtpp+"repartition-delegation/total",{
+      method:'GET',
+      headers:{'Content-Type':'application/json'},
+    })
+    .then(response => response.json())
+    .then(data=>{console.log(data.data),setRepartitionTotal(data.data)})
+    .catch(error=>{console.log(error)})
+  },[getPLAN])
+
   return (
     <div style={{ marginLeft:"50px",marginTop: '20px' }}>
-        <h2 style={{ textAlign: 'center', marginBottom: '20px' }}>Répartition de la Délégation par Pays (nombre total 4 164)</h2>
+        <h2 style={{ textAlign: 'center', marginBottom: '20px' }}>Répartition de la Délégation par Pays (nombre total {repartitionTotal})</h2>
       <div style={{ marginBottom: '50px' }}>
         <DelegationClic/> 
       </div>

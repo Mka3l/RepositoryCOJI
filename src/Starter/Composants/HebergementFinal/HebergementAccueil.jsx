@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import AjoutHebergement from './AjoutHebergement';
 import { Button, Modal } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -6,23 +6,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const CardHebergement = () => {
   var urlHtpp = "http://127.0.0.1:9090/";
 
-  const hebergementDetail = {
-    // "date_create": "",
-    // "capacite_totale": "",
-    // "chambre_restante": "",
-    // "chambre_occupees":"",
-    // "taux_occupation":"" 
-  }
-
-  const [hebergement, setHebergement] = useState({});
-
+  
   const cardContainerStyle = {
     display: 'flex',
     marginTop: '20px',
     padding: '50px',
     justifyContent: 'center', // Centre les éléments horizontalement
   };
-
+  
   const cardStyle = {
     width: '20%',
     border: "none",
@@ -33,19 +24,19 @@ const CardHebergement = () => {
     marginRight: '50px',
     textAlign: 'center', // Centre le contenu du texte horizontalement
   };
-
+  
   const cardTitleStyle = {
     fontSize: '25px',
     fontWeight: 'bold',
     marginBottom: '15px',
   };
-
+  
   const cardTextContentStyle = {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center', // Centre les contenus horizontalement
   };
-
+  
   const cardTextValueStyle = {
     fontSize: '35px',
     fontWeight: 'bold',
@@ -59,17 +50,23 @@ const CardHebergement = () => {
   const chambreOccupe = useRef();
 
   //==========================
-
-
-
-  useEffect(() => {
-    fetch(urlHtpp + 'hebergement_details', {
-      method: 'GET',
+  const AddHebergement = () => {
+    const hebergement = {
+      "nom": nom.current.value,
+      "capacite_totale": capaciteTotal.current.value,
+      "chambre_restante": chambreRestante.current.value,
+      "chambre_occupees": chambreOccupe.current.value
+    }
+    console.log(JSON.stringify(hebergement));
+    fetch(urlHtpp + "hebergements", {
+      method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-    }).then(response => response.json())
-      .then(data => { setHebergement(data[0]) })
+      body: JSON.stringify(hebergement)
+    })
+      .then(response => response.json())
+      .then(data => { console.log(data) })
       .catch(error => { console.log(error) });
-  }, []);
+  }
 
 
   return (<div>
@@ -81,7 +78,7 @@ const CardHebergement = () => {
           </h5>
           <div className="card-text" style={cardTextContentStyle}>
             <span className="text-success pt-1 fw-bold" style={cardTextValueStyle}>
-             {hebergement.nombretotalsite}
+              79
             </span>
           </div>
         </div>
@@ -95,7 +92,7 @@ const CardHebergement = () => {
           </h5>
           <div className="card-text" style={cardTextContentStyle}>
             <span className="text-success  pt-1 fw-bold" style={cardTextValueStyle}>
-            {hebergement.capacite_totale}
+              12 107
             </span>
           </div>
         </div>
@@ -109,7 +106,7 @@ const CardHebergement = () => {
           </h5>
           <div className="card-text" style={cardTextContentStyle}>
             <span className="text-success pt-1 fw-bold" style={cardTextValueStyle}>
-            {hebergement.chambre_occupees}
+              4 602
             </span>
           </div>
         </div>
@@ -121,17 +118,27 @@ const CardHebergement = () => {
           <h5 className="card-title" style={cardTitleStyle}>
             Taux d'occupation des Sites
           </h5>
-          <div className="card-text" style={cardTextContentStyle}>
-            <span className="text-success pt-1 fw-bold" style={cardTextValueStyle}>
-            {hebergement.taux_occupation}%
-            </span>
-          </div>
+            <div className="card-text" style={cardTextContentStyle}>
+              <span className="text-success pt-1 fw-bold" style={cardTextValueStyle}>
+                38%
+              </span>
+            </div>
         </div>
       </div>
 
     </div>
 
-    
+    <AjoutHebergement Action={"Ajout Hebergement"} Titre={"Ajout Hebergement"}>
+      <p>Nom</p>
+      <p> <input type='text' ref={nom} className='form-control' /></p>
+      <p>Capacite Total</p>
+      <p> <input type='number' ref={capaciteTotal} className='form-control' /></p>
+      <p>Chambre Restante</p>
+      <p> <input type='number' ref={chambreRestante} className='form-control' /></p>
+      <p>Chambre Occupé</p>
+      <p> <input type='number' ref={chambreOccupe} className='form-control' /></p>
+      <p><button className='btn btn-success' onClick={AddHebergement}>Ajouter</button></p>
+    </AjoutHebergement>
   </div>
   );
 };

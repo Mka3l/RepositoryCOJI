@@ -45,6 +45,7 @@ const Card = (date) => {
   ]
 
   var dateFiltre = useRef();
+  
   const [dateAffichage, setDateAffiche] = useState(new Date().toLocaleDateString());
 
   console.log(date.date.date);

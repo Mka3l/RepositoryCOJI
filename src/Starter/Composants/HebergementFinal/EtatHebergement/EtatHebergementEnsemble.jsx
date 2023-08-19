@@ -3,8 +3,6 @@ import TableauRecapitulatifEtatHebergement from './TableauRecapitulatifEtatOccup
 import EtatHebergement from './EtatHebergement';
 
 const EtatHebergementEnsemble = () => {
-
-  
   return (
     <div>
       <h2 className="mb-3 text-center">Etat d'occupation des sites d'Hébergement</h2>
