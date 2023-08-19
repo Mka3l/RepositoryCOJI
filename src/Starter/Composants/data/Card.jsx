@@ -45,7 +45,7 @@ const Card = (date) => {
   ]
 
   var dateFiltre = useRef();
-  
+
   const [dateAffichage, setDateAffiche] = useState(new Date().toLocaleDateString());
 
   console.log(date.date.date);
@@ -88,7 +88,7 @@ const Card = (date) => {
                         <li><a className="dropdown-item" href="#">This Year</a></li>
                       </ul>
                     </div>
-                    <div className="card-body cardBody-1" style={{ textAlign: 'center' }}>
+                    <div className="card-body cardBody-1" style={{ textAlign: 'center',width: '90%' }}>
                       <h5 className="card-title" style={fontSizeCard}>Délégation</h5>
                       <div className="d-flex align-items-center">
                         <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -115,7 +115,7 @@ const Card = (date) => {
                         <li><a className="dropdown-item" href="#">This Year</a></li>
                       </ul>
                     </div>
-                    <div className="card-body cardBody-2" style={{ textAlign: 'center' }}>
+                    <div className="card-body cardBody-2" style={{ textAlign: 'center',width: '90%' }}>
                       <h5 className="card-title" style={fontSizeCard}>Hébergement</h5>
                       <div className="d-flex align-items-center">
                         <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -144,7 +144,7 @@ const Card = (date) => {
                         <li><a className="dropdown-item" href="#">This Year</a></li>
                       </ul>
                     </div>
-                    <div className="card-body cardBody-3" style={{ textAlign: 'center' }}>
+                    <div className="card-body cardBody-3" style={{ textAlign: 'center',width: '90%' }}>
                       <h5 className="card-title" style={fontSizeCard}>Restauration </h5>
                       <div className="d-flex align-items-center">
                         <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -174,7 +174,7 @@ const Card = (date) => {
                         <li><a className="dropdown-item" href="#">This Year</a></li>
                       </ul>
                     </div>
-                    <div className="card-body cardBody-4" style={{ textAlign: 'center' }} >
+                    <div className="card-body cardBody-4" style={{ textAlign: 'center',width: '90%' }} >
                       <h5 className="card-title" style={fontSizeCard}>Transport </h5>
                       <div className="d-flex align-items-center">
                         <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
