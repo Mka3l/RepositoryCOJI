@@ -36,9 +36,12 @@ import EtatPaiementEnsemble from './Facturation/EtatDePaiement/EtatDePaimentDivi
 import DelegationEnsemble from './Final1/DelegationEnsemble';
 import TransportCard from './Transport/TransportAccueil';
 import TransportClic from './Transport/TransportClic';
-import PlanDejeuner from './DashboardRestauration/PlanDejeuner/PlanDejeuner';
-import VisualisationRestauration from './DashboardRestauration/Visualisation/VisualisationRestauration';
-import PlanDiner from './DashboardRestauration/PlanDiner/PlanDiner';
+import PlanDejeuner from './DashboardRestauration/PlanDejeuner';
+import PlanDiner from './DashboardRestauration/PlanDiner';
+import SituationPremierAcompte from './Facturation/EtatDePaiement/EtatDePaimentDivisé/SituationPremierAcompte';
+import SituationDeuxiemeAcompte from './Facturation/EtatDePaiement/EtatDePaimentDivisé/SituationDeuxiemeAcompte';
+import SituationFinanciereDePaiment from './Facturation/EtatDePaiement/EtatDePaimentDivisé/SituationFInanciereDePaiement';
+import EtatPaiementGeneral from './Facturation/EtatDePaiement/EtatDePaimentDivisé/EtatPaiementGeneral';
 
 const getFlagForCountry = (country) => {
   const countryFlags = {
@@ -303,7 +306,7 @@ const PageDeBase = () => {
 
             {currentPage === 'Hébergement' && < CardHebergement />}
             {currentPage === 'Transport' && <TransportClic />}
-            {currentPage === 'Restauration' && <RestaurationCard date ={dateChoix} />}
+            {currentPage === 'Restauration' && <RestaurationCard />}
             {currentPage === 'Facturation' && <FactureAccueil />}
             {currentPage === 'Autres' && <Accueille date={dateChoix} />}
 
@@ -324,9 +327,8 @@ const PageDeBase = () => {
             {currentPage === 'Répartition des délégations par site d\'hébergement' && <RepartitionHebergementEnsemble />}
 
             {/* Restauration*/}
-            {currentPage === 'Planning Déjeuner' && <PlanDejeuner />}
-            {currentPage === 'Planning Dîner' && <PlanDiner />}
-            {currentPage == 'Visualisation de la Restauration' && <VisualisationRestauration />}
+            {currentPage === 'Planification Restauration Déjeuner' && <PlanDejeuner />}
+            {currentPage === 'Planification Restauration Dîner' && <PlanDiner />}
 
 
             {/* Transport */}

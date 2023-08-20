@@ -46,7 +46,7 @@ const InscriptionDelegation = () => {
               />
             </div>
             <div className="mb-3">
-              <label className="form-label">Nombre personne:</label>
+              <label className="form-label">Nombre de participants:</label>
               <input
                 type="number"
                 className="form-control"
