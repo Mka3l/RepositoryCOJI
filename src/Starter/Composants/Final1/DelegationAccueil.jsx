@@ -21,7 +21,7 @@ const DelegationAccueil = ({onPageChange}) => {
     console.log("ENTRER")
     fetch(url.urlHtpp+"repartition-delegation",{
       method:'GET',
-      headers:{'Content-Type':'application/json'},
+      headers:{'Content-Type':'application/json',"Access-Control-Allow-Origin": "*"},
     })
     .then(response => response.json())
     .then(data=>{console.log(data.data),setRepartitionDelegation(data.data)})
