@@ -1,6 +1,7 @@
 {
   "name": "gestion-delegation-jioi",
   "private": true,
+  "proxy": "http://127.0.0.1:9090/",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
