@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import '../../HebergementStyles/HebergementFormulaire.css'
-import configUrl from '../../../../ConfigUrl/config_Url';
+import configUrl from '../../../../urlHtpp';
 
 const HebergementFormulaire = () => {
   const [data, setData] = useState([]);
@@ -32,7 +32,7 @@ const HebergementFormulaire = () => {
   const [hebergementAFF,setHebergementAFF] = useState([])
 
   useEffect(() => {
-    fetch(configUrl.url+"pays",{
+    fetch(configUrl.urlHtpp+"pays",{
       method:"GET",
       headers:{"Content-Type":"application/json"}
     }).then(response=>response.json())
@@ -43,7 +43,7 @@ const HebergementFormulaire = () => {
         ////console.log(error)
       })
       ///////////////////////////////////:
-    fetch(configUrl.url+"sites",{
+    fetch(configUrl.urlHtpp+"sites",{
         method:"GET",
         headers:{"Content-Type":"application/json"}
     })
@@ -106,7 +106,7 @@ const HebergementFormulaire = () => {
 
   const AjoutDelegation =()=>{
     setShowForm(!showForm)
-    fetch(configUrl.url+"hebergements",{
+    fetch(configUrl.urlHtpp+"hebergements",{
       method:"GET",
       headers:{"Content-Type":"application/json"}
     }).then(response=>response.json())
@@ -130,7 +130,7 @@ const HebergementFormulaire = () => {
       }
     }
     console.log(JSON.stringify(hebergementDe))
-    fetch(configUrl.url+"hebergement_delegation",{
+    fetch(configUrl.urlHtpp+"hebergement_delegation",{
       method:"POST",
       headers:{"Content-Type":"application/json"},
       body:JSON.stringify(hebergementDe)

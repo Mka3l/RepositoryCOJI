@@ -2,10 +2,10 @@ import React, { useEffect, useRef, useState } from 'react';
 import AjoutHebergement from './AjoutHebergement';
 import { Button, Modal } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import configUrl from '../../ConfigUrl/config_Url';
+import urlHtpp from '../../urlHtpp';
 
 const CardHebergement = () => {
-  var urlHtpp = "http://127.0.0.1:9090/";
+  //var urlHtpp = "http://127.0.0.1:9090/";
 
   const data ={
     "nombre_total":79,

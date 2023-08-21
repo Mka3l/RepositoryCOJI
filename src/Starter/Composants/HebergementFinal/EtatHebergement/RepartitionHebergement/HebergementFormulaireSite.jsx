@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import '../../HebergementStyles/HebergementFormulaire.css'
-import configUrl from '../../../../ConfigUrl/config_Url';
+import configUrl from '../../../../urlHtpp';
 
 const HebergementFormulaireSite = () => {
   const [data, setData] = useState([]);
@@ -12,6 +12,9 @@ const HebergementFormulaireSite = () => {
     PrixJournalier: '', 
     Zone: '',
   });
+  console.log("URL SIMPLE  : ", configUrl);
+  console.log("URL ENDPOINT : ", configUrl.urlHtpp+"pays");
+
   const [showForm, setShowForm] = useState(false);
 
   const [pays,setPays] = useState([])
@@ -53,7 +56,7 @@ const HebergementFormulaireSite = () => {
 
   const ajoutSiteHebergement = ()=>{
     setShowForm(!showForm)
-    fetch(configUrl.url+"pays",{
+    fetch(configUrl.urlHtpp+"pays",{
       method:"GET",
       headers:{"Content-Type":"application/json"}
     }).then(response=>response.json())
@@ -61,7 +64,7 @@ const HebergementFormulaireSite = () => {
         ////console.log(data.data),
         setPays(data.data)})
       .catch(error=>{console.log(error)})
-    fetch(configUrl.url+"sites",{
+    fetch(configUrl.urlHtpp+"sites",{
         method:"GET",
         headers:{"Content-Type":"application/json"}
     })
@@ -82,7 +85,7 @@ const HebergementFormulaireSite = () => {
               "id": idzone.current.value,
             }
     }
-    fetch(configUrl.url+"hebergements",{
+    fetch(configUrl.urlHtpp+"hebergements",{
       method:"POST",
       headers:{"Content-Type":"application/json"},
       body:JSON.stringify(hebergementDe)
