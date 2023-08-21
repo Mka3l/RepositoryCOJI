@@ -6,6 +6,19 @@ import url from '../../urlHtpp';
 import { format } from 'date-fns';
 const RestaurationCard = (date) => {
 
+  const dataResume = [
+    {
+      titre : "Nombre de personne en compétition à servir",
+      valeur: '745',
+      unite: 'Personnes'
+    },
+    {
+      titre : "Nombre de personne au repos à servir",
+      valeur: '845',
+      unite: 'Personnes'
+    }
+  ]
+
   const [restaurationDash, setrestaurationDash] = useState([]);
   useEffect(() => {
  
@@ -52,24 +65,14 @@ const RestaurationCard = (date) => {
     flexDirection: 'row',
     flexWrap: 'nowrap',
   };
-const styleRapport = {
-  display:"flex",
-  width:"93%",
-  margin:"auto",
-  justifyContent: 'space-between'
-}
-const dataResume = [
-  {
-    titre : "Nombre de personne en compétition à servir",
-    valeur: '745',
-    unite: 'Personnes'
-  },
-  {
-    titre : "Nombre de personne au repos à servir",
-    valeur: '845',
-    unite: 'Personnes'
+
+  const styleRapport = {
+    display:"flex",
+    width:"93%",
+    margin:"auto",
+    justifyContent: 'space-between'
   }
-]
+
 
   return ( <>
       <div style={styleRapport}>

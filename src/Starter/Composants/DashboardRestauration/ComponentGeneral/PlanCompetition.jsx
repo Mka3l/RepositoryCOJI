@@ -81,6 +81,13 @@ const PlanCompetition = ({dataResto}) => {
           .expand-button {
             cursor: pointer;
           }
+          tr {
+            text-align: center;
+            border: 1px solid;
+          }
+          td {
+            border: 1px solid;
+          }
         `}
       </style>
       <table className="table table-striped table-bordered">
@@ -138,11 +145,36 @@ const PlanCompetition = ({dataResto}) => {
               </ModalCRUD>
             </td>
             <td>
-              <AjoutHebergement Action={"Supprimer"} Titre={"Supprimer Restauration"}>
-                <h5>Voulez-vous supprimer ?</h5>
-                <input type="hidden" name="id" value={row.id} />
-                <input type="submit" style={butStyle} value="Oui" /> 
-              </AjoutHebergement>
+            <AjoutHebergement Action={"Voir Liste"}  Titre={"Liste Personnes de délégation "+row.Délégation +' - '+ row.Disciplines}>
+                        <div style={styleListPersone} >
+                        <h5>Liste Personnes  de délégation {row.Délégation} - {row.Disciplines} </h5>
+                          <table border={"1px solid"} textAlign={"center"}>
+                              <tr style={{...styleRow, textAlign:"center"}} border={"1px solid"} >
+                                <th border={"1px solid"}>Contact</th>
+                                <th border={"1px solid"} >Nom</th>
+                                <th border={"1px solid"} >Prenom</th>
+                                <th border={"1px solid"} >Genre</th>
+                                <th border={"1px solid"} >Catégorie Name</th>
+                                <th border={"1px solid"} >Organisation</th>
+                                <th border={"1px solid"} >Fonction</th>
+                                <th border={"1px solid"} >Discipline</th>
+                              </tr>
+                              {  dataPerson.map((person,index) => (
+                                  <tr key={index} style={{...styleRow, textAlign:"center"}} border={"1px solid"} >
+                                    <td border={"1px solid"} >{ person.Contact }</td>
+                                    <td border={"1px solid"} >{ person.Nom }</td>
+                                    <td border={"1px solid"} >{ person.Prenom }</td>
+                                    <td border={"1px solid"} >{ person.Genre }</td>
+                                    <td border={"1px solid"} >{ person['Catégorie Name']}</td>
+                                    <td border={"1px solid"} >{ person.Organisation }</td>
+                                    <td border={"1px solid"} >{ person.Fonction }</td>
+                                    <td border={"1px solid"} >{ person.Discipline }</td>
+                                  </tr>
+                                ))
+                              }
+                          </table>
+                        </div>
+            </AjoutHebergement>
             </td>
           </tr>
         ))}

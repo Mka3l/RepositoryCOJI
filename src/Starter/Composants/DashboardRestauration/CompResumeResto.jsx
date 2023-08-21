@@ -8,7 +8,6 @@ const CompResumeResto = ({titre,valeur,unite}) =>{
     boxShadow: 'rgba(0, 0, 0, 1.1) 0px 1px 0px',
     backgroundColor: '#dadada',
     padding: '20px',
-    // dddd
   };
 
   const cardTitleStyle = {
