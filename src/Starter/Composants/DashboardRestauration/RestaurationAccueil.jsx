@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import AjoutHebergement from '../HebergementFinal/AjoutHebergement';
 import CompResumeResto from './CompResumeResto';
+import CompResumeVisualisation from './CompResumeVisualisation';
 const RestaurationCard = () => {
 
-  var urlHtpp = "http://127.0.0.1:9090/";
+  var urlHtpp = "https://api-jioi.digital.gov.mg/api/v1/";
 
   const [delegations, setDelegations] = useState([]);
   useEffect(() => {
@@ -70,10 +71,38 @@ const RestaurationCard = () => {
     flexDirection: 'row',
     flexWrap: 'nowrap',
   };
-
+const styleRapport = {
+  display:"flex",
+  width:"93%",
+  margin:"auto",
+  justifyContent: 'space-between'
+}
+const dataResume = [
+  {
+    titre : "Nombre de personne en compétition à servir",
+    valeur: '745',
+    unite: 'Personnes'
+  },
+  {
+    titre : "Nombre de personne au repos à servir",
+    valeur: '845',
+    unite: 'Personnes'
+  }
+]
 
   return ( <>
-
+      <div style={styleRapport}>
+        {
+          dataResume.map((row , index) =>  (
+            <CompResumeVisualisation 
+              key={index} 
+              titre = {row.titre} 
+              valeur={row.valeur} 
+              unite = {row.unite} 
+            />
+          ))
+        }
+      </div>
       <div style={cardContainerStyle}>
         { data[0].donneesRestauration.map((item, index) => (
           <CompResumeResto
@@ -83,33 +112,6 @@ const RestaurationCard = () => {
             unite={item.unite}
           />
         ))}
-      </div>
-      <div>
-        <AjoutHebergement Action={"Ajout Restauration"} Titre={"Ajout Restauration"}>
-            <p>Delegation</p>
-            <p> <select className='form-control' ref={del}>
-                <option>Madagascar</option>
-                <option>Comores</option>
-                <option>Maldives</option>
-                <option>Mayottes</option>
-                <option>La Reunion</option>
-                <option>Seychelles</option>
-            </select>
-            </p>
-            <p>Nom Restauration</p>
-            <p><select className='form-control' ref={del}>
-              
-                <option>Carlton Anosy</option>
-                <option>Stade Mahamasina</option>
-                <option>CCI Ivato</option>
-              
-            </select></p>
-            <p>Nombre personnes</p>
-            <p><input type="number" min={1} name="" id="" /></p>
-            <p>Date et Heure de competition</p>
-            <p><input type="datetime-local" name="" id="" /></p>
-            <p><button className='btn btn-success' onClick={AddRestauration}>Ajout Restauration</button></p>
-          </AjoutHebergement>
       </div>
     </>
   );
