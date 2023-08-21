@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const TableauRecapitulatifRepartitionHebergement = () => {
+const RecapRepartitionHebergement = () => {
   const columns = [
     
     "MAYOTTE",
@@ -72,23 +72,10 @@ const TableauRecapitulatifRepartitionHebergement = () => {
               ))}
             </tr>
           ))}
-          {/* {!expanded ? (
-            <tr>
-              <td colSpan={columns.length} className="expand-button" onClick={() => setExpanded(true)}>
-                <b>+</b> Afficher plus
-              </td>
-            </tr>
-          ) : (
-            <tr>
-              <td colSpan={columns.length} className="expand-button" onClick={() => setExpanded(false)}>
-                <b>-</b> Réduire
-              </td>
-            </tr>
-          )} */}
         </tbody>
       </table>
     </div>
   );
 };
 
-export default TableauRecapitulatifRepartitionHebergement;
+export default RecapRepartitionHebergement;

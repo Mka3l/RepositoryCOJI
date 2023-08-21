@@ -1,14 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react';
 import AjoutHebergement from '../HebergementFinal/AjoutHebergement';
+import urlHtpp from '../../urlHtpp';
 
 const TransportCard = ({ onPageChange }) => {
 
-  var urlHtpp = "http://127.0.0.1:9090/";
+  //var urlHtpp = "http://127.0.0.1:9090/";
 
   const [delegations, setDelegations] = useState([]);
 
   useEffect(() => {
-    fetch(urlHtpp + 'delegations', {
+    fetch(urlHtpp.urlHtpp + 'delegations', {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
     }).then(response => response.json())
@@ -45,7 +46,7 @@ const TransportCard = ({ onPageChange }) => {
     transport.modele = modele.current.value;
    
     transport.delegation = delegationV;
-    fetch(urlHtpp + "vehicules", {
+    fetch(urlHtpp.urlHtpp + "vehicules", {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(transport)
