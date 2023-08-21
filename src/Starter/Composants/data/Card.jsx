@@ -1,28 +1,27 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import '../../../assets/style.css'
+import url from '../../urlHtpp';
 
 
 const Card = (date) => {
+
   const styleDiv = {
     width: '95%',
     display: 'flex',
     justifyContent: 'space-around',
     margin: 'auto'
   };
-
   const fontSizeTEXT = {
     fontSize: '31pt',
     color: 'rebeccapurple',
     alignItems: 'center',
     textAlign: 'center'
   };
-
   const fontSizeH6 = {
     fontSize: '14pt',
     color: 'rebeccapurple',
     
   };
-
   const fontSizeCard = {
     fontSize: '25pt',
     fontWeight: '700',
@@ -30,7 +29,6 @@ const Card = (date) => {
     alignItems: 'center',
     textAlign: 'center'
   };
-
   const centerTextStyles = {
     display: 'flex',
     flexDirection: 'column',
@@ -44,13 +42,37 @@ const Card = (date) => {
     { 'dateJOI': '2023-08-18', 'delegation': 5455, 'hebergement': 74, 'restauration': 4502, 'transport': '80/100' },
     { 'dateJOI': '2023-08-19', 'delegation': 6455, 'hebergement': 72, 'restauration': 4702, 'transport': '30/100' }
   ]
+  
+  const [dateChoix, setDateChoix] = useState(date.date.date.date);
+
+  const [delegationTotal,setDelegationTotal] = useState();
+  const [hebergementTotal,setHebergementTotal] = useState();
+  const [plats_servi,setPlats_servi] = useState();
+  const [detail_hebergement,setDetail_hebergement] = useState();
+  const [nombre_site,setNombre_site] = useState();
+
+  useEffect(()=>{
+    console.log("ENTRER")
+    fetch(url.urlHtpp+"chiffre-jour/"+dateChoix,{
+      method:'GET',
+      headers:{'Content-Type':'application/json'},
+    })
+    .then(response => response.json())
+    .then(data=>{
+      console.log(data.data);
+      setDelegationTotal(data.data.delegationTotal.nombre_total),
+      setHebergementTotal(data.data.hebergementTotal.nombre_total),
+      setPlats_servi(data.data.platsServi),
+      setDetail_hebergement(data.data.hebergementDetail),
+      setNombre_site(data.data.nombre_site.nombre_total)
+    })
+    .catch(error=>{console.log(error)})
+  },[])
 
   var dateFiltre = useRef();
 
   const [dateAffichage, setDateAffiche] = useState(new Date().toLocaleDateString());
 
-  console.log(date.date.date);
-  const [dateChoix, setDateChoix] = useState(date.date.date.date);
 
 
 
@@ -61,7 +83,6 @@ const Card = (date) => {
 
     setDateAffiche(ActuDT);
     setDateChoix(date.date.date.date);
-    // console.log(date);
   }
 
 
@@ -97,7 +118,7 @@ const Card = (date) => {
                         </div>
                         <div className="vide">
 
-                          <h6 style={fontSizeH6}>Nombre total de personnes  <br /> <span className="small pt-1 fw-bold" style={fontSizeTEXT} >{numberWithThousandsSeparator(valeur.delegation)}</span> </h6>
+                          <h6 style={fontSizeH6}>Nombre total de personnes  <br /> <span className="small pt-1 fw-bold" style={fontSizeTEXT} >{numberWithThousandsSeparator(delegationTotal)}</span> </h6>
 
                         </div>
                       </div>
@@ -124,7 +145,7 @@ const Card = (date) => {
                         </div>
                         <div className="vide">
 
-                          <h6 className='ms-4' style={fontSizeH6}>Nombre total Sites<br /> <span className="small pt-1 fw-bold" style={fontSizeTEXT}>{numberWithThousandsSeparator(valeur.hebergement)}</span>  </h6>
+                          <h6 className='ms-4' style={fontSizeH6}>Nombre total Sites<br /> <span className="small pt-1 fw-bold" style={fontSizeTEXT}>{numberWithThousandsSeparator(hebergementTotal)}</span>  </h6>
 
 
                         </div>
@@ -153,7 +174,7 @@ const Card = (date) => {
                         </div>
                         <div className="vide">
 
-                          <h6 style={fontSizeH6}>Nombre de plats servis par jour  <br /> <span className="small pt-1 fw-bold" style={fontSizeTEXT}>{numberWithThousandsSeparator(valeur.restauration)}</span>  </h6>
+                          <h6 style={fontSizeH6}>Nombre de plats servis par jour  <br /> <span className="small pt-1 fw-bold" style={fontSizeTEXT}>{numberWithThousandsSeparator(plats_servi)}</span>  </h6>
                           <div className="icon">
                             <i className="ri-bar-chart-2-fill"></i>
                           </div>
