@@ -39,6 +39,10 @@ import TransportClic from './Transport/TransportClic';
 import PlanDejeuner from './DashboardRestauration/PlanDejeuner/PlanDejeuner';
 import VisualisationRestauration from './DashboardRestauration/Visualisation/VisualisationRestauration';
 import PlanDiner from './DashboardRestauration/PlanDiner/PlanDiner';
+import SituationPremierAcompte from './Facturation/EtatDePaiement/EtatDePaimentDivisé/SituationPremierAcompte';
+import SituationDeuxiemeAcompte from './Facturation/EtatDePaiement/EtatDePaimentDivisé/SituationDeuxiemeAcompte';
+import SituationFinanciereDePaiment from './Facturation/EtatDePaiement/EtatDePaimentDivisé/SituationFInanciereDePaiement';
+import EtatPaiementGeneral from './Facturation/EtatDePaiement/EtatDePaimentDivisé/EtatPaiementGeneral';
 
 const getFlagForCountry = (country) => {
   const countryFlags = {

@@ -67,6 +67,7 @@ const RepartitionHebergement = () => {
         </tbody>
       </table>
     </div>
+
   );
 };
 

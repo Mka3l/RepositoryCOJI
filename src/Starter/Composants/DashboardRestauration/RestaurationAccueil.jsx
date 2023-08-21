@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import AjoutHebergement from '../HebergementFinal/AjoutHebergement';
 import CompResumeResto from './CompResumeResto';
+import CompResumeVisualisation from './CompResumeVisualisation';
 import url from '../../urlHtpp';
 import { format } from 'date-fns';
 const RestaurationCard = (date) => {
@@ -51,10 +52,38 @@ const RestaurationCard = (date) => {
     flexDirection: 'row',
     flexWrap: 'nowrap',
   };
-
+const styleRapport = {
+  display:"flex",
+  width:"93%",
+  margin:"auto",
+  justifyContent: 'space-between'
+}
+const dataResume = [
+  {
+    titre : "Nombre de personne en compétition à servir",
+    valeur: '745',
+    unite: 'Personnes'
+  },
+  {
+    titre : "Nombre de personne au repos à servir",
+    valeur: '845',
+    unite: 'Personnes'
+  }
+]
 
   return ( <>
-
+      <div style={styleRapport}>
+        {
+          dataResume.map((row , index) =>  (
+            <CompResumeVisualisation 
+              key={index} 
+              titre = {row.titre} 
+              valeur={row.valeur} 
+              unite = {row.unite} 
+            />
+          ))
+        }
+      </div>
       <div style={cardContainerStyle}>
         { restaurationDash.map((item, index) => (
           <CompResumeResto

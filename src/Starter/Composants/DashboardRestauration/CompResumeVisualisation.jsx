@@ -1,14 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
-const CompResumeResto = ({titre,valeur,unite}) =>{
+const CompResumeVisualisation = ( {titre , valeur, unite}) =>{
 
   const cardStyle = {
-    width: '25%',
+    width: '48%',
     border: "none",
     borderRadius: '10px',
     boxShadow: 'rgba(0, 0, 0, 1.1) 0px 1px 0px',
-    backgroundColor: '#dadada',
+    backgroundColor: 'rgb(148 253 243)',
     padding: '20px',
-    // dddd
   };
 
   const cardTitleStyle = {
@@ -73,4 +72,4 @@ const CompResumeResto = ({titre,valeur,unite}) =>{
         </div>
     );
 }
-export default CompResumeResto;
+export default CompResumeVisualisation;
