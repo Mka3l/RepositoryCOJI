@@ -17,28 +17,37 @@ const DelegationAfficherPerson = () => {
     "hebergement",
     "numero_chambre"
   ]
-
   const [delegationList, setDelegationList] = useState([]);
-  const [getPLAN,setGetPlan] = useState(true)
+  const [getPLAN,setGetPlan] = useState(true);
   console.log("URL : ",url);
-  useEffect(()=>{
-    console.log("ENTRER ===>"+url.urlHtpp+"upload-delegation" )
-    fetch(url.urlHtpp+"upload-delegation",{
-      method:'GET',
-      headers:{'Content-Type':'application/json'},
-    })
-    .then(response => response.json())
-    .then(data=>{console.log(data),setDelegationList(data)})
-    .catch(error=>{console.log(error)})
-  },[getPLAN])
+ 
 
-  const [expanded, setExpanded] = useState(false);
+  if (getPLAN === true) {
+    // setGetPlan(false); // Met à jour l'état pour éviter une boucle infinie
+    useEffect(() => {
+      fetch(url.urlHtpp + "upload-delegation", {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log(data);
+          setDelegationList(data); // Met à jour l'état avec les données reçues
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }, [getPLAN]); // Exécute cet effet uniquement lorsque getPLAN change
+  }
+  
+  
   const firstRowStyle = {
     fontWeight: 'bold',
   };
-
+  
+  // const [expanded, setExpanded] = useState(false);
   const buttonStyle = {
-    backgroundColor: expanded ? '#7d240c' : '#973116',
+    // backgroundColor: expanded ? '#7d240c' : '#973116',
     color: 'white',
     border: 'none',
     padding: '5px 10px',
@@ -46,23 +55,23 @@ const DelegationAfficherPerson = () => {
     cursor: 'pointer',
     transition: 'background-color 0.3s ease',
   };
-
+  
   const tableStyle = {
     width: '100%',
     borderCollapse: 'collapse',
     borderRadius: '5px',
     boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
   };
-
+  
   const thStyle = {
-    padding: '10px',
+    padding: '5px',
     textAlign: 'center',
     border: '1px solid #ddd',
     backgroundColor: '#f5f5f5',
   };
 
   const tdStyle = {
-    padding: '10px',
+    padding: '5px',
     textAlign: 'center',
     border: '1px solid #ddd',
   };
@@ -71,10 +80,11 @@ const DelegationAfficherPerson = () => {
     <div style={{ marginTop: '20px' }}>
       <button
         style={buttonStyle} // Utiliser le style du bouton correct
-        onClick={() => setExpanded(!expanded)}
-      >
-        <b>{expanded ? '-' : '+'}</b> {expanded ? 'Réduire' : 'Afficher List Person'}
+        // onClick={() => setExpanded(!expanded)}
+      >click
+        {/* <b>{expanded ? '-' : '+'}</b> {expanded ? 'Réduire' : 'Afficher List Person'} */}
       </button>
+      {/* 
       {expanded && (
         <table style={tableStyle}>
           <thead>
@@ -107,7 +117,7 @@ const DelegationAfficherPerson = () => {
             ))}
           </tbody>
         </table>
-      )}
+      )} */}
     </div>
   );
 };

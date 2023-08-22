@@ -7,7 +7,6 @@ const VisualisationDejeunerDiner = ({data}) => {
     "Date",
   ]
   
-
   const [expanded, setExpanded] = useState(false);
   ////const rowsToShow = expanded ? data : data;
 

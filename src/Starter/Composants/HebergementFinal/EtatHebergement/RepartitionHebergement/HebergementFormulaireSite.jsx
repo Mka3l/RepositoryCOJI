@@ -8,7 +8,7 @@ const HebergementFormulaireSite = () => {
   const [formData, setFormData] = useState({
     NomHebergement: '',
     RibHebergement: '',
-    Lits:'',
+    "Capacité total en lits":'',
     PrixJournalier: '', 
     Zone: '',
   });
@@ -30,7 +30,7 @@ const HebergementFormulaireSite = () => {
     setFormData({
       NomHebergement: '',
       RibHebergement: '',
-      Lits: '',
+      "Capacité total en lits": '',
       PrixJournalier: '',
       Zone: '',
       
@@ -148,7 +148,7 @@ const HebergementFormulaireSite = () => {
         
           <br />
           <label>
-            Lits:
+            Capacité total en lits:
             <input ref={lits}
               type="text"
               // value={formData.Lits}
