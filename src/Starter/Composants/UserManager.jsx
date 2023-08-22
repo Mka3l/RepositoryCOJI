@@ -288,10 +288,10 @@ const UserManager = () => {
                       ))}
                     </div>
                   )}
-                   {currentPage === 'Utilisateur' && (
+                   {currentPage === 'Utilisateurs' && (
                     <div style={{ display: 'flex', alignItems: 'center' }}>
 
-                      {countryFlags['Utilisateur'].map((flag, index) => (
+                      {countryFlags['Utilisateurs'].map((flag, index) => (
                         <div key={index} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginRight: '15px', marginBottom: '15px' }}>
 
                           <img
@@ -328,7 +328,7 @@ const UserManager = () => {
             {currentPage === 'Restauration' && <RestaurationCard date ={dateChoix} />}
             {currentPage === 'Facturation' && <FactureAccueil />}
             {currentPage === 'Autres' && <Accueille date={dateChoix} />}
-            {currentPage === 'Utilisateur' && <GestionUtilisateur />}
+            {currentPage === 'Utilisateurs' && <GestionUtilisateur />}
 
 
 
