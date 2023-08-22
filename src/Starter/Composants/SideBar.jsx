@@ -20,7 +20,7 @@ const Sidebar = ({ onPageChange }) => {
     'Délégation': ['Madagascar', 'Comores', 'Mayotte', 'Maurice', 'Seychelles', 'Maldives', 'La Réunion'],
     'Hébergement': ['Etat d\'occupation des sites', 'Répartition des délégations par site d\'hébergement'],
     'Transport': ['Disponibilité des véhicules', 'Suivi des itinéraires'],
-    'Restauration': ['Planification Restauration Déjeuner', 'Planification Restauration Dîner'],
+    'Restauration': ['Planning Déjeuner', 'Planning Dîner','Visualisation de la Restauration'],
     'Facturation': {
       'Etat de paiement': ['1er acompte', '2ème acompte', 'Situation Financière'], // Ajoutez les sous-sous-menus ici comme un tableau vide
       'Factures totalement payées': [],
@@ -86,6 +86,7 @@ const Sidebar = ({ onPageChange }) => {
           default:
             return 'Délégation';
         }
+        
       case 'Hébergement':
         switch (subcategory) {
           case 'Etat d\'occupation des sites':
@@ -94,9 +95,8 @@ const Sidebar = ({ onPageChange }) => {
             return 'Répartition des délégations par site d\'hébergement';
           default:
             return 'Hébergement';
-
-
         }
+
       case 'Transport':
         switch (subcategory) {
           case 'Disponibilité des véhicules':
@@ -109,10 +109,12 @@ const Sidebar = ({ onPageChange }) => {
 
         case 'Restauration':
           switch (subcategory) {
-            case 'Planification Restauration Déjeuner':
-              return 'Planification Restauration Déjeuner';
-            case 'Planification Restauration Dîner':
-              return 'Planification Restauration Dîner';
+            case 'Planning Déjeuner':
+              return 'Planning Déjeuner';
+            case 'Planning Dîner':
+              return 'Planning Dîner';
+            case 'Visualisation de la Restauration':
+              return 'Visualisation de la Restauration';
             default:
               return 'Restauration';
           }

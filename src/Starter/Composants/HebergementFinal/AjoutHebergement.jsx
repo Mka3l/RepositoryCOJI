@@ -13,7 +13,7 @@ const AjoutHebergement=({Action,Titre,children})=>{
     setShowModal(false);
   };
   const buttonStyle = {
-    margin:"60px 0px 0px 0px",
+    margin:"0px 0px 0px 0px",
     background:"#616161",
     border:"none",
   }

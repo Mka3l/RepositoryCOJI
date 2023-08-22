@@ -1,14 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react';
 import AjoutHebergement from '../HebergementFinal/AjoutHebergement';
+import urlHtpp from '../../urlHtpp';
 
 const TransportCard = ({ onPageChange }) => {
 
-  var urlHtpp = "http://127.0.0.1:9090/";
+  //var urlHtpp = "http://127.0.0.1:9090/";
 
   const [delegations, setDelegations] = useState([]);
 
   useEffect(() => {
-    fetch(urlHtpp + 'delegations', {
+    fetch(urlHtpp.urlHtpp + 'delegations', {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
     }).then(response => response.json())
@@ -45,7 +46,7 @@ const TransportCard = ({ onPageChange }) => {
     transport.modele = modele.current.value;
    
     transport.delegation = delegationV;
-    fetch(urlHtpp + "vehicules", {
+    fetch(urlHtpp.urlHtpp + "vehicules", {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(transport)
@@ -100,12 +101,12 @@ const TransportCard = ({ onPageChange }) => {
 
   return ( <>
       <div style={cardContainerStyle}>
+        
         <div className="col-xxl-4 col-md-6" style={{ ...cardStyle }} onClick={() => handleCardClick('Disponibilité des véhicules')}>
           <div className="card-body">
             <h5 className="card-title" style={cardTitleStyle}>
               Total véhicules
             </h5>
-            
               <div style={cardTextContentStyle}>
                 <span className="text-success pt-1 fw-bold" style={cardTextValueStyle}>
                   100
@@ -123,7 +124,6 @@ const TransportCard = ({ onPageChange }) => {
             <h5 className="card-title" style={cardTitleStyle}>
               Véhicules occupées
             </h5>
-            
               <div style={cardTextContentStyle}>
                 <span className="text-success pt-1 fw-bold" style={cardTextValueStyle}>
                   43
@@ -135,14 +135,11 @@ const TransportCard = ({ onPageChange }) => {
           </div>
         </div>
 
-
-
         <div className="col-xxl-4 col-md-6" style={{ ...cardStyle }}>
           <div className="card-body">
             <h5 className="card-title" style={cardTitleStyle}>
               Véhicules disponibles
-            </h5>
-           
+            </h5> 
               <div style={cardTextContentStyle}>
                 <span className="text-success pt-1 fw-bold" style={cardTextValueStyle}>
                   57
@@ -151,32 +148,43 @@ const TransportCard = ({ onPageChange }) => {
                   Nombre total véhicules
                 </span>
               </div>
-            
           </div>
         </div>
+         
+
         {/* Les autres cartes vont ici... */}
       </div>
       <div>
         <AjoutHebergement Action={"Ajout Transport"} Titre={"Ajout Transport"}>
-            <p>Anne</p>
+            <p>Catégorie</p>
             <p>
-              <input type='text' className='form-control' ref={anne} />
-            </p>
-            <p>Immatriculation</p>
-            <input type='text' className='form-control' ref={immatriculation} />
-            <p>Kilometrage</p>
-            <input type='number' className='form-control' ref={kilometrage} />
-            <p>Modele</p>
-            <p><input type='text' className='form-control' ref={modele} /></p>
-            <p>Delegation</p>
-            <p>
-              <select className='form-control' ref={delegationV} >
-                {delegations.map((deg, indexV) =>
-                  <option value={deg.id} key={indexV}>{deg.nom}</option>
-                )};
+              <select name="" id="">
+                <option value="2">bus</option>
+                <option value="1">4 x 4</option>
+                <option value="1">4 x 4 VVIP</option>
+                <option value="2">Mini-bus</option>
+                <option value="2">Fourgon</option>
+                <option value="2">Voiture Legère</option>
               </select>
             </p>
-            <p><button className='btn btn-success' onClick={AddTransport}> Ajout</button></p>
+
+            
+            <p>Immatriculation</p>
+            <input type='text' className='form-control' ref={immatriculation} />
+            <p>Nombre de place</p>
+            <input type='number' className='form-control' min={0} ref={kilometrage} />
+            <p>Type carburant</p>
+            <p>
+              <select name="" id="">
+                <option value="1">Essence</option>
+                <option value="2">Diesel</option>
+              </select>
+            </p>
+            <p>Consommation théorique</p>
+            <p>
+              <input type="number" name="" className='form-control' id="" min="0" />
+            </p>
+            <p><button className='btn btn-success' onClick={AddTransport}> Ajouter</button></p>
           </AjoutHebergement>
       </div>
     </>

@@ -1,10 +1,33 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import AjoutHebergement from './AjoutHebergement';
 import { Button, Modal } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import urlHtpp from '../../urlHtpp';
 
 const CardHebergement = () => {
-  var urlHtpp = "http://127.0.0.1:9090/";
+  //var urlHtpp = "http://127.0.0.1:9090/";
+
+  const data ={
+    "nombre_total":79,
+    "capacite_total_lit":12042,
+    "nombre_lit_occupe":4602,
+    "taux_occupation":38
+  }
+
+  const [dashHeb,setDashHeb] = useState()
+  
+
+
+
+  /*useEffect(()=>{
+    fetch(configUrl.url+"",{
+      method :"GET",
+      headers:{"Content-Type":"application/json"}
+    })
+    .then(response=>response.json())
+    .then(data=>{console.log(data)})
+    .catch(error=>{console.log(error)})
+  },[])*/
 
   
   const cardContainerStyle = {
@@ -64,7 +87,8 @@ const CardHebergement = () => {
       body: JSON.stringify(hebergement)
     })
       .then(response => response.json())
-      .then(data => { console.log(data) })
+      .then(data => { ///console.log(data) 
+      })
       .catch(error => { console.log(error) });
   }
 
@@ -78,7 +102,7 @@ const CardHebergement = () => {
           </h5>
           <div className="card-text" style={cardTextContentStyle}>
             <span className="text-success pt-1 fw-bold" style={cardTextValueStyle}>
-              79
+              {data.nombre_total}
             </span>
           </div>
         </div>
@@ -92,7 +116,7 @@ const CardHebergement = () => {
           </h5>
           <div className="card-text" style={cardTextContentStyle}>
             <span className="text-success  pt-1 fw-bold" style={cardTextValueStyle}>
-              12 107
+             {data.capacite_total_lit}
             </span>
           </div>
         </div>
@@ -106,7 +130,7 @@ const CardHebergement = () => {
           </h5>
           <div className="card-text" style={cardTextContentStyle}>
             <span className="text-success pt-1 fw-bold" style={cardTextValueStyle}>
-              4 602
+             {data.nombre_lit_occupe}
             </span>
           </div>
         </div>
@@ -120,7 +144,7 @@ const CardHebergement = () => {
           </h5>
             <div className="card-text" style={cardTextContentStyle}>
               <span className="text-success pt-1 fw-bold" style={cardTextValueStyle}>
-                38%
+                {data.taux_occupation}%
               </span>
             </div>
         </div>

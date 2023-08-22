@@ -1,0 +1,44 @@
+{
+    "data": [
+      {
+        "pays": "MAYOTTE",
+        "delegations": [
+          {
+            "siteHebergement": "WHITE PALACE",
+            "disciplines": "Basket",
+            "nombrePrevisionnel": 151,
+            "nombreReel": 151
+          }
+        ]
+      },
+      {
+        "pays": "MADAGASCAR",
+        "delegations": [
+          {
+            "siteHebergement": "WHITE PALACE",
+            "disciplines": "Foot",
+            "nombrePrevisionnel": 200,
+            "nombreReel": 180
+          },
+          {
+            "siteHebergement": "SUNNY RESORT",
+            "disciplines": "Volley",
+            "nombrePrevisionnel": 120,
+            "nombreReel": 110
+          }
+        ]
+      },
+      {
+        "pays": "SEYCHELLES",
+        "delegations": [
+          {
+            "siteHebergement": "SUNNY RESORT",
+            "disciplines": "Tennis",
+            "nombrePrevisionnel": 100,
+            "nombreReel": 95
+          }
+        ]
+      }
+    ]
+  }
+  
