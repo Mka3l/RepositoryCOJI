@@ -66,31 +66,31 @@ const CardHebergement = () => {
     color: '#7d240c',
   };
 
-  ///:====Input ==================
-  const nom = useRef();
-  const capaciteTotal = useRef();
-  const chambreRestante = useRef();
-  const chambreOccupe = useRef();
+  // ///:====Input ==================
+  // const nom = useRef();
+  // const capaciteTotal = useRef();
+  // const chambreRestante = useRef();
+  // const chambreOccupe = useRef();
 
-  //==========================
-  const AddHebergement = () => {
-    const hebergement = {
-      "nom": nom.current.value,
-      "capacite_totale": capaciteTotal.current.value,
-      "chambre_restante": chambreRestante.current.value,
-      "chambre_occupees": chambreOccupe.current.value
-    }
-    console.log(JSON.stringify(hebergement));
-    fetch(urlHtpp + "hebergements", {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(hebergement)
-    })
-      .then(response => response.json())
-      .then(data => { ///console.log(data) 
-      })
-      .catch(error => { console.log(error) });
-  }
+  // //==========================
+  // const AddHebergement = () => {
+  //   const hebergement = {
+  //     "nom": nom.current.value,
+  //     "capacite_totale": capaciteTotal.current.value,
+  //     "chambre_restante": chambreRestante.current.value,
+  //     "chambre_occupees": chambreOccupe.current.value
+  //   }
+  //   console.log(JSON.stringify(hebergement));
+  //   fetch(urlHtpp + "hebergements", {
+  //     method: 'POST',
+  //     headers: { 'Content-Type': 'application/json' },
+  //     body: JSON.stringify(hebergement)
+  //   })
+  //     .then(response => response.json())
+  //     .then(data => { ///console.log(data) 
+  //     })
+  //     .catch(error => { console.log(error) });
+  // }
 
 
   return (<div>
@@ -151,18 +151,6 @@ const CardHebergement = () => {
       </div>
 
     </div>
-
-    <AjoutHebergement Action={"Ajout Hebergement"} Titre={"Ajout Hebergement"}>
-      <p>Nom</p>
-      <p> <input type='text' ref={nom} className='form-control' /></p>
-      <p>Capacite Total</p>
-      <p> <input type='number' ref={capaciteTotal} className='form-control' /></p>
-      <p>Chambre Restante</p>
-      <p> <input type='number' ref={chambreRestante} className='form-control' /></p>
-      <p>Chambre Occupé</p>
-      <p> <input type='number' ref={chambreOccupe} className='form-control' /></p>
-      <p><button className='btn btn-success' onClick={AddHebergement}>Ajouter</button></p>
-    </AjoutHebergement>
   </div>
   );
 };
