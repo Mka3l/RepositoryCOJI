@@ -1,33 +1,46 @@
-
-import style from  "./assets/css/login.css";
-import sary from "./assets/img/fleche.png";
-
+import React from 'react';
+import sary from '../assets/img/fleche.png';
+import { Link } from 'react-router-dom';
+import '../assets/css/login.css';
 const Login = () =>{ 
-    return (
+    const styly = {
+        fontSize: '15pt',
+        padding: '15px 50px 15px 50px',
+        background: 'linear-gradient(45deg, #0d6efd, #fe00ec)',
+        fontWeight: '400',
+    }
+    return ( 
+        
         <main>
-        <div class="formulaire">
-            <span class="borderLine"></span>
+        <div className="formulaire">
+            <span className="borderLine"></span>
             <form action="">
-                <div class="inputBox">
+                <div className="inputBox">
                     <input type="text" required="required"/>
-                    <span>Username</span>
+                    <span>Surnom</span>
                     <i></i>
                 </div>
-                <div class="inputBox">
+                <div className="inputBox">
                     <input type="password" required="required"/>
                     <span>Password</span>
                     <i></i>
                 </div> 
-                <div class="links">
+                <div className="links">
                     <input type="checkbox" name="" id=""/>
                     <p href="#">Enregistrer Login</p>
                     <a href="./forgot.html">Forgot password</a>
                 </div>
-                <input type="submit" value="Login"/>
+
+                <Link  to={"/page-de-base"}>
+                    <input style={styly} className="linky" type="submit" value="Se Connecter" />
+                </Link>
+                
             </form>
-            <div class="sign_up">
-                <a href="#">
-                    <p>Inscrire</p>
+            <div className="sign_up">
+                <a to="/page-de-base" href="#">
+                    <p>
+                        inscrire
+                    </p>
                     <span><img src={sary} alt=""/></span>
                 </a>
             </div>

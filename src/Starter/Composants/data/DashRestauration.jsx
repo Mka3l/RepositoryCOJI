@@ -51,11 +51,8 @@ const DashRestauration = ({ date }) => {
   };
   var dateFiltre = useRef();
   const [dateAffichage,setDateAffiche] = useState(new Date().toLocaleDateString());
-
   console.log(date.date.date);
   const [dateChoix,setDateChoix] = useState(date.date.date);
-  
-
   return (
     <div style={compoGlade}>
       {data.map((valeur, indexVal) => (

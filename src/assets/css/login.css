@@ -28,6 +28,18 @@ body main .formulaire {
   filter: drop-shadow(-16px 15px 10px black);
   justify-content: center;
 }
+/* Login.css */
+form {
+  margin: 0;
+  padding: 0;
+  /* Autres propriétés que vous souhaitez annuler... */
+
+  /* Personnaliser les propriétés CSS */
+  background-color: transparent; /* Fond transparent */
+  border: none; /* Supprimer la bordure par défaut */
+  color: #ffffff; /* Couleur du texte */
+}
+
 body main .formulaire form {
   width: 90%;
   height: 50vh;
@@ -45,7 +57,7 @@ body main .formulaire form .inputBox {
 body main .formulaire form .inputBox input {
   position: relative;
   width: 100%;
-  padding: 20px 10px 10px;
+  padding: 0px 0px 0px 0px;
   background: transparent;
   outline: none;
   box-shadow: none;
@@ -54,7 +66,7 @@ body main .formulaire form .inputBox input {
   font-size: 1em;
   letter-spacing: 0.05em;
   transition: 0.5s;
-  z-index: 10;
+  z-index: 18;
 }
 body main .formulaire form .inputBox span {
   position: absolute;
@@ -126,7 +138,7 @@ body main .formulaire form .links a:hover,
 body main .formulaire form .links a:nth-child(2) {
   color: #FE00EC;
 }
-body main .formulaire form input[type=submit] {
+body main .formulaire form input[type=submit] .linky {
   border: none;
   outline: none;
   padding: 9px 25px;
@@ -139,7 +151,7 @@ body main .formulaire form input[type=submit] {
   color: white;
   font-weight: 300;
 }
-body main .formulaire form input[type=submit]:active {
+body main .formulaire form input[type=submit]:active .linky {
   opacity: 0.8;
 }
 body main .formulaire .sign_up {
@@ -165,5 +177,25 @@ body main .formulaire .sign_up a span {
   align-items: center;
 }
 body main .formulaire .sign_up a span img {
+  width: 100%;
+}/*# sourceMappingURL=login.css.map */
+
+
+body main .formulaire .sign_up Link {
+  width: 75%;
+  display: flex;
+  text-decoration: none;
+}
+body main .formulaire .sign_up Link p {
+  font-size: 10pt;
+  font-weight: 300;
+  color: #FE00EC;
+}
+body main .formulaire .sign_up Link span {
+  margin-left: 15px;
+  display: flex;
+  align-items: center;
+}
+body main .formulaire .sign_up Link span img {
   width: 100%;
 }/*# sourceMappingURL=login.css.map */

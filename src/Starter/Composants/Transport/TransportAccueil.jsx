@@ -155,7 +155,7 @@ const TransportCard = ({ onPageChange }) => {
         {/* Les autres cartes vont ici... */}
       </div>
       <div>
-        <AjoutHebergement Action={"Ajout Transport"} Titre={"Ajout Transport"}>
+        <AjoutHebergement Action={"Ajout véhicule"} Titre={"Ajout véhicule"}>
             <p>Catégorie</p>
             <p>
               <select name="" id="">
@@ -167,8 +167,6 @@ const TransportCard = ({ onPageChange }) => {
                 <option value="2">Voiture Legère</option>
               </select>
             </p>
-
-            
             <p>Immatriculation</p>
             <input type='text' className='form-control' ref={immatriculation} />
             <p>Nombre de place</p>

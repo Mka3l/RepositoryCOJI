@@ -1,3 +1,6 @@
+body{
+    background: url("../img/login_bg.png") no-repeat;
+}
 .cardBody-1{
     transition: .7s;
     background: linear-gradient(46deg, #bc00995e, #ee00ff5e);
