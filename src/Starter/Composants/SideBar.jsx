@@ -29,7 +29,8 @@ const Sidebar = ({ onPageChange }) => {
       'Reçu': [], // Ajoutez les sous-sous-menus ici comme un tableau vide
     },
     'Références médicale': [],
-    'Autres': ['Liste des Athlètes par Discipline', 'Calendrier des Jeux']
+    'Autres': ['Liste des Athlètes par Discipline', 'Calendrier des Jeux'],
+    'Utilisateurs': []
   };
 
   const dataFlag = {
@@ -143,15 +144,14 @@ const Sidebar = ({ onPageChange }) => {
   } else {
     return 'Facturation';
   }
-
-      
-      case 'Autres':
-        switch (subcategory) {
-          case 'Liste des Athlètes par Discipline':
-            return 'Liste des Athlètes par Discipline';
-          case 'Calendrier des Jeux':
-            return 'Calendrier des Jeux';
-       
+    case 'Autres':
+    switch (subcategory) {
+      case 'Liste des Athlètes par Discipline':
+      return 'Liste des Athlètes par Discipline';
+    case 'Calendrier des Jeux':
+      return 'Calendrier des Jeux';  
+      case 'Utilisateurs': 
+      return 'Utilisateurs';    
       default:
         return 'Chiffres du jour';
       }
