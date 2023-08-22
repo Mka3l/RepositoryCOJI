@@ -56,3 +56,37 @@ const Homepage = () => {
 };
 
 export default Homepage;
+{/* <div className="row justify-content-center align-items-center h-100">
+<div className="col-md-8 mb-4 border-radius-12">
+  <div className="card h-100 shadow">
+    <div className="card-body ">
+      <div>
+      <p className="card-text margin-bottom-12 text-align-center">
+        Merci d'entrer votre identifiant et votre mot de passe
+      </p>
+      </div>
+          <div className="input-container">
+            <input
+              type="text"
+              placeholder="Identifiant"
+              value={identifiant}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+            <input
+              type="text"
+              placeholder="Mot de passe"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+      </div>
+      
+    
+    <div className="card-footer d-flex justify-content-center">
+      <Link to="/user-manager" className="btn btn-primary">
+       Se connecter
+      </Link>
+    </div>
+  </div>
+</div>
+</div> */}
