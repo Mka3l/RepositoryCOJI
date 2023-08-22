@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import AjoutHebergement from '../HebergementFinal/AjoutHebergement';
 
 const TransportDispo = () => {
@@ -91,6 +91,8 @@ const TransportDispo = () => {
     width: 'auto',
     whiteSpace: 'nowrap',
   };
+
+  const categorie = useRef();
   const boldStyle = {
     fontWeight: 'bold', // Ajout du style en gras
   };

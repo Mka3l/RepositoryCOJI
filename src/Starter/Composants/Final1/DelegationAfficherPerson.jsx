@@ -22,7 +22,7 @@ const DelegationAfficherPerson = () => {
   console.log("URL : ",url);
  
 
-  if (getPLAN === true) {
+
     // setGetPlan(false); // Met à jour l'état pour éviter une boucle infinie
     useEffect(() => {
       fetch(url.urlHtpp + "upload-delegation", {
@@ -38,16 +38,16 @@ const DelegationAfficherPerson = () => {
           console.log(error);
         });
     }, [getPLAN]); // Exécute cet effet uniquement lorsque getPLAN change
-  }
+  
   
   
   const firstRowStyle = {
     fontWeight: 'bold',
   };
   
-  // const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(false);
   const buttonStyle = {
-    // backgroundColor: expanded ? '#7d240c' : '#973116',
+    backgroundColor: expanded ? '#7d240c' : '#973116',
     color: 'white',
     border: 'none',
     padding: '5px 10px',
@@ -80,11 +80,11 @@ const DelegationAfficherPerson = () => {
     <div style={{ marginTop: '20px' }}>
       <button
         style={buttonStyle} // Utiliser le style du bouton correct
-        // onClick={() => setExpanded(!expanded)}
+        onClick={() => setExpanded(!expanded)}
       >click
-        {/* <b>{expanded ? '-' : '+'}</b> {expanded ? 'Réduire' : 'Afficher List Person'} */}
+        <b>{expanded ? '-' : '+'}</b> {expanded ? 'Réduire' : 'Afficher List Person'}
       </button>
-      {/* 
+      
       {expanded && (
         <table style={tableStyle}>
           <thead>
@@ -117,7 +117,7 @@ const DelegationAfficherPerson = () => {
             ))}
           </tbody>
         </table>
-      )} */}
+      )}
     </div>
   );
 };
