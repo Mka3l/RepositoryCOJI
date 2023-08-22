@@ -28,36 +28,6 @@ const DelegationAccueil = ({onPageChange}) => {
     .catch(error=>{console.log(error)})
   },[getPLAN])
 
-  // const data = [
-  //   {
-  //     "country": "Madagascar",
-  //     "value": 1459,
-  //   },
-  //   {
-  //     "country": "Comores",
-  //     "value": 290,
-  //   },
-  //   {
-  //     "country": "Mayotte",
-  //     "value": 361,
-  //   },
-  //   {
-  //     "country": "Maurice",
-  //     "value": 649,
-  //   },
-  //   {
-  //     "country": "Seychelles",
-  //     "value": 511,
-  //   },
-  //   {
-  //     "country": "Maldives",
-  //     "value": 242,
-  //   },
-  //   {
-  //     "country": "La Réunion",
-  //     "value": 652,
-  //   }
-  // ]
   return (
     <div style={cardContainerStyle}>
       {repartitionDelegation.map((row, index) => (

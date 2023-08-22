@@ -58,8 +58,6 @@ const PlanDiner = () => {
     setGetPlan(false)
   }
 
-
-
   const listDelegation = [
     'Madagascar',
     'Comores',
@@ -89,6 +87,7 @@ const PlanDiner = () => {
     "Tennis de Table",
     "Volley-ball"
   ]
+
   const handleShowModal = () => {
     setShowModal(true);
   };
@@ -161,7 +160,6 @@ const PlanDiner = () => {
     background: '#b3b3b3',
     fontWeight: '700',
   }
-
 
   return (
     <div>

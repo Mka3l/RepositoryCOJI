@@ -1,0 +1,18 @@
+{
+    "n": 1,
+    "hotels": "LE GRAND MELLIS",
+    "zone":"ANALAKELY", 
+    "nbrSejour": 2,
+    "nbrLit": 4, 
+    "nbrPersonne": 2,
+    "prixUnitaire": 50000, 
+    "montantHebergement": 200000,
+    "nbrPlace": 3, 
+    "prixUnitaireByPlace": 400000, 
+    "restaurationAmount": 200000, 
+    "proformaAmount": 200000, 
+    "factureAmount": 30000, 
+    "defferenceFactureProforma": 10000, 
+    "factureNumber": "0101", 
+    "total": "1 200 000"
+}

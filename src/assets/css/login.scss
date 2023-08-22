@@ -1,0 +1,193 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    font-family: 'poppins';
+}
+body
+{
+    width: 100%;
+    height: 600px;
+    main
+    {
+        width: 100%;
+        height: 100vh;
+        background: url('../img/login_bg.png') no-repeat;
+        background-size: 300vh;  
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .formulaire
+        {
+            display: flex;
+            flex-direction: column;
+            width: 330px;
+            height: 80vh;
+            background: linear-gradient(337deg, #000000, rgba(0, 0, 0, 0.05));
+            align-items: center;
+            filter: drop-shadow(-16px 15px 10px black);
+            filter: drop-shadow(-16px 15px 10px black);
+            justify-content: center;
+    
+            form 
+            {
+                width: 90%;
+                height: 50vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+                align-items: center;
+                position: absolute;
+                
+                .inputBox
+                {
+                    position: relative;
+                    width: 80%;
+                    font-weight: 300;
+                }
+                .inputBox input{
+                    position: relative;
+                    width: 100%;
+                    padding: 20px 10px 10px;
+                    background: transparent;
+                    outline: none;
+                    box-shadow: none;
+                    border: none;
+                    color: #ffffff;
+                    font-size: 1em;
+                    letter-spacing: 0.05em;
+                    transition: 0.5s;
+                    z-index: 10;
+                }
+                .inputBox span
+                {
+                    position: absolute;
+                    text-transform: uppercase;
+                    left: 0;
+                    padding: 20px 0px 10px;
+                    pointer-events: none;
+                    color: #fff;
+                    font-size: 1em;
+                    letter-spacing: 0.05em;
+                    transition: 0.5s;
+                    transform: translateY(-50px);
+                    letter-spacing: 2px;
+                    font-weight: 100;
+                }
+                .inputBox input:valid ~ span, 
+                .inputBox input:focus ~ span {
+                    color: #ffffff; 
+                    font-size: 0.75em;
+                    transform: translateY(-85px);
+                    font-weight: 100;
+                }
+                .inputBox i{
+                    position: absolute;
+                    left: 0;
+                    bottom: 0;
+                    width: 100%;
+                    height: 1px;
+                    background: #fe00ed74;
+                    border-radius: 4px;
+                    overflow: hidden;
+                    transition: 0.5s;
+                    pointer-events: none;
+                }
+                .inputBox input:valid ~ i, 
+                .inputBox input:focus ~ i{
+                    height: 44px;
+                    background: #ffffff2d;
+                }
+
+                .links{
+                    display: flex;
+                    justify-content: space-between;
+                    width: 80%;
+                    color: #fff;
+
+                    input[type="checkbox"] {
+                        position: relative;
+                        display: inline-block;
+                        
+                        border: 2px solid #FE00EC;
+                        border-radius: 4px;
+                    }
+                    
+                        input[type="checkbox"]:checked::before {
+                        content: "";
+                        position: absolute;
+                        
+                        background-color: #FE00EC;
+                    }
+                    
+
+                    p
+                    {
+                        font-size: 9pt;
+                        margin: 5px 0;
+                        font-weight: 200;
+                    }
+                    a {
+                        margin: 5px 0;
+                        font-size: 0.75em;
+                        text-decoration : none;
+                        color: #FE00EC;
+                    }
+                    a:hover,
+                    a:nth-child(2){
+                        color: #FE00EC;
+                    }
+                }                
+                input[type="submit"]{
+                    border: none;
+                    outline: none;
+                    padding: 9px 25px;
+                    background: linear-gradient(340deg,#FE00EC,#0098fe);
+                    cursor: pointer;
+                    font-size: 0.9em;
+                    border-radius: 4px;
+                    width: 130px;
+                    margin-top: 10px;
+                    color: white;
+                    font-weight: 300;
+
+                }
+                input[type="submit"]:active {
+                    opacity: 0.8;
+                }
+            }
+            .sign_up
+            {
+                margin-top: 360px;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                a
+                {
+                    width: 75%;
+                    display: flex;
+                    text-decoration: none;
+                    p
+                    {
+                        font-size: 10pt;
+                        font-weight: 300;
+                        color:#FE00EC
+                    }
+                    span
+                    {
+                        margin-left: 15px;
+                        display: flex;
+                        align-items: center;
+                        img
+                        {
+                            width: 100%;
+                        }
+                    }
+                    
+                }
+            }
+        }
+    }
+}
