@@ -20,6 +20,8 @@ function App() {
           <Route path='/login' element = {<Login />} />
           <Route path="/page-de-base" element={<PageDeBase />} />
           <Route path="/dashboard1" element={<Dashboard />} />
+          <Route path="/user-manager" element={<UserManager />} />
+        
         </Routes>
       </div>
     </Router>
