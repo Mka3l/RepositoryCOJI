@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Logo from '../assets/Images/LogoAccueil.webp';
 
 const Homepage = () => {
+  const [identifiant, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  // handleChange = (e) => {
+  //   console.log(e.target.value)
+  // }
   return (
     <div className="container-fluid min-vh-100 d-flex flex-column justify-content-center align-items-center bg-light" style={{
       backgroundImage: `url(${Logo})`,
@@ -25,6 +30,41 @@ const Homepage = () => {
           background:' #2986b3',}}>- 2023 -</h3>
       </header>
       <main className="flex-grow-1">
+        <div className="row justify-content-center align-items-center h-100">
+          <div className="col-md-8 mb-4 border-radius-12">
+            <div className="card h-100 shadow">
+              <div className="card-body ">
+                <div>
+                <p className="card-text margin-bottom-12 text-align-center">
+                  Merci d'entrer votre identifiant et votre mot de passe
+                </p>
+                </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        placeholder="Identifiant"
+                        value={identifiant}
+                        onChange={(e) => setUsername(e.target.value)}
+                      />
+                      <input
+                        type="text"
+                        placeholder="Mot de passe"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                      />
+                    </div>
+                </div>
+                
+              
+              <div className="card-footer d-flex justify-content-center">
+                <Link to="/user-manager" className="btn btn-primary">
+                 Se connecter
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div className="row justify-content-center align-items-center h-100">
           <div className="col-md-6 mb-4">
             <div className="card h-100 shadow">
