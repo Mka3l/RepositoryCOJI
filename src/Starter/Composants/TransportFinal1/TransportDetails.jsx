@@ -92,7 +92,11 @@ const TransportDispo = () => {
     whiteSpace: 'nowrap',
   };
 
-  const categorie = useRef();
+  const dateTrajet = useRef();
+  const immatriculation = useRef();
+  const kilometrage = useRef();
+  const type_carburant = useRef();
+  const distance = useRef();
   const boldStyle = {
     fontWeight: 'bold', // Ajout du style en gras
   };
@@ -101,10 +105,10 @@ const TransportDispo = () => {
   };
 
   const AddTransport = () => {
-    transport.annee = anne.current.value;
+    transport.annee = dateTrajet.current.value;
     transport.kilometrage = kilometrage.current.value;
     transport.immatriculation = immatriculation.current.value;
-    transport.modele = modele.current.value;
+    transport.modele = distance.current.value;
    
     transport.delegation = delegationV;
     fetch(urlHtpp.urlHtpp + "vehicules", {
@@ -166,31 +170,21 @@ const TransportDispo = () => {
         </table>
         <div>
           <AjoutHebergement Action={"Ajout Trajet"} Titre={"Ajout Trajet"}>
-              <p>Catégorie</p>
+              <p>Date</p>
               <p>
-                <select name="" id="" ref={categorie}>
-                  <option value="2">bus</option>
-                  <option value="1">4 x 4</option>
-                  <option value="1">4 x 4 VVIP</option>
-                  <option value="2">Mini-bus</option>
-                  <option value="2">Fourgon</option>
-                  <option value="2">Voiture Legère</option>
-                </select>
+                <input type="date" ref={dateTrajet} id="" />
               </p>
               <p>Immatriculation</p>
               <input type='text' className='form-control' ref={immatriculation} />
-              <p>Nombre de place</p>
-              <input type='number' className='form-control' min={0} ref={kilometrage} />
-              <p>Type carburant</p>
+              <p>Lieu de départ</p>
+                <input type='text' className='form-control' min={0} ref={kilometrage} />
+              <p>Lieu d'arrivée</p>
               <p>
-                <select name="" id="" ref={type_carburant}>
-                  <option value="1">Essence</option>
-                  <option value="2">Diesel</option>
-                </select>
+                <input type='text' className='form-control' min={0} ref={kilometrage} />
               </p>
-              <p>Consommation théorique</p>
+              <p>Estimation distance en Kilomètre</p>
               <p>
-                <input type="number" name="" ref={consommationTheorique} className='form-control' id="" min="0" />
+                <input type="number" name="" ref={distance} className='form-control' id="" min="0" />
               </p>
               <p><button className='btn btn-success' onClick={AddTransport}> Ajouter</button></p>
           </AjoutHebergement>
