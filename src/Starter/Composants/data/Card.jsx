@@ -92,10 +92,8 @@ const Card = (date) => {
 
   return (
     <div>
-      {data.map((valeur, indexVal) => (
-        date.date.date.date === valeur.dateJOI && (
-          valeur.totalSite !== null && (
-            <div key={indexVal}>
+
+            <div>
               <div style={{ display: 'flex', gridTemplateColumns: 'repeat(2, 1fr)', gap: '20px' }}>
                 <div className="col-xxl-4 col-md-6" style={styleDiv}>
                   <div className="card info-card sales-card" style={{ borderStyle: 'none' }}>
@@ -118,7 +116,7 @@ const Card = (date) => {
                         </div>
                         <div className="vide">
 
-                          <h6 style={fontSizeH6}>Nombre total de personnes  <br /> <span className="small pt-1 fw-bold" style={fontSizeTEXT} >{numberWithThousandsSeparator(delegationTotal)}</span> </h6>
+                          <h6 style={fontSizeH6}>Nombre total de personnes  <br /> <span className="small pt-1 fw-bold" style={fontSizeTEXT} >{numberWithThousandsSeparator(delegationTotal ?? 0)}</span> </h6>
 
                         </div>
                       </div>
@@ -145,7 +143,7 @@ const Card = (date) => {
                         </div>
                         <div className="vide">
 
-                          <h6 className='ms-4' style={fontSizeH6}>Nombre total Sites<br /> <span className="small pt-1 fw-bold" style={fontSizeTEXT}>{numberWithThousandsSeparator(hebergementTotal)}</span>  </h6>
+                          <h6 className='ms-4' style={fontSizeH6}>Nombre total Sites<br /> <span className="small pt-1 fw-bold" style={fontSizeTEXT}>{numberWithThousandsSeparator(hebergementTotal ?? 0)}</span>  </h6>
 
 
                         </div>
@@ -174,7 +172,7 @@ const Card = (date) => {
                         </div>
                         <div className="vide">
 
-                          <h6 style={fontSizeH6}>Nombre de plats servis par jour  <br /> <span className="small pt-1 fw-bold" style={fontSizeTEXT}>{numberWithThousandsSeparator(plats_servi)}</span>  </h6>
+                          <h6 style={fontSizeH6}>Nombre de plats servis par jour  <br /> <span className="small pt-1 fw-bold" style={fontSizeTEXT}>{numberWithThousandsSeparator(plats_servi ?? 0)}</span>  </h6>
                           <div className="icon">
                             <i className="ri-bar-chart-2-fill"></i>
                           </div>
@@ -203,10 +201,7 @@ const Card = (date) => {
                           <i className="bi bi-cart"></i>
                         </div>
                         <div className="vide">
-
-
-
-                          <h6 style={fontSizeH6}>Véhicules disponibles <br /> <span className="small pt-1 fw-bold" style={fontSizeTEXT}>{valeur.transport}</span>  </h6>
+                          <h6 style={fontSizeH6}>Véhicules disponibles <br /> <span className="small pt-1 fw-bold" style={fontSizeTEXT}>{"12/100"}</span>  </h6>
                           <div className="icon">
                             <i className="ri-bar-chart-2-fill"></i>
                           </div>
@@ -220,7 +215,6 @@ const Card = (date) => {
                 </div>
               </div>
             </div>
-          ))))}
     </div>
   );
 };
