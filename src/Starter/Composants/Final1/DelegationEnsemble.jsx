@@ -3,6 +3,7 @@ import DelegationAfficherDetails from './DelegationAfficherDetails';
 import DelegationClic from './DelegationClic';
 import AjoutHebergement from '../HebergementFinal/AjoutHebergement';
 import url from '../../urlHtpp';
+import DelegationAfficherPerson from './DelegationAfficherPerson';
 const DelegationEnsemble = () => {
 
   var urlHtpp = "http://127.0.0.1:9090/";
@@ -80,28 +81,10 @@ const DelegationEnsemble = () => {
           textAlign: 'center',
         }}>Répartition du nombre de personnes par Délégation (nombre total 4 164)</h2>
       <div style={{ marginBottom: '50px' }}>
+
         <DelegationClic/> 
-      </div>
-      <div>
-        <AjoutHebergement Action={"Ajout Délégation"} Titre={"Ajout Délégation"}>
-          <p style={labelStyle}>Choisir Pays</p>
-          <span style={iconlist}>▼</span>
-          <p>
-            <select className='form-control' ref={nomPays} style={inputNormal}>
-            {NameDelegation.map((namePays, indexP) =>
-              <option value={namePays.nom} key={indexP}>{namePays.nom}</option>
-            )};
-            </select>
-          </p>
-          <p style={labelStyle}>Entrer le nombre</p>
-          <p>
-            <input style={inputNormal} type='number' className='form-control' ref={nombre} placeholder='Entrer un nombre ...' />
-          </p>
-          <p> <button style={inputButton} className='btn btn-success' onClick={AddDelegation}>Ajouter</button></p>
-        </AjoutHebergement>
-      </div>
-      <div>
         <DelegationAfficherDetails/>
+        <DelegationAfficherPerson/>
       </div>
     </div>
   );

@@ -86,6 +86,7 @@ const Sidebar = ({ onPageChange }) => {
           default:
             return 'Délégation';
         }
+        
       case 'Hébergement':
         switch (subcategory) {
           case 'Etat d\'occupation des sites':
@@ -94,9 +95,8 @@ const Sidebar = ({ onPageChange }) => {
             return 'Répartition des délégations par site d\'hébergement';
           default:
             return 'Hébergement';
-
-
         }
+
       case 'Transport':
         switch (subcategory) {
           case 'Disponibilité des véhicules':

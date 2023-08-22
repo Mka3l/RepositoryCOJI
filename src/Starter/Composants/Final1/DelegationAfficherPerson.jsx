@@ -1,29 +1,34 @@
 import React, { useState,useEffect,useRef } from 'react';
 import url from '../../urlHtpp';
-const DelegationAfficherDetails = () => {
+const DelegationAfficherPerson = () => {
   const columns = [
-    "Disciplines (19)",
-    "Madagascar",
-    "Comores",
-    "La Réunion",
-    "Maldives",
-    "Maurice",
-    "Mayotte",
-    "Seychelles",
-    "Total"
+    "contact_id",
+    "nom_complet",
+    "nom_categorie",
+    "nom_pays",
+    "nom_fonction",
+    "nom_discipline",
+    "nom_comission",
+    "qualite_demandeur",
+    "nom_media",
+    "titulaire",
+    "printing_status",
+    "application_status",
+    "hebergement",
+    "numero_chambre"
   ]
 
-  const [delegationPaysDiscipline, setDelegationPaysDiscipline] = useState([]);
+  const [delegationList, setDelegationList] = useState([]);
   const [getPLAN,setGetPlan] = useState(true)
-
+  console.log("URL : ",url);
   useEffect(()=>{
-    console.log("ENTRER")
-    fetch(url.urlHtpp+"delegation-pays-discipline",{
+    console.log("ENTRER ===>"+url.urlHtpp+"upload-delegation" )
+    fetch(url.urlHtpp+"upload-delegation",{
       method:'GET',
       headers:{'Content-Type':'application/json'},
     })
     .then(response => response.json())
-    .then(data=>{console.log(data.data),setDelegationPaysDiscipline(data.data)})
+    .then(data=>{console.log(data),setDelegationList(data)})
     .catch(error=>{console.log(error)})
   },[getPLAN])
 
@@ -68,7 +73,7 @@ const DelegationAfficherDetails = () => {
         style={buttonStyle} // Utiliser le style du bouton correct
         onClick={() => setExpanded(!expanded)}
       >
-        <b>{expanded ? '-' : '+'}</b> {expanded ? 'Réduire' : 'Afficher plus'}
+        <b>{expanded ? '-' : '+'}</b> {expanded ? 'Réduire' : 'Afficher List Person'}
       </button>
       {expanded && (
         <table style={tableStyle}>
@@ -82,17 +87,22 @@ const DelegationAfficherDetails = () => {
             </tr>
           </thead>
           <tbody>
-            {delegationPaysDiscipline.map((row, rowIndex) => (
+            {delegationList.map((row, rowIndex) => ( 
               <tr key={rowIndex}>
-                  <td  style={tdStyle}> {row.nom_discipline}</td>
-                  <td  style={tdStyle}>{row.total_madagacar}</td>
-                  <td  style={tdStyle}>{row.total_comores}</td>
-                  <td  style={tdStyle}>{row.total_reunion}</td>
-                  <td  style={tdStyle}>{row.total_mayottes}</td>
-                  <td  style={tdStyle}>{row.total_seychelles}</td>
-                  <td  style={tdStyle}>{row.total_maldives}</td>
-                  <td  style={tdStyle}>{row.total_maurice}</td>
-                  <td  style={{...tdStyle, fontWeight:'700'}} >{row.totaldiscipline}</td>
+                  <td  style={tdStyle}> {row.contact_id}</td>
+                  <td  style={tdStyle}>{row.nom_complet}</td>
+                  <td  style={tdStyle}>{row.nom_categorie}</td>
+                  <td  style={tdStyle}>{row.nom_pays}</td>
+                  <td  style={tdStyle}>{row.nom_fonction}</td>
+                  <td  style={tdStyle}>{row.nom_discipline}</td>
+                  <td  style={tdStyle}>{row.nom_comission}</td>
+                  <td  style={tdStyle}>{row.qualite_demandeur}</td>
+                  <td  style={tdStyle}>{row.nom_media}</td>
+                  <td  style={tdStyle}>{row.titulaire}</td>
+                  <td  style={tdStyle}>{row.printing_status}</td>
+                  <td  style={tdStyle}>{row.application_status}</td>
+                  <td  style={tdStyle}>{row.hebergement}</td>
+                  <td  style={tdStyle}>{row.numero_chambre}</td>
               </tr>
             ))}
           </tbody>
@@ -105,4 +115,4 @@ const DelegationAfficherDetails = () => {
 
 
 
-export default DelegationAfficherDetails;
+export default DelegationAfficherPerson;
