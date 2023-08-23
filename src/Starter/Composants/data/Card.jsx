@@ -59,7 +59,7 @@ const Card = (date) => {
     })
     .then(response => response.json())
     .then(data=>{
-      console.log(data.data);
+      ///console.log(data.data);
       setDelegationTotal(data.data.delegationTotal.nombre_total),
       setHebergementTotal(data.data.hebergementTotal.nombre_total),
       setPlats_servi(data.data.platsServi),

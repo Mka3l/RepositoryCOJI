@@ -1,64 +1,79 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import AjoutHebergement from '../HebergementFinal/AjoutHebergement';
 
 const TransportDispo = () => {
-  const carsData = [
-    {
-      immatriculation: '2525TBA',
-      date: '21/08/23',
-      categorie: '4 x 4',
-      nombreDePlace: 5,
-      typeCarburant: 'Essence',
-      consommationTheorique: '7.5 l/100km',
-      depart: 'Ankadimbahoaka',
-      arrivee: 'Stade Mahamasina',
-      distance: '10 km'
-    },
-    {
-      immatriculation: '6852TBN',
-      date: '22/08/23',
-      categorie: 'Bus',
-      nombreDePlace: 7,
-      typeCarburant: 'Diesel',
-      consommationTheorique: '9.8 l/100km',
-      depart: 'Ambohipo',
-      arrivee: 'Complexe de la CNaPS',
-      distance: '15 km'
-    },
-    {
-      immatriculation: '9898TBR',
-      date: '23/08/23',
-      categorie: 'Mini-bus',
-      nombreDePlace: 4,
-      typeCarburant: 'Hybride',
-      consommationTheorique: '5.2 l/100km',
-      depart: 'Soarano',
-      arrivee: 'Terrain de rugby d\'Ankorondrano',
-      distance: '7 km'
-    },
-    {
-      immatriculation: '5768TBP',
-      date: '24/08/23',
-      categorie: 'Mini-bus',
-      nombreDePlace: 4,
-      typeCarburant: 'Essence',
-      consommationTheorique: '6.3 l/100km',
-      depart: 'Ankadifotsy',
-      arrivee: 'Patinoire d\'Andohalo',
-      distance: '12 km'
-    },
-    {
-      immatriculation: '0024TBN',
-      date: '25/08/23',
-      categorie: '4 x 4 VVIP',
-      nombreDePlace: 2,
-      typeCarburant: 'Diesel',
-      consommationTheorique: '7.8 l/100km',
-      depart: 'Ivandry',
-      arrivee: 'Centre de Tir Tsaralalàna',
-      distance: '8 km'
-    }
-  ];
+
+  useEffect(()=>{
+    ////console.log(urlHtpp.url+"hebergement-liste/etat/"+date.date.date)
+    ///detail{date_create: 1692741600000, capacite_total: 12, lits_occupe: 2, lits_restant: 10, taux_occupation: 16.666666666666664
+    fetch(urlHtpp.urlHtpp+"trajet-vehicule/2023-08-23",{
+      method :"GET",
+      headers:{"Content-Type":"application/json"}
+    })
+    .then(response=>response.json())
+    .then(data=>{
+      console.log(data.data)
+    
+    })
+    .catch(error=>{console.log(error)})
+  },[])
+  // const carsData = [
+  //   {
+  //     immatriculation: '2525TBA',
+  //     date: '21/08/23',
+  //     categorie: '4 x 4',
+  //     nombreDePlace: 5,
+  //     typeCarburant: 'Essence',
+  //     consommationTheorique: '7.5 l/100km',
+  //     depart: 'Ankadimbahoaka',
+  //     arrivee: 'Stade Mahamasina',
+  //     distance: '10 km'
+  //   },
+  //   {
+  //     immatriculation: '6852TBN',
+  //     date: '22/08/23',
+  //     categorie: 'Bus',
+  //     nombreDePlace: 7,
+  //     typeCarburant: 'Diesel',
+  //     consommationTheorique: '9.8 l/100km',
+  //     depart: 'Ambohipo',
+  //     arrivee: 'Complexe de la CNaPS',
+  //     distance: '15 km'
+  //   },
+  //   {
+  //     immatriculation: '9898TBR',
+  //     date: '23/08/23',
+  //     categorie: 'Mini-bus',
+  //     nombreDePlace: 4,
+  //     typeCarburant: 'Hybride',
+  //     consommationTheorique: '5.2 l/100km',
+  //     depart: 'Soarano',
+  //     arrivee: 'Terrain de rugby d\'Ankorondrano',
+  //     distance: '7 km'
+  //   },
+  //   {
+  //     immatriculation: '5768TBP',
+  //     date: '24/08/23',
+  //     categorie: 'Mini-bus',
+  //     nombreDePlace: 4,
+  //     typeCarburant: 'Essence',
+  //     consommationTheorique: '6.3 l/100km',
+  //     depart: 'Ankadifotsy',
+  //     arrivee: 'Patinoire d\'Andohalo',
+  //     distance: '12 km'
+  //   },
+  //   {
+  //     immatriculation: '0024TBN',
+  //     date: '25/08/23',
+  //     categorie: '4 x 4 VVIP',
+  //     nombreDePlace: 2,
+  //     typeCarburant: 'Diesel',
+  //     consommationTheorique: '7.8 l/100km',
+  //     depart: 'Ivandry',
+  //     arrivee: 'Centre de Tir Tsaralalàna',
+  //     distance: '8 km'
+  //   }
+  // ];
   const tableHeaders = [
     "Immatriculation",
     "Date",
@@ -92,7 +107,7 @@ const TransportDispo = () => {
     whiteSpace: 'nowrap',
   };
 
-  const categorie = useRef();
+  // const categorie = useRef();
   const boldStyle = {
     fontWeight: 'bold', // Ajout du style en gras
   };
@@ -101,19 +116,19 @@ const TransportDispo = () => {
   };
 
   const AddTransport = () => {
-    transport.annee = anne.current.value;
-    transport.kilometrage = kilometrage.current.value;
-    transport.immatriculation = immatriculation.current.value;
-    transport.modele = modele.current.value;
+    // transport.annee = anne.current.value;
+    // transport.kilometrage = kilometrage.current.value;
+    // transport.immatriculation = immatriculation.current.value;
+    // transport.modele = modele.current.value;
    
-    transport.delegation = delegationV;
-    fetch(urlHtpp.urlHtpp + "vehicules", {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(transport)
-    }).then(response => response.json())
-      .then(data => { console.log(data) })
-      .catch(error => { console.log(error) })
+    // transport.delegation = delegationV;
+    // fetch(urlHtpp.urlHtpp + "vehicules", {
+    //   method: 'POST',
+    //   headers: { 'Content-Type': 'application/json' },
+    //   body: JSON.stringify(transport)
+    // }).then(response => response.json())
+    //   .then(data => { console.log(data) })
+    //   .catch(error => { console.log(error) })
   }
 
   const totalVehicles = 100;
@@ -122,7 +137,7 @@ const TransportDispo = () => {
 
   return (
     <div className="car-list">
-      <h1  style={{
+      {/* <h1  style={{
           fontSize: '2.5rem',
           fontWeight: '700',
           boxShadow: '0px 5px 10px 4px #9f9f9f',
@@ -164,8 +179,8 @@ const TransportDispo = () => {
             ))}
           </tbody>
         </table>
-        <div>
-          <AjoutHebergement Action={"Ajout Trajet"} Titre={"Ajout Trajet"}>
+        <div> */}
+          {/* <AjoutHebergement Action={"Ajout Trajet"} Titre={"Ajout Trajet"}>
               <p>Catégorie</p>
               <p>
                 <select name="" id="" ref={categorie}>
@@ -194,8 +209,8 @@ const TransportDispo = () => {
               </p>
               <p><button className='btn btn-success' onClick={AddTransport}> Ajouter</button></p>
           </AjoutHebergement>
-        </div>
-      </div>
+        </div> */}
+      {/* </div>
 
       <div className="vehicle-info">
         <h2  style={{
@@ -224,7 +239,7 @@ const TransportDispo = () => {
             </tr>
           </tbody>
         </table>
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import RecapEtatOccupation from './RecapEtatOccupation';
 import EtatOccupation from './EtatOccupation';
-import configUrl from '../../../../ConfigUrl/config_Url';
 
 const EtatOccupationEnsemble = () => {
   const data ={
