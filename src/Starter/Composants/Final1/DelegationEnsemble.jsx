@@ -86,16 +86,16 @@ const DelegationEnsemble = () => {
   
   
 
-  useEffect(()=>{
-    console.log("ENTRER")
-    fetch(url.urlHtpp+"repartition-delegation/total",{
-      method:'GET',
-      headers:{'Content-Type':'application/json'},
-    })
-    .then(response => response.json())
-    .then(data=>{console.log(data.data),setRepartitionTotal(data.data)})
-    .catch(error=>{console.log(error)})
-  },[getPLAN])
+  // useEffect(()=>{
+  //   console.log("ENTRER")
+  //   fetch(url.urlHtpp+"repartition-delegation/total",{
+  //     method:'GET',
+  //     headers:{'Content-Type':'application/json'},
+  //   })
+  //   .then(response => response.json())
+  //   .then(data=>{console.log(data.data),setRepartitionTotal(data.data)})
+  //   .catch(error=>{console.log(error)})
+  // },[getPLAN])
 
 
   // const AddDelegation =()=>{

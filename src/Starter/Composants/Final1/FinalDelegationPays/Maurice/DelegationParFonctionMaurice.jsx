@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import url from '../../../../urlHtpp';
 
 const DelegationParFonctionMaurice = () => {
   const columns = [
@@ -72,6 +73,20 @@ const DelegationParFonctionMaurice = () => {
     cursor: 'pointer',
     transition: 'background-color 0.3s ease',
   };
+  const [dataMADA,setDataMADA] = useState([]) 
+
+  const getListe = () => {
+    setExpanded(!expanded)
+    console.log("ENTRER")
+    fetch(url.urlHtpp + "repartition-discipline-delegation/repartition/Maurice", {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
+    })
+      .then(response => response.json())
+      .then(data => { console.log(data.data), setDataMADA(data.data) })
+      .catch(error => { console.log(error) })
+  }
+
   return (
     <div style={{ marginTop: '20px' }}>
     <table style={tableStyle}>
@@ -80,7 +95,7 @@ const DelegationParFonctionMaurice = () => {
           <td colSpan={columns.length} onClick={() => setExpanded(!expanded)}>
           <button
         style={buttonStyle}
-        onClick={() => setExpanded(!expanded)}
+        onClick={getListe}
       >
         {expanded ? '-' : '+'} {expanded ? 'Réduire' : 'Afficher plus'}
       </button>          </td>
@@ -94,7 +109,7 @@ const DelegationParFonctionMaurice = () => {
         </tr>
       </thead>
       <tbody>
-        {rowsToShow.map((row, rowIndex) => (
+        {/* {rowsToShow.map((row, rowIndex) => (
           <tr key={rowIndex} style={rowIndex === 0 ? firstRowStyle : {}}>
             {row.map((cell, cellIndex) => (
               <td key={cellIndex} style={cellIndex === 0 ? (rowIndex === 0 ? { ...tdStyle, textAlign: 'right' } : { ...tdStyle, textAlign: 'center' }) : { ...tdStyle, textAlign: 'center' }}>
@@ -106,7 +121,14 @@ const DelegationParFonctionMaurice = () => {
               </td>
             ))}
           </tr>
-        ))}
+        ))} */}
+        
+        {dataMADA.map((row, rowIndex) => (
+            <tr key={rowIndex}>
+              <td>{row.fonction}</td>
+              <td>{row.nbr_personne}</td>
+            </tr>
+          ))}
       </tbody>
     </table>
   </div>
