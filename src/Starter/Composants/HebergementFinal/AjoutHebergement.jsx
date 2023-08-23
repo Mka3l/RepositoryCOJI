@@ -16,6 +16,7 @@ const AjoutHebergement=({Action,Titre,children})=>{
     marginTop:'20px',
     background:"#973116",
     border:"none",
+    float: "right"
   }
   const insertHebergeStyle = {
     width:"700px",

@@ -135,9 +135,7 @@ const DelegationEnsemble = () => {
 
         <DelegationAfficherDetails/>
 
-        
-
-        <AjoutHebergement Action={"Ajout Delegation"} Titre={"Ajout Hebergement"}>
+        <AjoutHebergement  Action={"Ajout Delegation"} Titre={"Ajout Hebergement"}>
           <p>Votre Contact ID</p>
           <p> <input type='text' ref={contact_id} className='form-control' required /></p>
           <p>Nom complet</p>

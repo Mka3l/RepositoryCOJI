@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import ApexCharts from 'apexcharts';
-import { Button, Modal } from 'react-bootstrap';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const DashHeberge = (date) => {
