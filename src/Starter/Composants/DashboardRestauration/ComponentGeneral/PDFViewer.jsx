@@ -2,15 +2,24 @@ import React from 'react';
 import { Document, Page, pdfjs } from 'react-pdf';
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
-
+const butPdf = {
+  padding: '5px',
+  textDecoration: 'none',
+  background: '#6bffff',
+  borderRadius: '5px',
+  marginBottom: '100px',
+  fontWeight:'600',
+  textAlign: 'center',
+  fontSize: '11pt',
+  color: 'darkslateblue',
+}
 const PDFViewer = ({ pdfUrl }) => {
   return (
     <div>
-      <h4>PDF généré à partir du contenu :</h4>
       <Document file={pdfUrl}>
         <Page pageNumber={1} />
       </Document>
-      <a href={pdfUrl} download="generated.pdf">Télécharger le PDF</a>
+        <a style={butPdf} href={pdfUrl} download="Visualisation_restauration.pdf">Télécharger le PDF</a>
     </div>
   );
 };

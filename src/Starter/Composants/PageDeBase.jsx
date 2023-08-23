@@ -27,21 +27,18 @@ import ComoresFlag from '../../assets/Images/flag/Comores.png'
 import MaldivesFlag from '../../assets/Images/flag/Maldives.webp'
 import MauriceFlag from '../../assets/Images/flag/Maurice.png'
 import SeychellesFlag from '../../assets/Images/flag/Seychelles.png'
-
+import EtatPaiementEnsemble from './Facturation/EtatDePaiement/EtatDePaimentDivisé/EtatPaiementEnsemble';
 import MayotteFlag from '../../assets/Images/flag/Mayotte.png'
 import TransportAcceuil from './Transport/TransportAccueil';
 import TransportMap from './Transport/Transport';
 import ConvertToJson from './ExcelTreatment/ConvertToJson';
-import EtatPaiementEnsemble from './Facturation/EtatDePaiement/EtatDePaimentDivisé/EtatPaiementEnsemble';
 import DelegationEnsemble from './Final1/DelegationEnsemble';
 import TransportCard from './Transport/TransportAccueil';
 import TransportClic from './Transport/TransportClic';
-import PlanDejeuner from './DashboardRestauration/PlanDejeuner';
-import PlanDiner from './DashboardRestauration/PlanDiner';
-import SituationPremierAcompte from './Facturation/EtatDePaiement/EtatDePaimentDivisé/SituationPremierAcompte';
-import SituationDeuxiemeAcompte from './Facturation/EtatDePaiement/EtatDePaimentDivisé/SituationDeuxiemeAcompte';
-import SituationFinanciereDePaiment from './Facturation/EtatDePaiement/EtatDePaimentDivisé/SituationFInanciereDePaiement';
-import EtatPaiementGeneral from './Facturation/EtatDePaiement/EtatDePaimentDivisé/EtatPaiementGeneral';
+import PlanDejeuner from './DashboardRestauration/PlanDejeuner/PlanDejeuner';
+import VisualisationRestauration from './DashboardRestauration/Visualisation/VisualisationRestauration';
+import PlanDiner from './DashboardRestauration/PlanDiner/PlanDiner';
+import DelegationAfficherPerson from '../Composants/Final1/DelegationAfficherPerson'
 
 const getFlagForCountry = (country) => {
   const countryFlags = {
@@ -200,13 +197,13 @@ const PageDeBase = () => {
               <img
                 src={Logo} // Replace with the path to your logo image
                 alt="Logo"
-                style={{ width: '300px', height: '150px', marginRight: '0px' }}
+                style={{ width: '160px', height: '110px', marginRight: '0px' }}
               />
               {/* Bannière */}
               <img
                 src={Baniere}
                 alt="Bannière des îles de l'océan Indien"
-                style={{ width: '1600px', height: '90px', marginRight: '5px'}}
+                style={{ width: '125%', height: '90px' }}
               />
             </div>
           </div>
@@ -218,7 +215,6 @@ const PageDeBase = () => {
             fontWeight: 'bold',
             color: '#973116',
             textShadow: '2px 2px 4px rgba(0, 0, 0, 0.3)',
-            marginTop: '0px',
           }}><p>TABLEAU DE BORD</p> <p>SUIVI DES JEUX DES ILES DE L'OCEAN INDIEN</p></h1>
           <h3 className='text-center' style={{
             color: '#973116',
@@ -237,7 +233,7 @@ const PageDeBase = () => {
           </div>
 
           <div className="col-md-10" style={{ background: 'rgba(245, 245, 245, 0.0)', display: 'flex', flexDirection: 'column', boxShadow: '0px 5px 20px -5px', height: 'auto', paddingBottom: '50px' }}>
-            <nav className="navbar navbar-expand-lg navbar-light bg-light sticky-top" style={NavStyle}>
+            <nav className="navbar navbar-expand-lg navbar-light bg-light sticky-top pt-5" style={NavStyle}>
               <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                 <div style={{ display: 'flex', alignItems: 'center' }}>
                   {/* Contenu du Navbar (peut-être un titre ou des liens) */}
@@ -294,7 +290,7 @@ const PageDeBase = () => {
                 {/* Élément de la date aligné à droite */}
                 <span style={{ ...styles.dateText, }}>
                   <p>Situation en date du </p>
-                  <input style={{ background: 'none', border: 'none', color: 'brown', fontSize: '20pt', fontWeight: 'bold',}} type="date" value={dateChoix} ref={dateFiltre} onChange={ChangeDataByDate} />
+                  <input style={{ background: 'none', border: 'none', color: 'brown', fontSize: '20pt', fontWeight: 'bold'}} type="date" value={dateChoix} ref={dateFiltre} onChange={ChangeDataByDate} />
                 </span>
               </div>
             </nav>
@@ -304,9 +300,9 @@ const PageDeBase = () => {
             {currentPage === 'Chiffres du jour' && <Accueille date={dateChoix} />}
             {currentPage === 'Délégation' && <DelegationEnsemble />}
 
-            {currentPage === 'Hébergement' && < CardHebergement />}
+            {currentPage === 'Hébergement' && < CardHebergement date={dateChoix} />}
             {currentPage === 'Transport' && <TransportClic />}
-            {currentPage === 'Restauration' && <RestaurationCard />}
+            {currentPage === 'Restauration' && <RestaurationCard date ={dateChoix} />}
             {currentPage === 'Facturation' && <FactureAccueil />}
             {currentPage === 'Autres' && <Accueille date={dateChoix} />}
 
@@ -327,8 +323,9 @@ const PageDeBase = () => {
             {currentPage === 'Répartition des délégations par site d\'hébergement' && <RepartitionHebergementEnsemble />}
 
             {/* Restauration*/}
-            {currentPage === 'Planification Restauration Déjeuner' && <PlanDejeuner />}
-            {currentPage === 'Planification Restauration Dîner' && <PlanDiner />}
+            {currentPage === 'Planning Déjeuner' && <PlanDejeuner />}
+            {currentPage === 'Planning Dîner' && <PlanDiner />}
+            {currentPage == 'Visualisation de la Restauration' && <VisualisationRestauration />}
 
 
             {/* Transport */}
@@ -336,21 +333,12 @@ const PageDeBase = () => {
             {currentPage === 'Suivi de l\'itinéraire réel des véhicules' && <TransportMap />}
 
             {/* Facture */}
-            {currentPage === 'Etat de paiement' && <EtatPaiementGeneral />}
-            {currentPage === '1er acompte' && <SituationPremierAcompte />}
-            {currentPage === '2ème acompte' && <SituationDeuxiemeAcompte/>}
-            {currentPage === 'Situation Financière' && <SituationFinanciereDePaiment />}
-
-
-
-
-
-
-
+            {currentPage === 'Etat de paiement' && <EtatPaiementEnsemble />}
             {currentPage === 'Factures totalement payées' && <FacturesPayeesEnsemble />}
             {currentPage === 'Factures partiellement payées' && <FacturesPayeesPartiellementEnsemble />}
             {currentPage === 'Factures impayées' && <FacturesImpayeesEnsemble />}
             {currentPage === 'Reçu' && <VisuelFacture />}
+            {currentPage=== 'Liste des Athlètes par Discipline' && <DelegationAfficherPerson/>}
           </div>
         </div>
       </div>
