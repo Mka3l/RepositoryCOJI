@@ -1,6 +1,7 @@
 import React from 'react';
 import RecapEtatOccupation from './RecapEtatOccupation';
-import EtatOccupation from './EtatOccupation';
+import EtatOccupation from './EtatOccupation/EtatOccupation';
+
 
 const EtatOccupationEnsemble = () => {
   return (

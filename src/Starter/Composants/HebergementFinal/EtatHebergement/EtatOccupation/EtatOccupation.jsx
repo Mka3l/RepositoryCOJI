@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 import '../../HebergementStyles/HebergementFormulaire.css'
 import '../../HebergementStyles/TableauStyles.css'
-import configUrl from '../../../../ConfigUrl/config_Url';
+import url from '../../../../urlHtpp';
+// import configUrl from '../../../../ConfigUrl/config_Url';  
 
 
 const EtatOccupation = () => {
@@ -15,16 +16,7 @@ const EtatOccupation = () => {
   });
   const [showForm, setShowForm] = useState(false);
 
-  // useEffect(() => {
-  //   axios.get('http://localhost:8080/hebergement-data')
-  //     .then(response => {
-  //       console.log('API response:', response.data); 
-  //       setData(response.data);
-  //     })
-  //     .catch(error => {
-  //       console.error('Erreur lors de la récupération des données :', error);
-  //     });
-  // }, []);
+  
 
  
   const [expanded, setExpanded] = useState(false);
@@ -56,7 +48,13 @@ const EtatOccupation = () => {
 
   const getEtatOccupation =()=>{
     setExpanded(!expanded)
-    fetch(configUrl.url+"")
+    fetch(url.urlHtpp+"hebergement-liste/etat/2023-08-22",{
+      method:"GET",
+      headers:{"Content-Type":"application/json"}
+    })
+    .then(response=>response.json())
+    .then(data => {console.log(data),setData(data.data.listebas)})
+    .catch(error=>{console.log(error)})
   }
 
   return (
@@ -128,11 +126,11 @@ const EtatOccupation = () => {
           <tbody>
             {data.map((row, rowIndex) => (
               <tr key={rowIndex}>
-                <td className='tdStyle'>{row.site_hebergement}</td>
-                <td className='tdStyle'>{row.capacite_totale}</td>
-                <td className='tdStyle'>{row.Lits_occupe}</td>
-                <td className='tdStyle'>{row.Lits_restant}</td>
-                <td className='tdStyle'>{calculateTauxOccupation(row).toFixed(0)}%</td>
+                <td className='tdStyle'>{row.nom_hebergement}</td>
+                <td className='tdStyle'>{row.capacite_total}</td>
+                <td className='tdStyle'>{row.lits_occupe}</td>
+                <td className='tdStyle'>{row.lits_restant}</td>
+                <td className='tdStyle'>{row.taux_occupation}%</td>
               </tr>
             ))}
           </tbody>

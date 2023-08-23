@@ -300,7 +300,7 @@ const PageDeBase = () => {
             {currentPage === 'Chiffres du jour' && <Accueille date={dateChoix} />}
             {currentPage === 'Délégation' && <DelegationEnsemble />}
 
-            {currentPage === 'Hébergement' && < CardHebergement />}
+            {currentPage === 'Hébergement' && < CardHebergement date={dateChoix} />}
             {currentPage === 'Transport' && <TransportClic />}
             {currentPage === 'Restauration' && <RestaurationCard date ={dateChoix} />}
             {currentPage === 'Facturation' && <FactureAccueil />}
