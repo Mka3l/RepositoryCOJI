@@ -123,6 +123,9 @@ const TransportDispo = () => {
   const [vehicules, setVehicules] = useState([]);
   const [trajet_vehicule,setTrajetVehicule] = useState([])
   const [useListe,setUseListe] = useState(true)
+  const [total,setTotal] = useState();
+  const [occupe,setOccupe] = useState();
+  const [dispo,setDispo] =useState();
 
   useEffect(() => {
     fetch(url.urlHtpp+"vehicule-gestion",{
@@ -140,6 +143,18 @@ const TransportDispo = () => {
       .then(response => response.json())
       .then(data => { console.log(data),setVehicules(data) })
       .catch(error => console.log(error))
+
+      fetch(url.urlHtpp + 'card-vehicule', {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+      }).then(response => response.json())
+        .then(data => { 
+          setCard(data.data) ,
+          setTotal(data.data[0].total),
+          setOccupe(data.data[1].total),
+          setDispo(data.data[2].total)
+        })
+        .catch(error => { console.log(error) });
      
      
   }, [useListe])
@@ -282,15 +297,15 @@ const TransportDispo = () => {
           <tbody>
             <tr>
               <td style={{ ...tdStyle, ...boldStyle }}>Total de véhicules</td>
-              <td style={{ ...tdStyle, ...boldStyle }}>{totalVehicles}</td>
+              <td style={{ ...tdStyle, ...boldStyle }}>{total??0}</td>
             </tr>
             <tr>
               <td style={tdStyle}>Véhicules disponibles</td>
-              <td style={tdStyle}>{availableVehicles}</td>
+              <td style={tdStyle}>{dispo??0}</td>
             </tr>
             <tr>
               <td style={tdStyle}>Véhicules occupés</td>
-              <td style={tdStyle}>{occupiedVehicles}</td>
+              <td style={tdStyle}>{occupe??0}</td>
             </tr>
           </tbody>
         </table>

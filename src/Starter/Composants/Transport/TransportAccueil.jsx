@@ -1,19 +1,29 @@
 import React, { useEffect, useRef, useState } from 'react';
 import AjoutHebergement from '../HebergementFinal/AjoutHebergement';
 import urlHtpp from '../../urlHtpp';
+import url from '../../urlHtpp';
 
 const TransportCard = ({ onPageChange }) => {
 
   //var urlHtpp = "http://127.0.0.1:9090/";
 
-  const [delegations, setDelegations] = useState([]);
+  const [card, setCard] = useState([]);
+  const [total,setTotal] = useState();
+  const [occupe,setOccupe] = useState();
+  const [dispo,setDispo] =useState();
 
   useEffect(() => {
-    fetch(urlHtpp.urlHtpp + 'delegations', {
+    fetch(url.urlHtpp + 'card-vehicule', {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
     }).then(response => response.json())
-      .then(data => { setDelegations(data) })
+      .then(data => { 
+        console.log(data.data),
+        setCard(data.data) ,
+        setTotal(data.data[0].total),
+        setOccupe(data.data[1].total),
+        setDispo(data.data[2].total)
+      })
       .catch(error => { console.log(error) });
   }, []);
 
@@ -109,7 +119,7 @@ const TransportCard = ({ onPageChange }) => {
             </h5>
               <div style={cardTextContentStyle}>
                 <span className="text-success pt-1 fw-bold" style={cardTextValueStyle}>
-                  100
+                 {total}
                 </span>
                 <span className="card-text" style={{ fontSize: '20px', color: '#555', textAlign: 'center' }}>
                   Nombre total véhicules
@@ -126,7 +136,7 @@ const TransportCard = ({ onPageChange }) => {
             </h5>
               <div style={cardTextContentStyle}>
                 <span className="text-success pt-1 fw-bold" style={cardTextValueStyle}>
-                  43
+                  {occupe}
                 </span>
                 <span className="card-text" style={{ fontSize: '20px', color: '#555', textAlign: 'center' }}>
                   Nombre total véhicules
@@ -142,7 +152,7 @@ const TransportCard = ({ onPageChange }) => {
             </h5> 
               <div style={cardTextContentStyle}>
                 <span className="text-success pt-1 fw-bold" style={cardTextValueStyle}>
-                  57
+                 {dispo}
                 </span>
                 <span className="card-text" style={{ fontSize: '20px', color: '#555', textAlign: 'center' }}>
                   Nombre total véhicules
