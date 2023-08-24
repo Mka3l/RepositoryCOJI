@@ -1,0 +1,59 @@
+/* styles.css */
+.firstRow {
+    font-weight: bold;
+  }
+  
+  .buttonStyle {
+    background-color: #973116;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 0px;
+  }
+  
+  .expandedButtonStyle {
+    background-color: #7d240c;
+  }
+  
+  .tableStyle {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .thStyle {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+    background-color: #f5f5f5;
+  }
+  
+  .tdStyle {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+  }
+  /* EtatOccupationStyles.css */
+
+  
+  .buttonStyle2 {
+    background-color: #973116;
+    color: white;
+    border: none;
+    float: right;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .buttonStyle2.expanded {
+    background-color: #7d240c;
+  }
+  
+  
+ 
+  
