@@ -211,7 +211,7 @@ const Card = (date) => {
                           <i className="bi bi-cart"></i>
                         </div>
                         <div className="vide">
-                          <h6 style={fontSizeH6}>Véhicules disponibles <br /> <span className="small pt-1 fw-bold" style={fontSizeTEXT}>{"12/100"}</span>  </h6>
+                          <h6 style={fontSizeH6}>Véhicules disponibles <br /> <span className="small pt-1 fw-bold" style={fontSizeTEXT}>{"89/90"}</span>  </h6>
                           <div className="icon">
                             <i className="ri-bar-chart-2-fill"></i>
                           </div>

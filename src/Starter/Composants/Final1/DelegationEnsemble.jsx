@@ -128,7 +128,7 @@ const DelegationEnsemble = () => {
           padding: '30px',
           background:' #973116',
           textAlign: 'center',
-        }}>Répartition du nombre de personnes par Délégation (nombre total {repartitionTotal})</h2>
+        }}>Répartition du nombre de personnes par Délégation</h2>
       <div style={{ marginBottom: '50px' }}>
 
         <DelegationClic/> 
