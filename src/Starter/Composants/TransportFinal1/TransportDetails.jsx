@@ -1,5 +1,6 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import AjoutHebergement from '../HebergementFinal/AjoutHebergement';
+import url from '../../urlHtpp';
 
 const TransportDispo = () => {
   const carsData = [
@@ -76,7 +77,7 @@ const TransportDispo = () => {
     borderCollapse: 'collapse',
     borderRadius: '5px',
     boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
-    
+
   };
   const thStyle = {
     padding: '10px',
@@ -100,38 +101,89 @@ const TransportDispo = () => {
     width: '30%', // Ajout du style en gras
   };
 
-  const AddTransport = () => {
-    transport.annee = anne.current.value;
-    transport.kilometrage = kilometrage.current.value;
-    transport.immatriculation = immatriculation.current.value;
-    transport.modele = modele.current.value;
-   
-    transport.delegation = delegationV;
-    fetch(urlHtpp.urlHtpp + "vehicules", {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(transport)
-    }).then(response => response.json())
-      .then(data => { console.log(data) })
-      .catch(error => { console.log(error) })
-  }
+  // const immatriculation = useRef();
+  // const kilometrage = useRef();
+
+  // const AddTransport = () => {
+  //   transport.annee = anne.current.value;
+  //   transport.kilometrage = kilometrage.current.value;
+  //   transport.immatriculation = immatriculation.current.value;
+  //   transport.modele = modele.current.value;
+
+  //   transport.delegation = delegationV;
+  //   fetch(urlHtpp.urlHtpp + "vehicules", {
+  //     method: 'POST',
+  //     headers: { 'Content-Type': 'application/json' },
+  //     body: JSON.stringify(transport)
+  //   }).then(response => response.json())
+  //     .then(data => { console.log(data) })
+  //     .catch(error => { console.log(error) })
+  // }
+
+  const [vehicules, setVehicules] = useState([]);
+  const [trajet_vehicule,setTrajetVehicule] = useState([])
+  const [useListe,setUseListe] = useState(true)
+
+  useEffect(() => {
+    fetch(url.urlHtpp+"vehicule-gestion",{
+      method:"GET",
+      headers : {"Content-Type":"application/json"}
+     })
+     .then(response=>response.json())
+     .then(data=>{console.log(data),setTrajetVehicule(data.data)})
+     .catch(error=>console.log(error))
+
+    fetch(url.urlHtpp + "liste-vehicule", {
+      method: "GET",
+      headers: { 'Content-Type': 'application/json' }
+    })
+      .then(response => response.json())
+      .then(data => { console.log(data),setVehicules(data) })
+      .catch(error => console.log(error))
+     
+     
+  }, [useListe])
 
   const totalVehicles = 100;
   const availableVehicles = 57;
   const occupiedVehicles = totalVehicles - availableVehicles;
+  const datyH = useRef();
+  const intitule = useRef();
+  const lieu_depart = useRef();
+  const lieu_arrive = useRef();
+  const vehicule_id = useRef();
+  const AddTransport = ()=>{
+      const trajet ={
+          "vehicule_id" : vehicule_id.current.value,
+          "intitule_trajet":intitule.current.value,
+          "lieu_depart":lieu_depart.current.value,
+          "lieu_arrive":lieu_arrive.current.value,
+          "date_trajet":datyH.current.value
+      }
+      fetch(url.urlHtpp+"vehicule-gestion",{
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body : JSON.stringify(trajet)
+      })
+      .then(response=>response.json())
+      .then(data=>{console.log(data),alert("Trajet Ajouter Par success"),setUseListe(false)})
+      .catch(error=>{console.log(error)})
+  }
+
+
 
   return (
     <div className="car-list">
-      <h1  style={{
-          fontSize: '2.5rem',
-          fontWeight: '700',
-          boxShadow: '0px 5px 10px 4px #9f9f9f',
-          color: 'rgb(255 255 255)',
-          textShadow: 'rgb(0 0 0 / 30%) 2px 2px 4px',
-          padding: '15px',
-          background:' #973116',
-          textAlign: 'center',
-        }} className="mb-5 text-center">Trajet véhicules
+      <h1 style={{
+        fontSize: '2.5rem',
+        fontWeight: '700',
+        boxShadow: '0px 5px 10px 4px #9f9f9f',
+        color: 'rgb(255 255 255)',
+        textShadow: 'rgb(0 0 0 / 30%) 2px 2px 4px',
+        padding: '15px',
+        background: ' #973116',
+        textAlign: 'center',
+      }} className="mb-5 text-center">Trajet véhicules
       </h1>
       <div>
         <table style={tableStyle}>
@@ -149,35 +201,53 @@ const TransportDispo = () => {
             </tr>
           </thead>
           <tbody>
-            {carsData.map((car, index) => (
+            {trajet_vehicule.map((car, index) => (
               <tr key={index}>
-                <td style={tdStyle}>{car.date}</td>
+                <td style={tdStyle}>{new Date(car.date_trajet).toLocaleDateString()}</td>
                 <td style={tdStyle}>{car.immatriculation}</td>
                 <td style={tdStyle}>{car.categorie}</td>
-                <td style={tdStyle}>{car.nombreDePlace}</td>
-                <td style={tdStyle}>{car.typeCarburant}</td>
-                <td style={tdStyle}>{car.consommationTheorique}</td>
-                <td style={tdStyle}>{car.depart}</td>
-                <td style={tdStyle}>{car.arrivee}</td>
-                <td style={tdStyle}>{car.distance}</td>
+                <td style={tdStyle}>{car.nbr_place}</td>
+                <td style={tdStyle}>{car.energie}</td>
+                <td style={tdStyle}>{car.lieu_depart}</td>
+                <td style={tdStyle}>{car.lieu_arrive}</td>
+                <td style={tdStyle}>{car.intitule}</td>
+                <td>
+                  <AjoutHebergement Action={"Update"} Titre={"Update Trajet"}>
+                    <p>Date</p>
+                      <p><input type='datetime-local' value={new Date(car.date_trajet).toLocaleDateString()}/></p>
+                      <p>Lieu Date</p>
+                      <p><input  type='text' value={car.lieu_depart}/></p>
+                      <p>Lieu Arrive</p>
+                      <p><input type='text' value={car.lieu_arrive}/></p>
+                  </AjoutHebergement>
+                </td>
               </tr>
             ))}
           </tbody>
         </table>
         <div>
           <AjoutHebergement Action={"Ajout Trajet"} Titre={"Ajout Trajet"}>
-              <p>Catégorie</p>
-              <p>
-                <select name="" id="" ref={categorie}>
-                  <option value="2">bus</option>
-                  <option value="1">4 x 4</option>
-                  <option value="1">4 x 4 VVIP</option>
-                  <option value="2">Mini-bus</option>
-                  <option value="2">Fourgon</option>
-                  <option value="2">Voiture Legère</option>
-                </select>
-              </p>
-              <p>Immatriculation</p>
+            <p>Date</p>
+            <p><input type='datetime-local' ref={datyH}/></p>
+            <p>Catégorie</p>
+            <p>
+              <select name="" id="" ref={vehicule_id}>
+                {vehicules.map((val, indexval) =>
+                  <>
+                    <option key={indexval} value={val.id}>{val.cat_VEHICULE}-{val.immatriculation}-{val.nbr_place} PLaces-{val.energie}</option>
+                  </>
+                )}
+
+              </select>
+            </p>
+            <p>Initule Trajet</p>
+            <p> <input type='text'ref={intitule}/></p>
+            <p>Lieu Depart</p>
+            <p><input type='text' ref={lieu_depart}/></p>
+            <p>Lieu Arrive</p>
+            <p><input type='text' ref={lieu_arrive}/></p>
+
+            {/* <p>Immatriculation</p>
               <input type='text' className='form-control' ref={immatriculation} />
               <p>Nombre de place</p>
               <input type='number' className='form-control' min={0} ref={kilometrage} />
@@ -190,25 +260,25 @@ const TransportDispo = () => {
               </p>
               <p>Consommation théorique</p>
               <p>
-                <input type="number" name="" ref={consommationTheorique} className='form-control' id="" min="0" />
-              </p>
-              <p><button className='btn btn-success' onClick={AddTransport}> Ajouter</button></p>
+                <input type="number" name="" ref={consommationTheorique} className='form-control' id="" min="0" /> */}
+            {/* </p> */}
+            <p><button className='btn btn-success' onClick={AddTransport}> Ajouter</button></p>
           </AjoutHebergement>
         </div>
       </div>
 
       <div className="vehicle-info">
-        <h2  style={{
+        <h2 style={{
           fontSize: '2.5rem',
           fontWeight: '700',
           boxShadow: '0px 5px 10px 4px #9f9f9f',
           color: 'rgb(255 255 255)',
           textShadow: 'rgb(0 0 0 / 30%) 2px 2px 4px',
           padding: '15px',
-          background:' #973116',
+          background: ' #973116',
           textAlign: 'center',
-        }}className="mb-5 mt-5 text-center">Informations sur les véhicules</h2>
-        <table style={{ ...tableStyle, ...taille}}>
+        }} className="mb-5 mt-5 text-center">Informations sur les véhicules</h2>
+        <table style={{ ...tableStyle, ...taille }}>
           <tbody>
             <tr>
               <td style={{ ...tdStyle, ...boldStyle }}>Total de véhicules</td>

@@ -123,6 +123,7 @@ const DelegationParFonctionComores = () => {
         ))} */}
         {dataMADA.map((row, rowIndex) => (
         <tr key={rowIndex}>
+          <th>{rows}</th>
           <td>{row.fonction}</td>
           <td>{row.nbr_personne}</td>
         </tr>

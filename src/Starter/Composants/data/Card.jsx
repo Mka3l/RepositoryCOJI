@@ -47,7 +47,7 @@ const Card = (date) => {
 
   const [delegationTotal,setDelegationTotal] = useState();
   const [hebergementTotal,setHebergementTotal] = useState();
-  const [plats_servi,setPlats_servi] = useState();
+  const [platServiParJour,setPlats_servi] = useState();
   const [detail_hebergement,setDetail_hebergement] = useState();
   const [nombre_site,setNombre_site] = useState();
 
@@ -62,7 +62,7 @@ const Card = (date) => {
       console.log(data.data);
       setDelegationTotal(data.data.delegationTotal.nombre_total),
       setHebergementTotal(data.data.hebergementTotal.nombre_total),
-      setPlats_servi(data.data.platsServi),
+      setPlats_servi(data.data.platServiParJour),
       setDetail_hebergement(data.data.hebergementDetail),
       setNombre_site(data.data.nombre_site.nombre_total)
     })
@@ -172,7 +172,7 @@ const Card = (date) => {
                         </div>
                         <div className="vide">
 
-                          <h6 style={fontSizeH6}>Nombre de plats servis par jour  <br /> <span className="small pt-1 fw-bold" style={fontSizeTEXT}>{numberWithThousandsSeparator(plats_servi ?? 0)}</span>  </h6>
+                          <h6 style={fontSizeH6}>Nombre de plats servis par jour  <br /> <span className="small pt-1 fw-bold" style={fontSizeTEXT}>{numberWithThousandsSeparator(delegationTotal*2 ?? 0)}</span>  </h6>
                           <div className="icon">
                             <i className="ri-bar-chart-2-fill"></i>
                           </div>
