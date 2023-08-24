@@ -1,0 +1,69 @@
+<table style={tableStyle}>
+        <tbody>
+          <tr>
+            <th style={thStyle}>Designation</th>
+            <th style={thStyle}>Unité</th>
+            <th style={thStyle}>Quantité</th>
+            <th style={thStyle}>Concerne<p>(Par Jour)</p></th>           
+            <th style={thStyle}>Prix Unitaire<p>(Ariary)</p></th>
+            <th style={thStyle}>Montant<p>(Ariary)</p></th>
+          </tr>
+          {items.map((item, index) => (
+          <tr key={index}>
+            <td style={tdStyle}>{item.designation}</td>
+            <td style={tdStyle}>{item.unite}</td>
+            <td style={tdStyle}>
+              <input 
+                style={{ width:'100px' }}
+                type="number"
+                name="quantite"
+                value={item.quantite}
+                onChange={(event) => handleInputChange(index, event)}
+              />
+            </td>
+            <td style={tdStyle}>
+              <input
+                style={{ width:'100px' }}
+                type="number"
+                name="concerne"
+                value={item.concerne}
+                onChange={(event) => handleInputChange(index, event)}
+              />
+            </td>
+            <td style={tdStyle}>
+              <input
+                style={{ width:'100px' }}
+                type="number"
+                name="prixUnitaire"
+                value={item.prixUnitaire}
+                onChange={(event) => handleInputChange(index, event)}
+              />
+            </td>
+            <td style={tdStyle}>
+              {numberWithThousandsSeparator(item.quantite * item.concerne * item.prixUnitaire)}
+            </td>
+          </tr>
+        ))}
+      
+          <tr>
+            <td colSpan="5" style={tdStyle}><strong style={strongStyle}>Montant Total</strong></td>
+            <td style={tdStyle}>
+              {/* Utilisation de la fonction calculateMontantTotal() pour obtenir le montant total */}
+              {numberWithThousandsSeparator(calculateMontantTotal())}
+            </td>
+          </tr>
+          <tr>
+            <td colSpan="5" style={tdStyle}><strong style={strongStyle}>A compte</strong></td>
+            <td style={tdStyle}>
+              {numberWithThousandsSeparator(reducevalue)}
+            </td>
+          </tr>
+          <tr>
+            <td colSpan="5" style={tdStyle}><strong style={strongStyle}>Reste a Payer</strong></td>
+            <td style={tdStyle}>
+              {/* Utilisation de la fonction calculateMontantTotal() pour obtenir le reste a payer */}
+              {numberWithThousandsSeparator(calculateReste())}
+            </td>
+          </tr>
+        </tbody>
+      </table>

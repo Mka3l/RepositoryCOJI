@@ -1,0 +1,1 @@
+export const API_URL = `https://api-jioi.digital.gov.mg/api/v1/`
