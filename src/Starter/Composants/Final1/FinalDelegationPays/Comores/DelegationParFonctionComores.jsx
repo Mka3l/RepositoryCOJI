@@ -108,22 +108,8 @@ const DelegationParFonctionComores = () => {
         </tr>
       </thead>
       <tbody>
-        {/* {rowsToShow.map((row, rowIndex) => (
-          <tr key={rowIndex} style={rowIndex === 0 ? firstRowStyle : {}}>
-            {row.map((cell, cellIndex) => (
-              <td key={cellIndex} style={cellIndex === 0 ? (rowIndex === 0 ? { ...tdStyle, textAlign: 'right' } : { ...tdStyle, textAlign: 'center' }) : { ...tdStyle, textAlign: 'center' }}>
-              {typeof cell === 'number'
-                  ? cell.toLocaleString()
-                  : rowIndex >= 1 && cellIndex === 0 // Vérification pour les lignes à partir de la troisième et première cellule (nom de fonction)
-                    ? <i>{cell}</i> // Appliquez le style italique
-                    : cell}
-              </td>
-            ))}
-          </tr>
-        ))} */}
         {dataMADA.map((row, rowIndex) => (
         <tr key={rowIndex}>
-          <th>{rows}</th>
           <td>{row.fonction}</td>
           <td>{row.nbr_personne}</td>
         </tr>
