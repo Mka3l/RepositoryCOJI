@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import url from '../../../../urlHtpp';
 
 const DelegationParFonctionReunion = () => {
@@ -76,10 +76,12 @@ const DelegationParFonctionReunion = () => {
   };
 
   const [dataMADA,setDataMADA] = useState([]) 
-
+  const [total, setTotal] = useState(0);
   const getListe =()=> {
     setExpanded(!expanded)
     console.log("ENTRER")
+    if(!expanded){
+        
     fetch(url.urlHtpp+"repartition-discipline-delegation/repartition/La Reunion",{
       method:'GET',
       headers:{'Content-Type':'application/json'},
@@ -87,7 +89,27 @@ const DelegationParFonctionReunion = () => {
     .then(response => response.json())
     .then(data=>{console.log(data.data),setDataMADA(data.data)})
     .catch(error=>{console.log(error)})
+    }else{
+      setDataMADA([])
+    }
   }
+  useEffect(()=>{
+    fetch(url.urlHtpp+"repartition-discipline-delegation/repartition/La Reunion",{
+      method:'GET',
+      headers:{'Content-Type':'application/json'},
+    })
+    .then(response => response.json())
+    .then(data=>{console.log(data.data)
+      var t = 0;
+      var to = 0;
+      for(t = 0 ; t < data.data.length ; t++){
+       to = to +   parseInt(data.data[t].nbr_personne);
+       }
+       setTotal(to)
+      })
+    .catch(error=>{console.log(error)})
+    
+  },[])
   return (
     <div style={{ marginTop: '20px' }}>
     <table style={tableStyle}>
@@ -129,6 +151,10 @@ const DelegationParFonctionReunion = () => {
           <td>{row.nbr_personne}</td>
         </tr>
       ))}
+      <tr>
+          <th>total</th>
+          <th>{total}</th>
+      </tr>
       </tbody>
     </table>
   </div>
