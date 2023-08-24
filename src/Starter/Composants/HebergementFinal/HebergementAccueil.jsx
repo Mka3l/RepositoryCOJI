@@ -8,10 +8,10 @@ const CardHebergement = () => {
   //var urlHtpp = "http://127.0.0.1:9090/";
 
   const data ={
-    "nombre_total":79,
-    "capacite_total_lit":12042,
-    "nombre_lit_occupe":4602,
-    "taux_occupation":38
+    "nombre_total":86,
+    "capacite_total_lit":0,
+    "nombre_lit_occupe":3068,
+    "taux_occupation":0
   }
 
   const [dashHeb,setDashHeb] = useState()

@@ -20,7 +20,9 @@ const Sidebar = ({ onPageChange }) => {
     'Délégation': ['Madagascar', 'Comores', 'Mayotte', 'Maurice', 'Seychelles', 'Maldives', 'La Réunion'],
     'Hébergement': ['Etat d\'occupation des sites', 'Répartition des délégations par site d\'hébergement'],
     'Transport': ['Disponibilité des véhicules', 'Suivi des itinéraires'],
-    'Restauration': ['Planning Déjeuner', 'Planning Dîner','Visualisation de la Restauration'],
+    'Restauration': ['Planning Déjeuner', 'Planning Dîner', 'Visualisation de la Restauration'],
+    'Contacts des points focaux': [],
+    'Plan de Vol': [],
     'Facturation': {
       'Etat de paiement': ['1er acompte', '2ème acompte', 'Situation Financière'], // Ajoutez les sous-sous-menus ici comme un tableau vide
       'Factures totalement payées': [],
@@ -28,7 +30,7 @@ const Sidebar = ({ onPageChange }) => {
       'Factures impayées': [], // Ajoutez les sous-sous-menus ici comme un tableau vide
       'Reçu': [], // Ajoutez les sous-sous-menus ici comme un tableau vide
     },
-    'Références médicale': [],
+    'Référence Médicale': [],
     'Autres': ['Liste des Athlètes par Discipline', 'Calendrier des Jeux'],
     'Utilisateurs': []
   };
@@ -37,8 +39,8 @@ const Sidebar = ({ onPageChange }) => {
     'flag': [MadagascarFlag, ComoresFlag, FranceFlag, MauriceFlag, SeychellesFlag, MaldivesFlag, FranceFlag]
   }
   const dataFlagStyle = {
-    width: '30px', 
-    height: '30px', 
+    width: '30px',
+    height: '30px',
   };
 
   const handleCategoryClick = (category) => {
@@ -47,7 +49,7 @@ const Sidebar = ({ onPageChange }) => {
     setSelectedSubsubcategory(null);
     onPageChange(getPageNameFromCategory(category));
   };
-  
+
   const handleSubcategoryClick = (subcategory) => {
     setSelectedSubcategory((prevSubcategory) =>
       prevSubcategory === subcategory ? null : subcategory
@@ -55,14 +57,14 @@ const Sidebar = ({ onPageChange }) => {
     setSelectedSubsubcategory(null);
     onPageChange(getPageNameFromCategory(selectedCategory, subcategory));
   };
-  
+
   const handleSubsubcategoryClick = (subsubsubcategory) => {
     setSelectedSubsubcategory(subsubsubcategory);
     onPageChange(getPageNameFromCategory(selectedCategory, selectedSubcategory, subsubsubcategory));
   };
-  
-  
-  
+
+
+
   const getPageNameFromCategory = (category, subcategory) => {
     switch (category) {
       case 'Chiffres du jour':
@@ -87,7 +89,7 @@ const Sidebar = ({ onPageChange }) => {
           default:
             return 'Délégation';
         }
-        
+
       case 'Hébergement':
         switch (subcategory) {
           case 'Etat d\'occupation des sites':
@@ -108,53 +110,61 @@ const Sidebar = ({ onPageChange }) => {
             return 'Transport';
         }
 
-        case 'Restauration':
-          switch (subcategory) {
-            case 'Planning Déjeuner':
-              return 'Planning Déjeuner';
-            case 'Planning Dîner':
-              return 'Planning Dîner';
-            case 'Visualisation de la Restauration':
-              return 'Visualisation de la Restauration';
-            default:
-              return 'Restauration';
+      case 'Restauration':
+        switch (subcategory) {
+          case 'Planning Déjeuner':
+            return 'Planning Déjeuner';
+          case 'Planning Dîner':
+            return 'Planning Dîner';
+          case 'Visualisation de la Restauration':
+            return 'Visualisation de la Restauration';
+          default:
+            return 'Restauration';
+        }
+        case 'Référence Médicale':
+            return 'Référence Médicale';
+
+      case 'Plan de Vol':
+            return 'Plan de Vol';
+             
+        
+
+      case 'Contacts des points focaux':
+        return 'Contacts des points focaux';
+
+      case 'Facturation':
+        if (subcategory === 'Etat de paiement') {
+          if (selectedSubsubcategory === '1er acompte') {
+            return '1er acompte';
+          } else if (selectedSubsubcategory === '2ème acompte') {
+            return '2ème acompte';
+          } else if (selectedSubsubcategory === 'Situation Financière') {
+            return 'Situation Financière';
+          } else {
+            return 'Etat de paiement';
           }
-  
-
-
-          case 'Facturation':
-  if (subcategory === 'Etat de paiement') {
-    if (selectedSubsubcategory === '1er acompte') {
-      return '1er acompte';
-    } else if (selectedSubsubcategory === '2ème acompte') {
-      return '2ème acompte';
-    } else if (selectedSubsubcategory === 'Situation Financière') {
-      return 'Situation Financière';
-    } else {
-      return 'Etat de paiement';
-    }
-  } else if (subcategory === 'Factures totalement payées') {
-    return 'Factures totalement payées';
-  } else if (subcategory === 'Factures partiellement payées') {
-    return 'Factures partiellement payées';
-  } else if (subcategory === 'Factures impayées') {
-    return 'Factures impayées';
-  } else if (subcategory === 'Reçu') {
-    return 'Reçu';
-  } else {
-    return 'Facturation';
-  }
-    case 'Autres':
-    switch (subcategory) {
-      case 'Liste des Athlètes par Discipline':
-      return 'Liste des Athlètes par Discipline';
-    case 'Calendrier des Jeux':
-      return 'Calendrier des Jeux';  
-      case 'Utilisateurs': 
-      return 'Utilisateurs';    
-      default:
-        return 'Chiffres du jour';
-      }
+        } else if (subcategory === 'Factures totalement payées') {
+          return 'Factures totalement payées';
+        } else if (subcategory === 'Factures partiellement payées') {
+          return 'Factures partiellement payées';
+        } else if (subcategory === 'Factures impayées') {
+          return 'Factures impayées';
+        } else if (subcategory === 'Reçu') {
+          return 'Reçu';
+        } else {
+          return 'Facturation';
+        }
+      case 'Autres':
+        switch (subcategory) {
+          case 'Liste des Athlètes par Discipline':
+            return 'Liste des Athlètes par Discipline';
+          case 'Calendrier des Jeux':
+            return 'Calendrier des Jeux';
+          case 'Utilisateurs':
+            return 'Utilisateurs';
+          default:
+            return 'Chiffres du jour';
+        }
     }
   };
 
@@ -182,15 +192,14 @@ const Sidebar = ({ onPageChange }) => {
               </button>
               {selectedCategory === category && (
                 <div className="pl-4 mt-3 text-center">
-                <ul style={{ listStyle: 'none', paddingLeft: '0' }}>
-                  {Array.isArray(categoriesWithSubcategories[category])
-                    ? categoriesWithSubcategories[category].map((subcategory, subIndex) => (
+                  <ul style={{ listStyle: 'none', paddingLeft: '0' }}>
+                    {Array.isArray(categoriesWithSubcategories[category])
+                      ? categoriesWithSubcategories[category].map((subcategory, subIndex) => (
                         <li key={subIndex}>
                           <button
                             onClick={() => handleSubcategoryClick(subcategory)}
-                            className={`list-group-item list-group-item-action ${
-                              selectedSubcategory === subcategory ? 'active-sub' : ''
-                            }`}
+                            className={`list-group-item list-group-item-action ${selectedSubcategory === subcategory ? 'active-sub' : ''
+                              }`}
                             style={{
                               display: 'flex',
                               justifyContent: 'space-between',
@@ -227,11 +236,10 @@ const Sidebar = ({ onPageChange }) => {
                                       onClick={() =>
                                         handleSubsubcategoryClick(subsubsubcategory)
                                       }
-                                      className={`list-group-item list-group-item-action ${
-                                        selectedSubsubcategory === subsubsubcategory
+                                      className={`list-group-item list-group-item-action ${selectedSubsubcategory === subsubsubcategory
                                           ? 'active-subsub'
                                           : ''
-                                      }`}
+                                        }`}
                                     >
                                       {subsubsubcategory}
                                     </button>
@@ -242,14 +250,13 @@ const Sidebar = ({ onPageChange }) => {
                           )}
                         </li>
                       ))
-                    : Object.keys(categoriesWithSubcategories[category]).map(
+                      : Object.keys(categoriesWithSubcategories[category]).map(
                         (subcategory, subIndex) => (
                           <li key={subIndex}>
                             <button
                               onClick={() => handleSubcategoryClick(subcategory)}
-                              className={`list-group-item list-group-item-action ${
-                                selectedSubcategory === subcategory ? 'active-sub' : ''
-                              }`}
+                              className={`list-group-item list-group-item-action ${selectedSubcategory === subcategory ? 'active-sub' : ''
+                                }`}
                               style={{
                                 display: 'flex',
                                 justifyContent: 'space-between',
@@ -278,37 +285,36 @@ const Sidebar = ({ onPageChange }) => {
                               {category !== 'Délégation' && <span>{subcategory}</span>}
                             </button>
                             {subcategory === 'Etat de paiement' && selectedSubcategory === subcategory && (
-                          <ul style={{ listStyle: 'none', paddingLeft: '0' }}>
-                            {categoriesWithSubcategories[category][subcategory].map(
-                              (subsubsubcategory, subsubIndex) => (
-                                <li key={subsubIndex}>
-                                  <button
-                                    onClick={() => handleSubsubcategoryClick(subsubsubcategory)}
-                                    className={`list-group-item list-group-item-action ${
-                                      selectedSubsubcategory === subsubsubcategory
-                                        ? 'active-subsub'
-                                        : ''
-                                    }`}
-                                  >
-                                    {subsubsubcategory}
-                                  </button>
-                                </li>
-                              )
+                              <ul style={{ listStyle: 'none', paddingLeft: '0' }}>
+                                {categoriesWithSubcategories[category][subcategory].map(
+                                  (subsubsubcategory, subsubIndex) => (
+                                    <li key={subsubIndex}>
+                                      <button
+                                        onClick={() => handleSubsubcategoryClick(subsubsubcategory)}
+                                        className={`list-group-item list-group-item-action ${selectedSubsubcategory === subsubsubcategory
+                                            ? 'active-subsub'
+                                            : ''
+                                          }`}
+                                      >
+                                        {subsubsubcategory}
+                                      </button>
+                                    </li>
+                                  )
+                                )}
+                              </ul>
                             )}
-                          </ul>
-                        )}
                           </li>
                         )
                       )}
-                </ul>
-              </div>
-            )}
-          </div>
-        ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
       </div>
     </div>
-  </div>
-  
+
   );
 };
 

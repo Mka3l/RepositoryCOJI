@@ -10,11 +10,11 @@ const RecapEtatOccupation = () => {
     ];
   const rows = [
     [
-      79,
-      12107,
-      4602,
-      7505,
-      38
+      86,
+      0,
+      3068,
+      0,
+      0
     ]
   ];
   const [expanded, setExpanded] = useState(false);

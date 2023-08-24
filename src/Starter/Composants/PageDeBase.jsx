@@ -15,7 +15,6 @@ import Accueille from './Accueille';
 import RepartitionHebergementEnsemble from './HebergementFinal/RepartitionHebergement/RepartitionHebergementEnsemble';
 import FacturesImpayeesEnsemble from './Facturation/FacturesPayeesImpayees/FacturesImpayeesEnsemble';
 import FacturesPayeesEnsemble from './Facturation/FacturesPayees/FacturesPayeesEnsemble';
-import EtatDePaiementEnsemble from './Facturation/EtatDePaiement/EtatDePaiementEnsemble';
 import CardHebergement from './HebergementFinal/HebergementAccueil';
 import RestaurationCard from './DashboardRestauration/RestaurationAccueil';
 import FacturesPayeesPartiellementEnsemble from './Facturation/FacturesPayeesPartiellement/FacturesPayeesPartiellementEnsemble';
@@ -32,14 +31,20 @@ import MayotteFlag from '../../assets/Images/flag/Mayotte.png'
 import TransportAcceuil from './Transport/TransportAccueil';
 import TransportMap from './Transport/Transport';
 import ConvertToJson from './ExcelTreatment/ConvertToJson';
-import EtatPaiementEnsemble from './Facturation/EtatDePaiement/EtatDePaimentDivisé/EtatPaiementEnsemble';
 import DelegationEnsemble from './Final1/DelegationEnsemble';
 import TransportCard from './Transport/TransportAccueil';
 import TransportClic from './Transport/TransportClic';
 import PlanDejeuner from './DashboardRestauration/PlanDejeuner/PlanDejeuner';
 import VisualisationRestauration from './DashboardRestauration/Visualisation/VisualisationRestauration';
 import PlanDiner from './DashboardRestauration/PlanDiner/PlanDiner';
-
+import DelegationAfficherPerson from '../Composants/Final1/DelegationAfficherPerson'
+import PointFocaux from './PointFocaux/PointFocaux';
+import AdministrationNationale from './PointFocaux/AdministrationNationale';
+import AApointFocauxEnsemble from './PointFocaux/AApointFocauxEnsemble';
+import PlanDeVol from './PlanDeVol/PlanDeVol'
+import CalendrierDesJeux from './CalendrierDesJeux/CalendrierDesJeux';
+import ReferenceMedicale from './ReferenceMedicale/ReferenceMedicale';
+import EtatPaiementEnsemble from './Facturation/EtatDePaiement/EtatDePaimentDivisé/EtatPaiementEnsemble';
 const getFlagForCountry = (country) => {
   const countryFlags = {
     'Délégation Madagascar': MadagascarFlag,
@@ -233,7 +238,7 @@ const PageDeBase = () => {
           </div>
 
           <div className="col-md-10" style={{ background: 'rgba(245, 245, 245, 0.0)', display: 'flex', flexDirection: 'column', boxShadow: '0px 5px 20px -5px', height: 'auto', paddingBottom: '50px' }}>
-            <nav className="navbar navbar-expand-lg navbar-light bg-light sticky-top" style={NavStyle}>
+            <nav className="navbar navbar-expand-lg navbar-light bg-light sticky-top pt-5" style={NavStyle}>
               <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                 <div style={{ display: 'flex', alignItems: 'center' }}>
                   {/* Contenu du Navbar (peut-être un titre ou des liens) */}
@@ -290,7 +295,7 @@ const PageDeBase = () => {
                 {/* Élément de la date aligné à droite */}
                 <span style={{ ...styles.dateText, }}>
                   <p>Situation en date du </p>
-                  <input style={{ background: 'none', border: 'none', color: 'brown', fontSize: '20pt', fontWeight: 'bold',}} type="date" value={dateChoix} ref={dateFiltre} onChange={ChangeDataByDate} />
+                  <input style={{ background: 'none', border: 'none', color: 'brown', fontSize: '20pt', fontWeight: 'bold'}} type="date" value={dateChoix} ref={dateFiltre} onChange={ChangeDataByDate} />
                 </span>
               </div>
             </nav>
@@ -300,12 +305,15 @@ const PageDeBase = () => {
             {currentPage === 'Chiffres du jour' && <Accueille date={dateChoix} />}
             {currentPage === 'Délégation' && <DelegationEnsemble />}
 
-            {currentPage === 'Hébergement' && < CardHebergement />}
+            {currentPage === 'Hébergement' && < CardHebergement date={dateChoix} />}
             {currentPage === 'Transport' && <TransportClic />}
+
+            {/* plan de vol */}
+            {currentPage === 'Plan de Vol' && <PlanDeVol />}
+
             {currentPage === 'Restauration' && <RestaurationCard date ={dateChoix} />}
             {currentPage === 'Facturation' && <FactureAccueil />}
             {currentPage === 'Autres' && <Accueille date={dateChoix} />}
-
 
 
             {/* Sous-catégories */}
@@ -327,6 +335,16 @@ const PageDeBase = () => {
             {currentPage === 'Planning Dîner' && <PlanDiner />}
             {currentPage == 'Visualisation de la Restauration' && <VisualisationRestauration />}
 
+            {/* Points Focaux*/}
+            {currentPage === 'Contacts des points focaux' && <AApointFocauxEnsemble />}
+            
+            {currentPage === 'Calendrier des Jeux' && <CalendrierDesJeux />}
+            {currentPage === 'Référence Médicale' && <ReferenceMedicale />}
+            
+
+
+
+
 
             {/* Transport */}
             {currentPage === 'Disponibilité des véhicules' && <TransportDispo />}
@@ -338,6 +356,7 @@ const PageDeBase = () => {
             {currentPage === 'Factures partiellement payées' && <FacturesPayeesPartiellementEnsemble />}
             {currentPage === 'Factures impayées' && <FacturesImpayeesEnsemble />}
             {currentPage === 'Reçu' && <VisuelFacture />}
+            {currentPage=== 'Liste des Athlètes par Discipline' && <DelegationAfficherPerson/>}
           </div>
         </div>
       </div>
