@@ -20,13 +20,11 @@ const CardHebergement = (date) => {
 
   const [dashHeb,setDashHeb] = useState()
   
-
-
-
   useEffect(()=>{
+    //let date = new Date();
     ////console.log(urlHtpp.url+"hebergement-liste/etat/"+date.date.date)
     ///detail{date_create: 1692741600000, capacite_total: 12, lits_occupe: 2, lits_restant: 10, taux_occupation: 16.666666666666664
-    fetch(urlHtpp.urlHtpp+"hebergement-liste/dash/"+date.date,{
+    fetch(urlHtpp.urlHtpp+"hebergement-liste/dash/"+date.toString(),{
       method :"GET",
       headers:{"Content-Type":"application/json"}
     })
