@@ -13,10 +13,9 @@ const AjoutHebergement=({Action,Titre,children})=>{
     setShowModal(false);
   };
   const buttonStyle = {
-    marginTop:'20px',
-    background:"#973116",
+    margin:"0px 0px 0px 0px",
+    background:"#616161",
     border:"none",
-    float: "right"
   }
   const insertHebergeStyle = {
     width:"700px",

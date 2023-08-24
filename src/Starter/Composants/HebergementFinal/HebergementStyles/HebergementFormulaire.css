@@ -27,10 +27,13 @@ button[type="submit"] {
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  align-self: center;
+  
 }
 
 button[type="submit"]:hover {
   background-color: #0056b3;
+ 
 }
 
 /* Styles pour la table */
@@ -89,6 +92,7 @@ padding: 5px 10px;
 border-radius: 5px;
 cursor: pointer;
 transition: background-color 0.3s ease;
+
 }
 
 .expandedButtonStyle {
@@ -190,3 +194,10 @@ cursor: pointer;
 transition: background-color 0.3s ease;
 margin-bottom: 0px;
 }
+.custom-modal {
+  max-width: 800px; /* Définissez la largeur souhaitée */
+  margin: 0 auto; /* Centre le modal horizontalement */
+  /* Ajoutez d'autres styles spécifiques si nécessaire */
+}
+
+/* Si nécessaire, annulez ou personnalisez les styles globaux qui affectent les modals */

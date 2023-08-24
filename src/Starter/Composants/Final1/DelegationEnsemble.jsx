@@ -3,6 +3,7 @@ import DelegationAfficherDetails from './DelegationAfficherDetails';
 import DelegationClic from './DelegationClic';
 import AjoutHebergement from '../HebergementFinal/AjoutHebergement';
 import url from '../../urlHtpp';
+import DelegationAfficherPerson from './DelegationAfficherPerson';
 const DelegationEnsemble = () => {
   const NameDelegation = [
     { "nom": "Madagascar" }, { "nom": "Maurice" },
@@ -85,16 +86,16 @@ const DelegationEnsemble = () => {
   
   
 
-  useEffect(()=>{
-    console.log("ENTRER")
-    fetch(url.urlHtpp+"repartition-delegation/total",{
-      method:'GET',
-      headers:{'Content-Type':'application/json'},
-    })
-    .then(response => response.json())
-    .then(data=>{console.log(data.data),setRepartitionTotal(data.data)})
-    .catch(error=>{console.log(error)})
-  },[getPLAN])
+  // useEffect(()=>{
+  //   console.log("ENTRER")
+  //   fetch(url.urlHtpp+"repartition-delegation/total",{
+  //     method:'GET',
+  //     headers:{'Content-Type':'application/json'},
+  //   })
+  //   .then(response => response.json())
+  //   .then(data=>{console.log(data.data),setRepartitionTotal(data.data)})
+  //   .catch(error=>{console.log(error)})
+  // },[getPLAN])
 
 
   // const AddDelegation =()=>{
@@ -128,14 +129,13 @@ const DelegationEnsemble = () => {
           padding: '30px',
           background:' #973116',
           textAlign: 'center',
-        }}>Répartition du nombre de personnes par Délégation (nombre total {repartitionTotal})</h2>
+        }}>Répartition du nombre de personnes par Délégation {/*{(nombre total {repartitionTotal})*/}</h2>
       <div style={{ marginBottom: '50px' }}>
 
         <DelegationClic/> 
-
         <DelegationAfficherDetails/>
-
-        <AjoutHebergement  Action={"Ajout Delegation"} Titre={"Ajout Hebergement"}>
+        <DelegationAfficherPerson/>
+        <AjoutHebergement Action={"Ajout Delegation"} Titre={"Ajout Hebergement"}>
           <p>Votre Contact ID</p>
           <p> <input type='text' ref={contact_id} className='form-control' required /></p>
           <p>Nom complet</p>

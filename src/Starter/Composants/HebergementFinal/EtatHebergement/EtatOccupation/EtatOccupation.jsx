@@ -1,33 +1,43 @@
 import React, { useState, useEffect } from 'react';
-import { Modal, Button } from 'react-bootstrap';
+import axios from 'axios'
 import '../../HebergementStyles/HebergementFormulaire.css'
 import '../../HebergementStyles/TableauStyles.css'
-import url from '../../../../urlHtpp';
+import configUrl from '../../../../ConfigUrl/config_Url';
+
 
 const EtatOccupation = () => {
   const [data, setData] = useState([]);
-  const [expanded, setExpanded] = useState(false);
-  const [showModal, setShowModal] = useState(false);
-
   const [formData, setFormData] = useState({
     site_hebergement: '',
     capacite_totale: '',
     Lits_occupe: '',
     Lits_restant: '',
   });
-  
+  const [showForm, setShowForm] = useState(false);
+
+  // useEffect(() => {
+  //   axios.get('http://localhost:8080/hebergement-data')
+  //     .then(response => {
+  //       console.log('API response:', response.data); 
+  //       setData(response.data);
+  //     })
+  //     .catch(error => {
+  //       console.error('Erreur lors de la récupération des données :', error);
+  //     });
+  // }, []);
+
+ 
+  const [expanded, setExpanded] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     setData([...data, formData]);
     setFormData({
       site_hebergement: '',
-      zone: '',
-      capacite_totale: '',
-      Lits_occupe: '',
-      Lits_restant: '',
+    capacite_totale: '',
+    Lits_occupe: '',
+    Lits_restant: '',
     });
-    setShowModal(false);
   };
 
    const columns = [
@@ -46,104 +56,66 @@ const EtatOccupation = () => {
 
   const getEtatOccupation =()=>{
     setExpanded(!expanded)
-    fetch(url.urlHtpp+"hebergement-liste/etat/2023-08-22",{
-      method:"GET",
-      headers:{"Content-Type":"application/json"}
-    })
-    .then(response=>response.json())
-    .then(data => {console.log(data),setData(data.data.listebas)})
-    .catch(error=>{console.log(error)})
+    fetch(configUrl.url+"")
   }
 
   return (
     <div style={{ marginTop: '20px', textAlign: 'center' }}>
-      <div>
-      <button
-          className="buttonStyle"
-          style={{ float: 'left' }}
-          onClick={getEtatOccupation}
-        >
-          {expanded ? "-" : "+"} {expanded ? "Réduire" : "Afficher plus"}
-        </button>
-          {showModal && (
-          <Modal show={showModal} onHide={() => setShowModal(false)}>
-            <Modal.Header closeButton>
-              <Modal.Title>Ajout d'Hébergement par Délégation</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-              <form className="form" onSubmit={handleSubmit}>
-                <label>
-                  Nom du site d'Hébergement:
-                  <input
-                    type="text"
-                    value={formData.site_hebergement}
-                    onChange={(e) => setFormData({ ...formData, site_hebergement: e.target.value })}
-                  />
-                </label>
-                <br />
-                <label>
-                  Zone:
-                  <input
-                    type="text"
-                    value={formData.site_hebergement}
-                    onChange={(e) => setFormData({ ...formData, zone: e.target.value })}
-                  />
-                </label>
-                <br />
-                <label>
-                  RIB:
-                  <input
-                    type="text"
-                    value={formData.site_hebergement}
-                    onChange={(e) => setFormData({ ...formData, rib: e.target.value })}
-                  />
-                </label>
-                <br />
-                <label>
-                  Capacité totale:
-                  <input
-                    type="text"
-                    value={formData.capacite_totale}
-                    onChange={(e) => setFormData({ ...formData, capacite_totale: e.target.value })}
-                  />
-                </label>
-                <br />
-                <label>
-                  Lits Occupés:
-                  <input
-                    type="text"
-                    value={formData.Lits_occupe}
-                    onChange={(e) => setFormData({ ...formData, Lits_occupe: e.target.value })}
-                  />
-                </label>
-                <br />
-                <label>
-                  Prix Journalier:
-                  <input
-                    type="text"
-                    value={formData.site_hebergement}
-                    onChange={(e) => setFormData({ ...formData, rib: e.target.value })}
-                  />
-                </label>
-                <br />
-                <br />
-  
-                <p><button className='btn btn-success'>Ajouter</button></p>
-                <Button type="submit">Ajouter</Button>
-              </form>
-            </Modal.Body>
-          </Modal>
-        )}
-    
-    <button
-          className="buttonStyle"
-          onClick={() => setShowModal(!showModal)}
-          style={{ float: 'right' }}
-        >
-          {showModal ? "Masquer le formulaire" : "Ajout d'Hébergement par Délégation"}
-        </button>
-      </div>
 
+      <div>
+        <h2>Etat d'occupation par Sites D'hébergement</h2>
+      <a className="add-link" onClick={() => setShowForm(!showForm)}>
+        (Ajouter de Hébergement par Délégation)
+      </a>
+      {showForm && (
+        <form className="form" onSubmit={handleSubmit}>
+          {/* Champs du formulaire */}
+          <label>
+            Nom du site d'Hébergement:
+            <input
+              type="text"
+              value={formData.NomHebergement}
+              onChange={(e) => setFormData({ ...formData, NomHebergement: e.target.value })}
+            />
+          </label>
+          <br />
+          <label>
+            Capacité totale:
+            <input
+              type="text"
+              value={formData.RibHebergement}
+              onChange={(e) => setFormData({ ...formData, RibHebergement: e.target.value })}
+            />
+          </label>
+          <br />
+          <label>
+            Lits Occupées:
+            <input
+              type="text"
+              value={formData.Zones}
+              onChange={(e) => setFormData({ ...formData, Zones: e.target.value })}
+            />
+          </label>
+          <br />
+          <br />
+          <label>
+            Lits restant:
+            <input
+              type="text"
+              value={formData.PrixJournalier}
+              onChange={(e) => setFormData({ ...formData, PrixJournalier: e.target.value })}
+            />
+          </label>
+          <button type="submit">Ajouter</button>
+        </form>
+      )}</div>
+
+      <button
+        className='buttonStyle'
+        onClick={getEtatOccupation }
+      >
+        {expanded ? '-' : '+'} {expanded ? 'Réduire' : 'Afficher plus'}
+      </button>
       {expanded && data && (
         <table className='tableStyle'>
           <thead>
@@ -156,11 +128,11 @@ const EtatOccupation = () => {
           <tbody>
             {data.map((row, rowIndex) => (
               <tr key={rowIndex}>
-                <td className='tdStyle'>{row.nom_hebergement}</td>
-                <td className='tdStyle'>{row.capacite_total}</td>
-                <td className='tdStyle'>{row.lits_occupe}</td>
-                <td className='tdStyle'>{row.lits_restant}</td>
-                <td className='tdStyle'>{row.taux_occupation}%</td>
+                <td className='tdStyle'>{row.site_hebergement}</td>
+                <td className='tdStyle'>{row.capacite_totale}</td>
+                <td className='tdStyle'>{row.Lits_occupe}</td>
+                <td className='tdStyle'>{row.Lits_restant}</td>
+                <td className='tdStyle'>{calculateTauxOccupation(row).toFixed(0)}%</td>
               </tr>
             ))}
           </tbody>

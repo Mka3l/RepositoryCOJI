@@ -124,7 +124,7 @@ const DashTransport = (date) => {
 
   return <div style={compoGlade}>
     <div style={{ ...divStyle, width: '250px', background: 'rgb(85 80 80)', color: '#ffffff' }} >
-      <h6> 
+      <h6>
         <span style={{ fontSize: '13pt', fontWeight: '700' }}>
           <input style={{ background: 'none',border: 'none',color: 'white',marginLeft: '20px', }} type="date" value={date.date.date} ref={dateFiltre} onChange={ChangeDataByDate} />
         </span>

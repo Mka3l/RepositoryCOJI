@@ -2,20 +2,16 @@ import React, { useState,useEffect,useRef } from 'react';
 import url from '../../urlHtpp';
 const DelegationAfficherPerson = () => {
   const columns = [
-    "contact_id",
-    "nom_complet",
-    "nom_categorie",
-    "nom_pays",
-    "nom_fonction",
-    "nom_discipline",
-    "nom_comission",
-    "qualite_demandeur",
-    "nom_media",
-    "titulaire",
-    "printing_status",
+    "Numero ID",
+    "Nom",
+    "Prenom",
+    "Categorie de badge",
+    "Pays",
+    "Fonction",
+    "Nom de discipline",
+    "Genre",
+    "Numero de chambre",
     "application_status",
-    "hebergement",
-    "numero_chambre"
   ]
   const [delegationList, setDelegationList] = useState([]);
   const [getPLAN,setGetPlan] = useState(true);
@@ -31,7 +27,7 @@ const DelegationAfficherPerson = () => {
       })
         .then(response => response.json())
         .then(data => {
-          console.log(data);
+          console.log("DATA RETOUR : ",data);
           setDelegationList(data); // Met à jour l'état avec les données reçues
         })
         .catch(error => {
@@ -100,19 +96,15 @@ const DelegationAfficherPerson = () => {
             {delegationList.map((row, rowIndex) => ( 
               <tr key={rowIndex}>
                   <td  style={tdStyle}> {row.contact_id}</td>
-                  <td  style={tdStyle}>{row.nom_complet}</td>
-                  <td  style={tdStyle}>{row.nom_categorie}</td>
-                  <td  style={tdStyle}>{row.nom_pays}</td>
+                  <td  style={tdStyle}>{row.nom}</td>
+                  <td  style={tdStyle}>{row.prenom}</td>
+                  <td  style={tdStyle}>{row.nom_badge}</td>
+                  <td  style={tdStyle}>{row.nom_organisation}</td>
                   <td  style={tdStyle}>{row.nom_fonction}</td>
-                  <td  style={tdStyle}>{row.nom_discipline}</td>
-                  <td  style={tdStyle}>{row.nom_comission}</td>
-                  <td  style={tdStyle}>{row.qualite_demandeur}</td>
-                  <td  style={tdStyle}>{row.nom_media}</td>
-                  <td  style={tdStyle}>{row.titulaire}</td>
-                  <td  style={tdStyle}>{row.printing_status}</td>
-                  <td  style={tdStyle}>{row.application_status}</td>
-                  <td  style={tdStyle}>{row.hebergement}</td>
+                  <td  style={tdStyle}>{row.nom_discipline ?? 0}</td>
+                  <td  style={tdStyle}>{row.genre}</td>
                   <td  style={tdStyle}>{row.numero_chambre}</td>
+                  <td  style={tdStyle}>{row.printing_status}</td>
               </tr>
             ))}
           </tbody>

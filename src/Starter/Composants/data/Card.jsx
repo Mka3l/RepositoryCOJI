@@ -47,7 +47,7 @@ const Card = (date) => {
 
   const [delegationTotal,setDelegationTotal] = useState();
   const [hebergementTotal,setHebergementTotal] = useState();
-  const [plats_servi,setPlats_servi] = useState();
+  const [platServiParJour,setPlats_servi] = useState();
   const [detail_hebergement,setDetail_hebergement] = useState();
   const [nombre_site,setNombre_site] = useState();
 
@@ -59,10 +59,10 @@ const Card = (date) => {
     })
     .then(response => response.json())
     .then(data=>{
-      ///console.log(data.data);
+      console.log(data.data);
       setDelegationTotal(data.data.delegationTotal.nombre_total),
       setHebergementTotal(data.data.hebergementTotal.nombre_total),
-      setPlats_servi(data.data.platsServi),
+      setPlats_servi(data.data.platServiParJour),
       setDetail_hebergement(data.data.hebergementDetail),
       setNombre_site(data.data.nombre_site.nombre_total)
     })
@@ -172,7 +172,7 @@ const Card = (date) => {
                         </div>
                         <div className="vide">
 
-                          <h6 style={fontSizeH6}>Nombre de plats servis par jour  <br /> <span className="small pt-1 fw-bold" style={fontSizeTEXT}>{numberWithThousandsSeparator(plats_servi ?? 0)}</span>  </h6>
+                          <h6 style={fontSizeH6}>Nombre de plats servis par jour  <br /> <span className="small pt-1 fw-bold" style={fontSizeTEXT}>{numberWithThousandsSeparator(delegationTotal ?? 0)*2}</span>  </h6>
                           <div className="icon">
                             <i className="ri-bar-chart-2-fill"></i>
                           </div>
@@ -194,7 +194,7 @@ const Card = (date) => {
                         <li><a className="dropdown-item" href="#">This Year</a></li>
                       </ul>
                     </div>
-                    <div className="card-body cardBody-4" style={{ textAlign: 'center',width: '90%' }} >
+                    <div className="card-body cardBody-4" style={{ textAlign: 'center',width: '100%' }} >
                       <h5 className="card-title" style={fontSizeCard}>Transport </h5>
                       <div className="d-flex align-items-center">
                         <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">

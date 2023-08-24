@@ -27,11 +27,12 @@ import ComoresFlag from '../../assets/Images/flag/Comores.png'
 import MaldivesFlag from '../../assets/Images/flag/Maldives.webp'
 import MauriceFlag from '../../assets/Images/flag/Maurice.png'
 import SeychellesFlag from '../../assets/Images/flag/Seychelles.png'
-import EtatPaiementEnsemble from './Facturation/EtatDePaiement/EtatDePaimentDivisé/EtatPaiementEnsemble';
+
 import MayotteFlag from '../../assets/Images/flag/Mayotte.png'
 import TransportAcceuil from './Transport/TransportAccueil';
 import TransportMap from './Transport/Transport';
 import ConvertToJson from './ExcelTreatment/ConvertToJson';
+import EtatPaiementEnsemble from './Facturation/EtatDePaiement/EtatDePaimentDivisé/EtatPaiementEnsemble';
 import DelegationEnsemble from './Final1/DelegationEnsemble';
 import TransportCard from './Transport/TransportAccueil';
 import TransportClic from './Transport/TransportClic';

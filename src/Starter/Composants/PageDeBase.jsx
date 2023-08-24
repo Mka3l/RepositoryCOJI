@@ -15,7 +15,6 @@ import Accueille from './Accueille';
 import RepartitionHebergementEnsemble from './HebergementFinal/RepartitionHebergement/RepartitionHebergementEnsemble';
 import FacturesImpayeesEnsemble from './Facturation/FacturesPayeesImpayees/FacturesImpayeesEnsemble';
 import FacturesPayeesEnsemble from './Facturation/FacturesPayees/FacturesPayeesEnsemble';
-import EtatDePaiementEnsemble from './Facturation/EtatDePaiement/EtatDePaiementEnsemble';
 import CardHebergement from './HebergementFinal/HebergementAccueil';
 import RestaurationCard from './DashboardRestauration/RestaurationAccueil';
 import FacturesPayeesPartiellementEnsemble from './Facturation/FacturesPayeesPartiellement/FacturesPayeesPartiellementEnsemble';
@@ -27,7 +26,7 @@ import ComoresFlag from '../../assets/Images/flag/Comores.png'
 import MaldivesFlag from '../../assets/Images/flag/Maldives.webp'
 import MauriceFlag from '../../assets/Images/flag/Maurice.png'
 import SeychellesFlag from '../../assets/Images/flag/Seychelles.png'
-import EtatPaiementEnsemble from './Facturation/EtatDePaiement/EtatDePaimentDivisé/EtatPaiementEnsemble';
+
 import MayotteFlag from '../../assets/Images/flag/Mayotte.png'
 import TransportAcceuil from './Transport/TransportAccueil';
 import TransportMap from './Transport/Transport';
@@ -39,7 +38,14 @@ import PlanDejeuner from './DashboardRestauration/PlanDejeuner/PlanDejeuner';
 import VisualisationRestauration from './DashboardRestauration/Visualisation/VisualisationRestauration';
 import PlanDiner from './DashboardRestauration/PlanDiner/PlanDiner';
 import DelegationAfficherPerson from '../Composants/Final1/DelegationAfficherPerson'
-
+import PointFocaux from './PointFocaux/PointFocaux';
+import AdministrationNationale from './PointFocaux/AdministrationNationale';
+import AApointFocauxEnsemble from './PointFocaux/AApointFocauxEnsemble';
+import PlanDeVol from './PlanDeVol/PlanDeVol'
+import CalendrierDesJeux from './CalendrierDesJeux/CalendrierDesJeux';
+import ReferenceMedicale from './ReferenceMedicale/ReferenceMedicale';
+import EtatPaiementEnsemble from './Facturation/EtatDePaiement/EtatDePaimentDivisé/EtatPaiementEnsemble';
+import CalendrierLien from './CalendrierDesJeux/CalendrierLien';
 const getFlagForCountry = (country) => {
   const countryFlags = {
     'Délégation Madagascar': MadagascarFlag,
@@ -242,6 +248,7 @@ const PageDeBase = () => {
                   {/* Affichage du drapeau à côté du titre (sauf pour "Chiffres du jour") */}
                   {currentPage !== 'Chiffres du jour' && currentPage !== 'Autres' && currentPage in countryFlags && (
                     <div style={countryInfoStyle} className="country-info">
+                      
                       <img src={countryFlags[currentPage]} alt={currentPage} style={countryIconStyle} className="country-icon" />
                     </div>
                   )}
@@ -302,10 +309,13 @@ const PageDeBase = () => {
 
             {currentPage === 'Hébergement' && < CardHebergement date={dateChoix} />}
             {currentPage === 'Transport' && <TransportClic />}
+
+            {/* plan de vol */}
+            {currentPage === 'Plan de Vol' && <PlanDeVol />}
+
             {currentPage === 'Restauration' && <RestaurationCard date ={dateChoix} />}
             {currentPage === 'Facturation' && <FactureAccueil />}
             {currentPage === 'Autres' && <Accueille date={dateChoix} />}
-
 
 
             {/* Sous-catégories */}
@@ -326,6 +336,18 @@ const PageDeBase = () => {
             {currentPage === 'Planning Déjeuner' && <PlanDejeuner />}
             {currentPage === 'Planning Dîner' && <PlanDiner />}
             {currentPage == 'Visualisation de la Restauration' && <VisualisationRestauration />}
+
+            {/* Points Focaux*/}
+            {currentPage === 'Contacts des points focaux' && <AApointFocauxEnsemble />}
+            
+            {currentPage === 'Calendrier des Jeux' && <CalendrierDesJeux />}
+            {currentPage === 'Calendrier des événements' && <CalendrierLien />}
+
+            {currentPage === 'Référence Médicale' && <ReferenceMedicale />}
+            
+
+
+
 
 
             {/* Transport */}

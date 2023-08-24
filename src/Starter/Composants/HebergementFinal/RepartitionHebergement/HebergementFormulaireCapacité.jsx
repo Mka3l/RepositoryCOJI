@@ -46,8 +46,11 @@ const HebergementFormulaire = () => {
     "nom_hebergement",
     "rib_hebergement",
     "zone",
-    "date_entree"
-
+    "date_entree",
+    "date_sortie",
+    "prix_journalier",
+    "delegation",
+    "prix_hebergement",
   ];
 
   return (

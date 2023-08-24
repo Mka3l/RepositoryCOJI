@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import url from '../../../../urlHtpp';
 
 const DelegationParFonctionMadagascar = () => {
+
   const columns = ["FONCTION", "NOMBRES DE PERSONNES"];
   const rows = [
     ["Toutes Fonctions", 1483],
@@ -11,6 +13,8 @@ const DelegationParFonctionMadagascar = () => {
     ["Protocole"],
     ["Effectif hors quota", 0],
   ];
+
+  const [dataMADA,setDataMADA] = useState([]) 
   const [expanded, setExpanded] = useState(false);
   const rowsToShow = expanded ? rows : rows.slice(0, 1);
   const firstRowStyle = {
@@ -49,6 +53,27 @@ const DelegationParFonctionMadagascar = () => {
     cursor: 'pointer',
     transition: 'background-color 0.3s ease',
   };
+  const [plan,getPLAN] = useState(true); 
+
+
+  ////onClick={() => setExpanded(!expanded)
+
+  const getListe =()=> {
+    setExpanded(!expanded)
+    console.log("ENTRER")
+    fetch(url.urlHtpp+"repartition-discipline-delegation/repartition/Madagascar",{
+      method:'GET',
+      headers:{'Content-Type':'application/json'},
+    })
+    .then(response => response.json())
+    .then(data=>{console.log(data.data),setDataMADA(data.data)})
+    .catch(error=>{console.log(error)})
+  }
+
+  // useEffect(()=>{
+    
+  // },[getPLAN])
+
   return (
     <div style={{ marginTop: '20px' }}>
     <table style={tableStyle}>
@@ -57,7 +82,7 @@ const DelegationParFonctionMadagascar = () => {
           <td colSpan={columns.length} onClick={() => setExpanded(!expanded)}>
           <button
         style={buttonStyle}
-        onClick={() => setExpanded(!expanded)}
+        onClick={getListe}
       >
         {expanded ? '-' : '+'} {expanded ? 'Réduire' : 'Afficher plus'}
       </button>          </td>
@@ -70,8 +95,8 @@ const DelegationParFonctionMadagascar = () => {
           ))}
         </tr>
       </thead>
-      <tbody>
-        {rowsToShow.map((row, rowIndex) => (
+      {/* <tbody>
+        {dataMADA.map((row, rowIndex) => (
           <tr key={rowIndex} style={rowIndex === 0 ? firstRowStyle : {}}>
             {row.map((cell, cellIndex) => (
               <td key={cellIndex} style={cellIndex === 0 ? (rowIndex === 0 ? { ...tdStyle, textAlign: 'right' } : { ...tdStyle, textAlign: 'center' }) : { ...tdStyle, textAlign: 'center' }}>
@@ -84,6 +109,15 @@ const DelegationParFonctionMadagascar = () => {
             ))}
           </tr>
         ))}
+      </tbody> */}
+      <tbody>
+      {dataMADA.map((row, rowIndex) => (
+        <tr key={rowIndex}>
+          <td>{row.fonction}</td>
+          <td>{row.nbr_personne}</td>
+        </tr>
+      ))}
+
       </tbody>
     </table>
   </div>

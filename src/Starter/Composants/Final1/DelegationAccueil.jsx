@@ -19,9 +19,9 @@ const DelegationAccueil = ({onPageChange}) => {
 
   useEffect(()=>{
     console.log("ENTRER")
-    fetch(url.urlHtpp+"repartition-delegation",{
+    fetch(url.urlHtpp+"dashboard-delegations",{
       method:'GET',
-      headers:{'Content-Type':'application/json',"Access-Control-Allow-Origin": "*"},
+      headers:{'Content-Type':'application/json'},
     })
     .then(response => response.json())
     .then(data=>{console.log(data.data),setRepartitionDelegation(data.data)})
@@ -31,7 +31,7 @@ const DelegationAccueil = ({onPageChange}) => {
   return (
     <div style={cardContainerStyle}>
       {repartitionDelegation.map((row, index) => (
-        <CardDelegation key={index} nomPays={row.nompays} nombre={row.nombre} />
+        <CardDelegation key={index} nomPays={row.nom_pays} nombre={row.nbr_par_pays} />
       ))}
     </div>
   );

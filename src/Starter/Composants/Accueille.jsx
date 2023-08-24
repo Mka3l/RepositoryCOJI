@@ -42,13 +42,13 @@ const Accueille = (date) => {
     display : "flex",
     flexDirection:'column',
     marginTop: '50px',
-    background: "linear-gradient(45deg, rgba(187, 143, 206, 0.4), rgba(255, 183, 77, 0.4))",
+    background: 'linear-gradient(45deg, #dddddd, #d4d4d4)',
     justifyContent: 'space-between',
     alignItems: 'flex-start',
     borderRadius: '10px',
     padding: '10px',
     width:'45%',
-    boxShadow: '0px 0px 20px -10px'
+    boxShadow: '0px 0px 20px -5px'
   }
 
   const fontH4={
@@ -70,20 +70,20 @@ const Accueille = (date) => {
       <div>
         <Chiffre date={date}/>
         <div style={{ display:"flex", flexDirection:"row", width:"100%", justifyContent:"space-evenly"}}>
-          <div id="dash" style={{ ...styleDash, }}>
+          {/* <div id="dash" style={{ ...styleDash, }}>
 
-            <h4 style={{ ...fontH4, backgroundColor:'rgba(255, 183, 77, 0.4)'}}>Facturation </h4>
+            <h4 style={fontH4}>Facturation </h4>
             <DashFacture date={date}/>
-            <h4 style={{ ...fontH4, backgroundColor:'rgba(255, 183, 77, 0.4)'}}>Transport </h4>
+            <h4 style={fontH4}>Transport </h4>
             <DashTransport date={date}/>
           </div>
           
           <div id="dash" style={{ ...styleDash, }}>
-            <h4 style={{ ...fontH4, backgroundColor:'rgba(255, 183, 77, 0.4)'}}>Hébergement </h4>
+            <h4 style={{ ...fontH4, backgroundColor:'rgb(182, 181, 181)'}}>Hébergement </h4>
             <DashHeberge date={date}/>
-            <h4 style={{ ...fontH4, backgroundColor:'rgba(255, 183, 77, 0.4)'}}>Sites de Restauration </h4>
+            <h4 style={fontH4}>Sites de Restauration </h4>
             <DashRestauration date={date}/>
-          </div>
+          </div> */}
         </div>
      </div>
    

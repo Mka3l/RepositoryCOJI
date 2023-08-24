@@ -68,7 +68,7 @@ const DelegationAfficherDetails = () => {
         style={buttonStyle} // Utiliser le style du bouton correct
         onClick={() => setExpanded(!expanded)}
       >
-        <b>{expanded}</b> {expanded ? 'Réduire' : 'Afficher plus'}
+        <b>{expanded ? '-' : '+'}</b> {expanded ? 'Réduire' : 'Afficher plus'}
       </button>
       {expanded && (
         <table style={tableStyle}>

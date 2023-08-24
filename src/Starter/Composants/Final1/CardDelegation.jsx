@@ -42,7 +42,7 @@ const CardDelegation = ({nomPays,nombre}) =>
               {nombre}
             </span>
             <span className="card-text" style={{ fontSize: '20px', color: '#555' }}>
-              Total Délégation {nomPays}
+              Personnes
             </span>
           </div>
         </div>
