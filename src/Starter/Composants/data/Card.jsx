@@ -50,6 +50,7 @@ const Card = (date) => {
   const [plats_servi,setPlats_servi] = useState();
   const [detail_hebergement,setDetail_hebergement] = useState();
   const [nombre_site,setNombre_site] = useState();
+  const [vehicule,setVehivule] = useState()
 
   useEffect(()=>{
     console.log("ENTRER")
@@ -67,6 +68,14 @@ const Card = (date) => {
       setNombre_site(data.data.nombre_site.nombre_total)
     })
     .catch(error=>{console.log(error)})
+
+    fetch(url.urlHtpp+"card-vehicule",{
+      method:"GET",
+      headers:{"Content-Type":"application/json"}
+    })
+    .then(response=>response.json())
+    .then(data=>{setVehivule(data.data)})
+    .catch(error=>{})
   },[])
 
   var dateFiltre = useRef();
@@ -172,7 +181,7 @@ const Card = (date) => {
                         </div>
                         <div className="vide">
 
-                          <h6 style={fontSizeH6}>Nombre de plats servis par jour  <br /> <span className="small pt-1 fw-bold" style={fontSizeTEXT}>{numberWithThousandsSeparator(plats_servi ?? 0)}</span>  </h6>
+                          <h6 style={fontSizeH6}>Nombre de site de restauration  <br /> <span className="small pt-1 fw-bold" style={fontSizeTEXT}>{numberWithThousandsSeparator(plats_servi ?? 0)}</span>  </h6>
                           <div className="icon">
                             <i className="ri-bar-chart-2-fill"></i>
                           </div>
