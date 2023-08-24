@@ -144,18 +144,18 @@ const TransportDispo = () => {
       .then(data => { console.log(data),setVehicules(data) })
       .catch(error => console.log(error))
 
-      fetch(url.urlHtpp + 'card-vehicule', {
+      fetch(url.urlHtpp + 'vehicules-excel/card-vehicule', {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
       }).then(response => response.json())
         .then(data => { 
-          setCard(data.data) ,
-          setTotal(data.data[0].total),
-          setOccupe(data.data[1].total),
-          setDispo(data.data[2].total)
+          // console.log(data.data.vehicule_total)
+          // setCard(data.data) ,
+        setTotal(data.data.vehicule_total),
+        setOccupe(data.data.vehicule_occupe),
+        setDispo(data.data.vehicule_repos)
         })
         .catch(error => { console.log(error) });
-     
      
   }, [useListe])
 
@@ -281,7 +281,6 @@ const TransportDispo = () => {
           </AjoutHebergement>
         </div>
       </div>
-
       <div className="vehicle-info">
         <h2 style={{
           fontSize: '2.5rem',
@@ -297,15 +296,15 @@ const TransportDispo = () => {
           <tbody>
             <tr>
               <td style={{ ...tdStyle, ...boldStyle }}>Total de véhicules</td>
-              <td style={{ ...tdStyle, ...boldStyle }}>{total??0}</td>
+              <td style={{ ...tdStyle, ...boldStyle }}>{total}</td>
             </tr>
             <tr>
               <td style={tdStyle}>Véhicules disponibles</td>
-              <td style={tdStyle}>{dispo??0}</td>
+              <td style={tdStyle}>{dispo}</td>
             </tr>
             <tr>
               <td style={tdStyle}>Véhicules occupés</td>
-              <td style={tdStyle}>{occupe??0}</td>
+              <td style={tdStyle}>{occupe}</td>
             </tr>
           </tbody>
         </table>

@@ -135,7 +135,7 @@ const Card = (date) => {
                         <li><a className="dropdown-item" href="#">This Year</a></li>
                       </ul>
                     </div>
-                    <div className="card-body cardBody-2" style={{ textAlign: 'center',width: '90%' }}>
+                    <div className="card-body cardBody-2" style={{ textAlign: 'center',width: '100%' }}>
                       <h5 className="card-title" style={fontSizeCard}>Hébergement</h5>
                       <div className="d-flex align-items-center">
                         <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -172,7 +172,7 @@ const Card = (date) => {
                         </div>
                         <div className="vide">
 
-                          <h6 style={fontSizeH6}>Nombre de plats servis par jour  <br /> <span className="small pt-1 fw-bold" style={fontSizeTEXT}>{numberWithThousandsSeparator(delegationTotal*2 ?? 0)}</span>  </h6>
+                          <h6 style={fontSizeH6}>Nombre de plats servis par jour  <br /> <span className="small pt-1 fw-bold" style={fontSizeTEXT}>{numberWithThousandsSeparator(delegationTotal ?? 0)*2}</span>  </h6>
                           <div className="icon">
                             <i className="ri-bar-chart-2-fill"></i>
                           </div>

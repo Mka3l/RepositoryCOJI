@@ -13,16 +13,16 @@ const TransportCard = ({ onPageChange }) => {
   const [dispo,setDispo] =useState();
 
   useEffect(() => {
-    fetch(url.urlHtpp + 'card-vehicule', {
+    fetch(url.urlHtpp + 'vehicules-excel/card-vehicule', {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
     }).then(response => response.json())
       .then(data => { 
         console.log(data.data),
         setCard(data.data) ,
-        setTotal(data.data[0].total),
-        setOccupe(data.data[1].total),
-        setDispo(data.data[2].total)
+        setTotal(data.data.vehicule_total),
+        setOccupe(data.data.vehicule_occupe),
+        setDispo(data.data.vehicule_repos)
       })
       .catch(error => { console.log(error) });
   }, []);
