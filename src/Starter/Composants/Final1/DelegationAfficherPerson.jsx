@@ -200,7 +200,15 @@ const DelegationAfficherPerson = () => {
                 <thead>
                 <tr>
                   {columns.map((column, index) => (
-                      <th key={index} style={thStyle}>
+                      <th key={index}style={{
+                        ...thStyle,
+                        ...(index === 0 ? { textAlign: 'right' } : { textAlign: 'center' }),
+                        position: 'sticky',
+                        top: '150px',
+                        backgroundColor: 'white',
+                      
+                        
+                      }}>
                         {column}
                       </th>
                   ))}

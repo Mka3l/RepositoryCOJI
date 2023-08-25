@@ -143,7 +143,7 @@ const TransportDispo = () => {
       headers: { 'Content-Type': 'application/json' }
     })
       .then(response => response.json())
-      .then(data => { console.log(data),setVehicules(data) })
+      .then(data => { console.log(data),setVehicules(data.data) })
       .catch(error => console.log(error))
 
       fetch(url.urlHtpp + 'vehicules-excel/card-vehicule', {
