@@ -12,6 +12,8 @@ const RepartitionHebergementEnsemble = () => {
   const [hotel_pays,setHotel_pays] = useState([])
   const [detail,setDetails] = useState([])
   const [nomHotel,setNomHotel] = useState()
+  const [Fpays,setFPays] = useState(false)
+  
   
 
   useEffect(()=>{
@@ -25,6 +27,7 @@ const RepartitionHebergementEnsemble = () => {
   },[])
   const pays_hotel = useRef();
   const getParPays = ()=>{
+      setFPays(false)
       fetch(url.urlHtpp+"hebergement-pays/"+pays_hotel.current.value,{
         method:"GET",
         headers:{"Content-Type":"application/json"}
@@ -34,9 +37,10 @@ const RepartitionHebergementEnsemble = () => {
       .catch(error=>{console.log(error)})
   }
 
-
   const details = (nom_hot,nom_p)=>{
     setNomHotel(nom_hot);
+      setFPays(true)
+     alert("Voir detail si-dessous")
       /////alert(url.urlHtpp+"hebergement-pays/"+nom_p+"&&"+nom_hot)
       fetch(url.urlHtpp+"hebergement-pays/discipline/"+nom_p+"&&"+nom_hot,{
         method:"GET",
@@ -92,10 +96,9 @@ const RepartitionHebergementEnsemble = () => {
       <div className="mb-5"> {/* Ajout de la classe de marge */}
         <RecapRepartitionHebergement /> 
       </div>
-
       <div>
-        <div><HebergementFormulaireSite/></div>
-        <div><HebergementFormulaire /></div>
+        {/* <div><HebergementFormulaireSite/></div>
+        <div><HebergementFormulaire /></div> */}
         <div>
           <h1>ROOMING LIST</h1>
           <select onChange={getParPays} ref={pays_hotel}>
@@ -120,22 +123,27 @@ const RepartitionHebergementEnsemble = () => {
                </tr>
             ))}
           </table>
-          <h3>Hotel {nomHotel}</h3>
-          <table border={1} style={tableStyle}>
-          <tr style={thStyle}>   
-             <td style={tdStyle}>Hotels</td>
-             <td style={tdStyle}>Discpline</td>
-             <td style={tdStyle}>Effectif</td>
-          </tr>
-          {detail.map((detail,index)=>(
-               <tr key={index} style={thStyle}>
-                  <td style={tdStyle}>{detail.nom_hotel}</td>
-                  <td style={tdStyle}>{detail.nom_discipline}</td>
-                  <td style={tdStyle}>{detail.effectif}</td>
-                  <td style={tdStyle}><button style={buttonStyle} onClick={()=>details(discipline.nom_hotel,discipline.nom_pays)}> Voir Details</button></td>
-               </tr>
-            ))}
-          </table>
+          {Fpays===true && (
+            <>
+              <h3>Hotel {nomHotel}</h3>
+              <table border={1} style={tableStyle}>
+              <tr style={thStyle}>   
+                 <td style={tdStyle}>Hotels</td>
+                 <td style={tdStyle}>Discpline</td>
+                 <td style={tdStyle}>Effectif</td>
+              </tr>
+              {detail.map((detail,index)=>(
+                   <tr key={index} style={thStyle}>
+                      <td style={tdStyle}>{detail.nom_hotel}</td>
+                      <td style={tdStyle}>{detail.nom_discipline}</td>
+                      <td style={tdStyle}>{detail.effectif}</td>
+                      <td style={tdStyle}><button style={buttonStyle} onClick={()=>details(discipline.nom_hotel,discipline.nom_pays)}> Voir Details</button></td>
+                   </tr>
+                ))}
+              </table>
+              </>
+          )}
+          
         </div>
       </div>
     </div>
