@@ -25,7 +25,7 @@ const Sidebar = ({ onPageChange }) => {
     'Hébergement': ['Etat d\'occupation des sites', 'Répartition de délégation par site d\'hébergement', 'Informations sur Sites'],
     'Transport': ['Répartition des véhicules', 'Disponibilité des véhicules', 'Suivi des itinéraires'],
     'Restauration': ['Planning Déjeuner', 'Planning Dîner', 'Visualisation de la Restauration'],
-    'Contacts des Points Focaux': [],
+    'Contacts des Points Focaux': ['Chefs de commision', 'Chefs de délégation'],
     
     // 'Facturation': {
     //   'Etat de paiement': ['1er acompte', '2ème acompte', 'Situation Financière'], // Ajoutez les sous-sous-menus ici comme un tableau vide
@@ -112,7 +112,6 @@ const Sidebar = ({ onPageChange }) => {
           case 'Disponibilité des véhicules':
             return 'Disponibilité des véhicules';
           case 'Suivi des itinéraires':
-            //return 'Suivi de l\'itinéraire réel des véhicules';
             return 'Suivi de l\'itinéraire réel des véhicules';
           default:
             return 'Transport';
@@ -138,6 +137,18 @@ const Sidebar = ({ onPageChange }) => {
         
 
       case 'Contacts des Points Focaux':
+        switch (subcategory){
+          case 'Chefs de commision':
+            return 'Chefs de commision';
+          case 'Chefs de délégation':
+            return 'Chefs de délégation';
+            default:
+              return 'Chefs de commision';
+        }
+
+
+
+
         return 'Contacts des Points Focaux';
 
       case 'Calendrier':

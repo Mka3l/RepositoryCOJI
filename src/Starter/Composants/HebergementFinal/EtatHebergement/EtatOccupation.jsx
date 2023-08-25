@@ -612,7 +612,7 @@ const EtatOccupation = () => {
         headers:{"Content-Type":"application/json"}
       })
     .then(response=>response.json())
-    .then(data=>{setDataHotel(data.data)})
+    .then(data=>{console.log(data.data),setDataHotel(data.data)})
     .catch(error=>{console.log(error)})
 
     fetch(url.urlHtpp+"hebergements/card/2023-08-23",{

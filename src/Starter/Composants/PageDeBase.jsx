@@ -47,6 +47,7 @@ import ReferenceMedicale from './ReferenceMedicale/ReferenceMedicale';
 import EtatPaiementEnsemble from './Facturation/EtatDePaiement/EtatDePaimentDivisé/EtatPaiementEnsemble';
 import CalendrierLien from './CalendrierDesJeux/CalendrierLien';
 import InformationsSurSites from './HebergementFinal/InformationsSurSites/InformationsSurSites';
+import ChefsDeDelegations from './PointFocaux/PointFocaux';
 const getFlagForCountry = (country) => {
   const countryFlags = {
     'Délégation Madagascar': MadagascarFlag,
@@ -340,16 +341,13 @@ const PageDeBase = () => {
             {currentPage == 'Visualisation de la Restauration' && <VisualisationRestauration />}
 
             {/* Points Focaux*/}
-            {currentPage === 'Contacts des Points Focaux' && <AApointFocauxEnsemble />}
+            {currentPage === 'Chefs de commision' && <AApointFocauxEnsemble />}
+            {currentPage === 'Chefs de délégation' && <ChefsDeDelegations />}
+          
 
             {currentPage === 'Calendrier des Jeux' && <CalendrierDesJeux />}
             {currentPage === 'Calendrier des événements' && <CalendrierLien />}
-
             {currentPage === 'Référence Médicale' && <ReferenceMedicale />}
-
-
-
-
 
 
             {/* Transport */}

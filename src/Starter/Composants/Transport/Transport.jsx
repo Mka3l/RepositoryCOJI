@@ -1,19 +1,30 @@
 import React from 'react';
+import './TransportButton.css'
 
 const TransportMap = () => {
   return (
-
-    <div style={{ width: '100%', height: '100vh' }}>
-      {/* <iframe
+    <div style={{ display: 'flex', marginLeft: '40%' }}>
+      <div style={{ width: '100%', height: '100vh' }}>
+        {/* <iframe
         title="Map Transport"
         width="100%"
         height="100%"
         loading='eager'
         src="https://gsh4.net/id29/index.php?au=E2D499AD95BAFA18AD48443E646FBC26&m=true"
       ></iframe> */}
-      <button className="btn btn-primary" onClick={() => window.open("https://gsh4.net/id29/index.php?au=E2D499AD95BAFA18AD48443E646FBC26&m=true")} target="_blank">
-  VOIR ITINERAIRES
-</button>
+        <button
+          className="custom-BouttonDeOUf"
+          onClick={() => window.open("https://gsh4.net/id29/index.php?au=E2D499AD95BAFA18AD48443E646FBC26&m=true")}
+          target="_blank"
+        >
+
+          <div className="round-button-content">
+            <p>Cliquer pour</p>
+            <p>suivre les voitures</p>
+            <p>en temps réel</p>
+          </div>
+        </button>
+      </div>
     </div>
   );
 };
