@@ -6,6 +6,7 @@ import HebergementFormulaire from '../EtatHebergement/RepartitionHebergement/Heb
 import HebergementFormulaireSite from '../EtatHebergement/RepartitionHebergement/HebergementFormulaireSite';
 import url from '../../../urlHtpp';
 import { Select } from '@mui/material';
+import AjoutHebergement from '../AjoutHebergement';
 
 const RepartitionHebergementEnsemble = () => {
   const [pays,setPays] = useState([])
@@ -94,7 +95,7 @@ const RepartitionHebergementEnsemble = () => {
         }} className="mb-5 text-center">Répartition des Délégations par Site d'Hébergement</h2>
 
       <div className="mb-5"> {/* Ajout de la classe de marge */}
-        <RecapRepartitionHebergement /> 
+       
       </div>
       <div>
         {/* <div><HebergementFormulaireSite/></div>
@@ -137,7 +138,9 @@ const RepartitionHebergementEnsemble = () => {
                       <td style={tdStyle}>{detail.nom_hotel}</td>
                       <td style={tdStyle}>{detail.nom_discipline}</td>
                       <td style={tdStyle}>{detail.effectif}</td>
-                      <td style={tdStyle}><button style={buttonStyle} onClick={()=>details(discipline.nom_hotel,discipline.nom_pays)}> Voir Details</button></td>
+                      <td style={tdStyle}>
+                       
+                      </td>
                    </tr>
                 ))}
               </table>
