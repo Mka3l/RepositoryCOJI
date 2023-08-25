@@ -123,6 +123,7 @@ const TransportDispo = () => {
   const [vehicules, setVehicules] = useState([]);
   const [trajet_vehicule,setTrajetVehicule] = useState([])
   const [useListe,setUseListe] = useState(true)
+  const [useListev2,setUseListeV2] = useState(true)
   const [total,setTotal] = useState();
   const [occupe,setOccupe] = useState();
   const [dispo,setDispo] =useState();
@@ -135,13 +136,13 @@ const TransportDispo = () => {
      .then(response=>response.json())
      .then(data=>{console.log(data),setTrajetVehicule(data.data)})
      .catch(error=>console.log(error))
-
+     console.log(url.urlHtpp + "liste-vehicule")
     fetch(url.urlHtpp + "liste-vehicule", {
       method: "GET",
       headers: { 'Content-Type': 'application/json' }
     })
       .then(response => response.json())
-      .then(data => { console.log(data),setVehicules(data) })
+      .then(data => { console.log(data.data),setVehicules(data.data) })
       .catch(error => console.log(error))
 
       fetch(url.urlHtpp + 'vehicules-excel/card-vehicule', {
@@ -157,7 +158,7 @@ const TransportDispo = () => {
         })
         .catch(error => { console.log(error) });
      
-  }, [useListe])
+  }, [useListe,useListev2])
 
   const totalVehicles = 100;
   const availableVehicles = 57;
@@ -183,6 +184,18 @@ const TransportDispo = () => {
       .then(response=>response.json())
       .then(data=>{console.log(data),alert("Trajet Ajouter Par success"),setUseListe(false)})
       .catch(error=>{console.log(error)})
+  }
+
+  const Terminer =(id,immatriculation,idveh)=>{
+    setUseListeV2(false)
+    alert("Immatriculation : "+immatriculation)
+    fetch(url.urlHtpp+"vehicule-gestion/0&&"+idveh+"&&"+id,{
+      method:"PUT",
+      headers:{"Content-Type":"application/json"}
+    }).then(response=>response.json())
+    .then(data=>{console.log(data)})
+    .catch(error=>{console.log(error)})
+   
   }
 
 
@@ -226,6 +239,7 @@ const TransportDispo = () => {
                 <td style={tdStyle}>{car.lieu_depart}</td>
                 <td style={tdStyle}>{car.lieu_arrive}</td>
                 <td style={tdStyle}>{car.intitule}</td>
+                <td><button onClick={()=>Terminer(car.id,car.immatriculation,car.vehicule_id)} className='btn btn-danger'>Termier</button></td>
                 <td>
                   <AjoutHebergement Action={"Update"} Titre={"Update Trajet"}>
                     <p>Date</p>
