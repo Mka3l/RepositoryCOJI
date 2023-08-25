@@ -72,13 +72,12 @@ const AApointFocauxEnsemble = () => {
 
     return (
         <div style={{ marginTop: '0px' }}>
-            <h2 style={{ fontFamily: 'Arial, sans-serif', fontSize: '50px', textAlign: 'center', textShadow: '2px 2px 4px rgba(0, 0, 0, 0.3)', color: '#333' }}>Selectionner Comission</h2>
+            <h2 style={{ fontFamily: 'Arial, sans-serif', fontSize: '50px', textAlign: 'center', textShadow: '2px 2px 4px rgba(0, 0, 0, 0.3)', color: '#333' }}>Séléctionner Commission</h2>
             {components.map((component, index) => (
                 <div key={index} onClick={() => openModal(component)} style={{ cursor: 'pointer', border: '1px solid #ccc', padding: '10px', marginBottom: '10px' }}>
                     <h2>{component.title}</h2>
                 </div>
             ))}
-
             <Modal show={showModal} onHide={closeModal} dialogClassName="custom-modal">
                 <Modal.Header closeButton>
                     <Modal.Title>{selectedComponent?.title}</Modal.Title>

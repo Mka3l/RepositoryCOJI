@@ -20,11 +20,12 @@ const Sidebar = ({ onPageChange }) => {
     'Chiffres du jour': [],
     'Délégation': ['Madagascar', 'Comores', 'Mayotte', 'Maurice', 'Seychelles', 'Maldives', 'La Réunion','Liste Personnes'],
     'Calendrier': [ 'Calendrier des Jeux', 'Calendrier des événements'],
-    'Hébergement': ['Etat d\'occupation des sites', 'Répartition des délégations par site d\'hébergement'],
-    'Transport': ['Disponibilité des véhicules', 'Suivi des itinéraires'],
-    'Restauration': ['Planning Déjeuner', 'Planning Dîner', 'Visualisation de la Restauration'],
-    'Contacts des points focaux': [],
     'Plan de Vol': [],
+    'Hébergement': ['Etat d\'occupation des sites', 'Répartition des délégations par site d\'hébergement'],
+    'Transport': ['Répartition des véhicules', 'Disponibilité des véhicules', 'Suivi des itinéraires'],
+    'Restauration': ['Planning Déjeuner', 'Planning Dîner', 'Visualisation de la Restauration'],
+    'Contacts des Points Focaux': [],
+    
     // 'Facturation': {
     //   'Etat de paiement': ['1er acompte', '2ème acompte', 'Situation Financière'], // Ajoutez les sous-sous-menus ici comme un tableau vide
     //   'Factures totalement payées': [],
@@ -132,8 +133,8 @@ const Sidebar = ({ onPageChange }) => {
              
         
 
-      case 'Contacts des points focaux':
-        return 'Contacts des points focaux';
+      case 'Contacts des Points Focaux':
+        return 'Contacts des Points Focaux';
 
       case 'Facturation':
         if (subcategory === 'Etat de paiement') {

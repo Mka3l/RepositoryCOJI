@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import '../../HebergementStyles/HebergementFormulaire.css'
 import configUrl from '../../../../urlHtpp';
+import { Button, Modal } from 'react-bootstrap';
+
 
 const HebergementFormulaireSite = () => {
   const [data, setData] = useState([]);
@@ -15,10 +17,9 @@ const HebergementFormulaireSite = () => {
   console.log("URL SIMPLE  : ", configUrl);
   console.log("URL ENDPOINT : ", configUrl.urlHtpp+"pays");
 
-  const [showForm, setShowForm] = useState(false);
-
-  const [pays,setPays] = useState([])
-  const [sites,setSites] = useState([])
+  const [showModal, setShowModal] = useState(false);
+  const [pays, setPays] = useState([]);
+  const [sites, setSites] = useState([]);
 
   useEffect(() => {
     
@@ -55,7 +56,7 @@ const HebergementFormulaireSite = () => {
 
 
   const ajoutSiteHebergement = ()=>{
-    setShowForm(!showForm)
+    setShowModal(true);
     fetch(configUrl.urlHtpp+"pays",{
       method:"GET",
       headers:{"Content-Type":"application/json"}
@@ -98,69 +99,94 @@ const HebergementFormulaireSite = () => {
         ///console.log(error)
       })
   }
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
 
   return (
     <div className="container">
-      <a className="add-link" onClick={ajoutSiteHebergement}>
-        (Ajout Hébergement)
-      </a>
-      {showForm && (
-       <div>
-          {/* Champs du formulaire */}
+      <button
+        className="buttonStyle"
+        onClick={ajoutSiteHebergement}
+        style={{ float: 'right', marginBottom: '50px' }}
+      >
+        {showModal ? 'Masquer le formulaire' : 'Ajout Hébergement'}
+      </button>
+
+      <Modal show={showModal} onHide={handleCloseModal}>
+        <Modal.Header closeButton>
+          <Modal.Title style={{ display: 'block', margin: '0 auto', marginBottom: '50px' }}>Ajout Site d'Hébergement</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
           <label>
             Nom de l'Hébergement:
-            <input ref={nom_hebergement}
+            <input
+              ref={nom_hebergement}
               type="text"
               value={formData.NomHebergement}
-              onChange={(e) => setFormData({ ...formData, NomHebergement: e.target.value })}
+              onChange={e =>
+                setFormData({ ...formData, NomHebergement: e.target.value })
+              }
             />
           </label>
           <br />
           <label>
             Rib de l'Hébergement:
-            <input  ref={rib_hebergement}
+            <input
+              ref={rib_hebergement}
               type="text"
               value={formData.RibHebergement}
-              onChange={(e) => setFormData({ ...formData, RibHebergement: e.target.value })}
+              onChange={e =>
+                setFormData({ ...formData, RibHebergement: e.target.value })
+              }
             />
           </label>
           <br />
           <label>
             Zones:
-           <select ref={idzone}>
-           {sites.map((row,indexRow)=>
-                <option key={indexRow} value={row.id}>{row.nom_site}</option>
-              )}
-            <option ></option>
-           </select>
+            <select ref={idzone}>
+              {sites.map((row, indexRow) => (
+                <option key={indexRow} value={row.id}>
+                  {row.nom_site}
+                </option>
+              ))}
+            </select>
           </label>
-          <br />
           <br />
           <label>
             Prix Journalier:
-            <input ref={prix_journalier}
+            <input
+              ref={prix_journalier}
               type="text"
               value={formData.PrixJournalier}
-              onChange={(e) => setFormData({ ...formData, PrixJournalier: e.target.value })}
+              onChange={e =>
+                setFormData({ ...formData, PrixJournalier: e.target.value })
+              }
             />
           </label>
-          <br />
-        
           <br />
           <label>
-            Capacité total en lits:
-            <input ref={lits}
+            Lits:
+            <input
+              ref={lits}
               type="text"
-              // value={formData.Lits}
-              onChange={(e) => setFormData({ ...formData, PrixHebergement: e.target.value })}
+              value={formData.Lits}
+              onChange={e =>
+                setFormData({ ...formData, Lits: e.target.value })
+              }
             />
           </label>
-          
-
-          <br />
-          <button type="submit" onClick={ajoutHebegementDelegation}>Ajouter</button>
-          </div>
-      )}
+        </Modal.Body>
+        <Modal.Footer>
+          <Button
+            className="buttonStyle"
+            onClick={ajoutHebegementDelegation}
+            style={{ display: 'block', margin: '0 auto', marginBottom: '50px' }}
+          >
+            Ajouter
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 };

@@ -6,8 +6,9 @@ const CompResumeResto = ({titre,valeur,unite}) =>{
     border: "none",
     borderRadius: '10px',
     boxShadow: 'rgba(0, 0, 0, 1.1) 0px 1px 0px',
-    backgroundColor: '#dadada',
     padding: '20px',
+    WebkitBackgroundClip: 'text',
+    
   };
 
   const cardTitleStyle = {

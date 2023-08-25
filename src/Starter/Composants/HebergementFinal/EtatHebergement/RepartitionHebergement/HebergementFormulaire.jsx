@@ -2,9 +2,18 @@ import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import '../../HebergementStyles/HebergementFormulaire.css'
 import configUrl from '../../../../urlHtpp';
+import { Button, Modal, Table } from 'react-bootstrap';
+
 
 const HebergementFormulaire = () => {
   const [data, setData] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [pays,setPays] = useState([])
+  const [sites,setSites] = useState([])
+  const [hebergements,setHebergement] = useState([])
+  const [hebergementAFF,setHebergementAFF] = useState([])
+  
+
   const [formData, setFormData] = useState({
     NomHebergement: '',
     RibHebergement: '',
@@ -15,7 +24,6 @@ const HebergementFormulaire = () => {
     Delegation: '',
     PrixHebergement: '',
   });
-  const [showForm, setShowForm] = useState(false);
 
   // axios.get('http://localhost:8080/excel-data')
   // .then(response => {
@@ -25,11 +33,15 @@ const HebergementFormulaire = () => {
   //   console.error('Erreur lors de la récupération des données :', error);
   // });
 
-  const [pays,setPays] = useState([])
-  const [sites,setSites] = useState([])
-  const [hebergements,setHebergement] = useState([])
+  
 
-  const [hebergementAFF,setHebergementAFF] = useState([])
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+  const handleShowModal = () => {
+    setShowModal(true);
+  };
+
 
   useEffect(() => {
     fetch(configUrl.urlHtpp+"pays",{
@@ -105,7 +117,7 @@ const HebergementFormulaire = () => {
   const prix_hebergement  =  useRef();
 
   const AjoutDelegation =()=>{
-    setShowForm(!showForm)
+    setShowModal(true);
     fetch(configUrl.urlHtpp+"hebergements",{
       method:"GET",
       headers:{"Content-Type":"application/json"}
@@ -147,98 +159,109 @@ const HebergementFormulaire = () => {
   return (
     <div className="container">
       
-      <a className="add-link" onClick={AjoutDelegation}>
-        (Ajout Délégation sur SIte d'Hébergement)
-      </a>
-      {showForm && (
-       <div>
+      <Modal show={showModal} onHide={handleCloseModal}>
+        <Modal.Header closeButton>
+          <Modal.Title>Ajout Délégation par Site d'Hébergement</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          {/* Le reste du contenu du modal reste inchangé */}
           {/* Champs du formulaire */}
-          <label>
+          <label className='label'>
             Hebergements
-          
-            <select ref={hebergement_id}
+            <select
+              ref={hebergement_id}
               value={formData.Delegation}
-              onChange={(e) => setFormData({ ...formData, Delegation: e.target.value })}
+              onChange={e => setFormData({ ...formData, Delegation: e.target.value })}
             >
               <option value="">Sélectionnez un Hébergement</option>
-              {hebergements.map((row,indexRow)=>
+              {hebergements.map((row, indexRow) =>
                 <option key={indexRow} value={row.id}>{row.nom_hebergement}-{row.sites.nom_site}</option>
               )}
-              
-             
             </select>
           </label>
-          <br />
-         
-          <br />
-          <label>
+
+          <label className='label'>
             Date d'Entrée:
-            <input ref={date_entre}
+            <input
+              ref={date_entre}
               type="date"
               value={formData.DatesEntree}
-              onChange={(e) => setFormData({ ...formData, DatesEntree: e.target.value })}
+              onChange={e => setFormData({ ...formData, DatesEntree: e.target.value })}
             />
           </label>
-          <br />
-          <label>
+
+          <label className='label'>
             Date de Sortie:
-            <input ref={date_sortie}
+            <input
+              ref={date_sortie}
               type="date"
               value={formData.DateSortie}
-              onChange={(e) => setFormData({ ...formData, DateSortie: e.target.value })}
+              onChange={e => setFormData({ ...formData, DateSortie: e.target.value })}
             />
           </label>
-          <br />
-         
-          <br />
-          <label>
+
+          <label className='label'>
             Délégation:
-            <select ref={delegation_id}
+            <select
+              ref={delegation_id}
               value={formData.Delegation}
-              onChange={(e) => setFormData({ ...formData, Delegation: e.target.value })}
+              onChange={e => setFormData({ ...formData, Delegation: e.target.value })}
             >
               <option value="">Sélectionnez une délégation</option>
-              {pays.map((row,indexRow)=>
+              {pays.map((row, indexRow) =>
                 <option key={indexRow} value={row.id}>{row.nom_pays}</option>
               )}
-              
-             
             </select>
           </label>
-          <br />
-          <label>
+
+          <label className='label'>
             Prix de l'Hébergement:
-            <input ref={prix_hebergement}
+            <input
+              ref={prix_hebergement}
               type="text"
               value={formData.PrixHebergement}
-              onChange={(e) => setFormData({ ...formData, PrixHebergement: e.target.value })}
+              onChange={e => setFormData({ ...formData, PrixHebergement: e.target.value })}
             />
           </label>
-          
-
-          <br />
-          <button type="submit" onClick={ajoutHebegementDelegation}>Ajouter</button>
-          </div>
-      )}
-      <table className="table">
+        </Modal.Body>
+        <Modal.Footer>
+          <Button
+            className="buttonStyle"
+            onClick={ajoutHebegementDelegation}
+            style={{ display: 'block', margin: '0 auto', marginBottom: '50px' }}
+          >
+            Ajouter
+          </Button>
+        </Modal.Footer>
+      </Modal>
+{/* ddjdkdkdkdkd */}
+      <button
+        className="buttonStyle"
+        onClick={AjoutDelegation}
+        style={{ float: 'left', marginBottom: '50px' }}
+      >
+        {showModal ? 'Fermer le formulaire' : "Ajout Délégation par Site d'Hébergement"}
+      </button>
+      <table className="tableStyle" style={{ margin: '0px' }}
+      >
         <thead>
           <tr>
             {columns.map((column, index) => (
-              <th key={index}>{column}</th>
+              <th className="thStyle" key={index}>{column} </th>
             ))}
           </tr>
         </thead>
         <tbody>
           {data.map((row, rowIndex) => (
             <tr key={rowIndex}>
-              <td>{row.nom_hebergement}</td>
-              <td>{row.rib_hebergement}</td>
-              <td>{row.zone}</td>
-              <td>{row.date_entree}</td>
-              <td>{row.date_sortie}</td>
-              <td>{row.prix_journalier}</td>
-              <td>{row.delegation}</td>
-              <td>{row.prix_hebergement}</td>
+              <td className="tdStyle">{row.nom_hebergement}</td>
+              <td className="tdStyle">{row.rib_hebergement}</td>
+              <td className="tdStyle">{row.zone}</td>
+              <td className="tdStyle">{row.date_entree}</td>
+              <td className="tdStyle">{row.date_sortie}</td>
+              <td className="tdStyle">{row.prix_journalier}</td>
+              <td className="tdStyle">{row.delegation}</td>
+              <td className="tdStyle">{row.prix_hebergement}</td>
             </tr>
           ))}
         </tbody>

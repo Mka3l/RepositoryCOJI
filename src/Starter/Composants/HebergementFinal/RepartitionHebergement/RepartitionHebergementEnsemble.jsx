@@ -22,11 +22,6 @@ const RepartitionHebergementEnsemble = () => {
       <div className="mb-5"> {/* Ajout de la classe de marge */}
         <RecapRepartitionHebergement /> 
       </div>
-
-      <div>
-        <div><HebergementFormulaireSite/></div>
-        <div><HebergementFormulaire /></div>
-      </div>
     </div>
   );
 };

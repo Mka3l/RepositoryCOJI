@@ -338,7 +338,7 @@ const PageDeBase = () => {
             {currentPage == 'Visualisation de la Restauration' && <VisualisationRestauration />}
 
             {/* Points Focaux*/}
-            {currentPage === 'Contacts des points focaux' && <AApointFocauxEnsemble />}
+            {currentPage === 'Contacts des Points Focaux' && <AApointFocauxEnsemble />}
             
             {currentPage === 'Calendrier des Jeux' && <CalendrierDesJeux />}
             {currentPage === 'Calendrier des événements' && <CalendrierLien />}

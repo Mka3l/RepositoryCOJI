@@ -43,6 +43,7 @@ const EtatOccupationEnsemble = () => {
 
       <div>
         <EtatOccupation />
+        
       </div>
     </div>
   );

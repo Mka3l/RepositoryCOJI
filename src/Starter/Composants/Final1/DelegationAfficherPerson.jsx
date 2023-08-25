@@ -41,7 +41,7 @@ const DelegationAfficherPerson = () => {
   const firstRowStyle = {
     fontWeight: 'bold',
   };
-  
+  //
   const [expanded, setExpanded] = useState(false);
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -52,7 +52,7 @@ const DelegationAfficherPerson = () => {
   const itemsToDisplay = delegationList.slice(startIndex, endIndex);
 
   const totalPages = Math.ceil(delegationList.length / itemsPerPage);
-
+//
   const buttonStyle = {
     backgroundColor: expanded ? '#7d240c' : '#973116',
     color: 'white',

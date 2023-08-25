@@ -11,6 +11,7 @@ const RestaurationCard = (date) => {
       titre : "Nombre de personne en compétition à servir",
       valeur: '745',
       unite: 'Personnes'
+      
     },
     {
       titre : "Nombre de personne au repos à servir",
@@ -59,35 +60,22 @@ const RestaurationCard = (date) => {
     display: 'flex',
     width: '100%',
     justifyContent: 'space-evenly',
-    gap: '30px',
+    gap: '20px',
     marginTop: '20px',
     padding: '0px 100px',
-    flexDirection: 'row',
-    flexWrap: 'nowrap',
+    flexDirection: 'row', // Garder 'row' pour les mettre à la ligne
   };
 
   const styleRapport = {
     display:"flex",
-    width:"93%",
+    width:"90%",
     margin:"auto",
-    justifyContent: 'space-between'
+    gap: '50px',
   }
 
 
   return ( <>
-      <div style={styleRapport}>
-        {
-          dataResume.map((row , index) =>  (
-            <CompResumeVisualisation 
-              key={index} 
-              titre = {row.titre} 
-              valeur={row.valeur} 
-              unite = {row.unite} 
-            />
-          ))
-        }
-      </div>
-      <div style={cardContainerStyle}>
+   <div style={cardContainerStyle}>
         { restaurationDash.map((item, index) => (
           <CompResumeResto
             key={index}
@@ -97,6 +85,21 @@ const RestaurationCard = (date) => {
           />
         ))}
       </div>
+      <div style={styleRapport}>
+        {
+          dataResume.map((row , index) =>  (
+            <CompResumeVisualisation 
+              key={index} 
+              
+              titre = {row.titre} 
+              valeur={row.valeur} 
+              unite = {row.unite} 
+            />
+          ))
+        }
+      </div>
+     
+    
     </>
   );
 };

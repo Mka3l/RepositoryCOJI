@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import AjoutHebergement from '../HebergementFinal/AjoutHebergement';
 import url from '../../urlHtpp';
 
+import '../../Composants/HebergementFinal/HebergementStyles/HebergementFormulaire.css'
+
 const TransportDispo = () => {
   const carsData = [
     {
@@ -241,7 +243,7 @@ const TransportDispo = () => {
           </tbody>
         </table>
         <div>
-          <AjoutHebergement Action={"Ajout Trajet"} Titre={"Ajout Trajet"}>
+          <AjoutHebergement Action={"Ajout Trajet"} Titre={"Ajout Trajet"} >
             <p>Date</p>
             <p><input type='datetime-local' ref={datyH}/></p>
             <p>Catégorie</p>
@@ -277,7 +279,7 @@ const TransportDispo = () => {
               <p>
                 <input type="number" name="" ref={consommationTheorique} className='form-control' id="" min="0" /> */}
             {/* </p> */}
-            <p><button className='btn btn-success' onClick={AddTransport}> Ajouter</button></p>
+            <p><button className="buttonStyle" onClick={AddTransport}> Ajouter</button></p>
           </AjoutHebergement>
         </div>
       </div>
