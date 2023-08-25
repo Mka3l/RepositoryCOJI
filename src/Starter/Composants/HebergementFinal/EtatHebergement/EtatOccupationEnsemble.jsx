@@ -3,6 +3,9 @@ import RecapEtatOccupation from './RecapEtatOccupation';
 import EtatOccupation from './EtatOccupation';
 
 const EtatOccupationEnsemble = () => {
+
+  
+
   return (
     <div>
       <h2  style={{
@@ -17,6 +20,9 @@ const EtatOccupationEnsemble = () => {
         }} className="mb-5 text-center">Etat d'occupation des sites d'Hébergement</h2>
       <div className="mb-5"> {/* Ajout de la classe de marge */}
         {/* <RecapEtatOccupation />  */}
+        <p>
+          
+        </p>
         <EtatOccupation />
       </div>
     </div>

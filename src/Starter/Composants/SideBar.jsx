@@ -6,6 +6,7 @@ import ComoresFlag from '../../assets/Images/flag/Comores.png'
 import MaldivesFlag from '../../assets/Images/flag/Maldives.webp'
 import MauriceFlag from '../../assets/Images/flag/Maurice.png'
 import SeychellesFlag from '../../assets/Images/flag/Seychelles.png'
+import blanc from '../../assets/Images/flag/blanc.jpg'
 
 const Sidebar = ({ onPageChange }) => {
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -17,26 +18,26 @@ const Sidebar = ({ onPageChange }) => {
   const categoriesWithSubcategories = {
 
     'Chiffres du jour': [],
-    'Délégation': ['Madagascar', 'Comores', 'Mayotte', 'Maurice', 'Seychelles', 'Maldives', 'La Réunion'],
+    'Délégation': ['Madagascar', 'Comores', 'Mayotte', 'Maurice', 'Seychelles', 'Maldives', 'La Réunion','Liste Personnes'],
     'Hébergement': ['Etat d\'occupation des sites', 'Répartition des délégations par site d\'hébergement'],
-    'Transport': ['Disponibilité des véhicules', 'Suivi des itinéraires'],
+    'Transport': ['liste vehicule','Disponibilité des véhicules', 'Suivi des itinéraires'],
     'Restauration': ['Planning Déjeuner', 'Planning Dîner', 'Visualisation de la Restauration'],
     'Contacts des points focaux': [],
     'Plan de Vol': [],
-    /* 'Facturation': {
-      'Etat de paiement': ['1er acompte', '2ème acompte', 'Situation Financière'], // Ajoutez les sous-sous-menus ici comme un tableau vide
-      'Factures totalement payées': [],
-      'Factures partiellement payées': [],
-      'Factures impayées': [], // Ajoutez les sous-sous-menus ici comme un tableau vide
-      'Reçu': [], // Ajoutez les sous-sous-menus ici comme un tableau vide
-    }, */
+    // 'Facturation': {
+    //   'Etat de paiement': ['1er acompte', '2ème acompte', 'Situation Financière'], // Ajoutez les sous-sous-menus ici comme un tableau vide
+    //   'Factures totalement payées': [],
+    //   'Factures partiellement payées': [],
+    //   'Factures impayées': [], // Ajoutez les sous-sous-menus ici comme un tableau vide
+    //   'Reçu': [], // Ajoutez les sous-sous-menus ici comme un tableau vide
+    // },
     'Référence Médicale': [],
-    'Autres': ['Liste des Athlètes par Discipline', 'Calendrier des Jeux'],
+    'Calendrier': [ 'Calendrier des Jeux', 'Calendrier des événements'],
     'Utilisateurs': []
   };
 
   const dataFlag = {
-    'flag': [MadagascarFlag, ComoresFlag, FranceFlag, MauriceFlag, SeychellesFlag, MaldivesFlag, FranceFlag]
+    'flag': [MadagascarFlag, ComoresFlag, FranceFlag, MauriceFlag, SeychellesFlag, MaldivesFlag, FranceFlag, blanc]
   }
   const dataFlagStyle = {
     width: '30px',
@@ -86,6 +87,8 @@ const Sidebar = ({ onPageChange }) => {
             return 'Délégation Mayotte';
           case 'La Réunion':
             return 'Délégation La Réunion';
+            case 'Liste Personnes':
+              return 'Liste des Athlètes par Discipline';
           default:
             return 'Délégation';
         }
@@ -102,6 +105,8 @@ const Sidebar = ({ onPageChange }) => {
 
       case 'Transport':
         switch (subcategory) {
+          case 'liste vehicule':
+            return 'liste vehicule'
           case 'Disponibilité des véhicules':
             return 'Disponibilité des véhicules';
           case 'Suivi des itinéraires':
@@ -132,7 +137,7 @@ const Sidebar = ({ onPageChange }) => {
       case 'Contacts des points focaux':
         return 'Contacts des points focaux';
 
-      /* case 'Facturation':
+      case 'Facturation':
         if (subcategory === 'Etat de paiement') {
           if (selectedSubsubcategory === '1er acompte') {
             return '1er acompte';
@@ -153,17 +158,19 @@ const Sidebar = ({ onPageChange }) => {
           return 'Reçu';
         } else {
           return 'Facturation';
-        } */
-      case 'Autres':
+        }
+
+      case 'Calendrier':
         switch (subcategory) {
           case 'Liste des Athlètes par Discipline':
             return 'Liste des Athlètes par Discipline';
           case 'Calendrier des Jeux':
-            return 'Calendrier des Jeux';
-          case 'Utilisateurs':
-            return 'Utilisateurs';
+            return 'Calendrier des Jeux'
+            ;
+          case 'Calendrier des événements':
+            return 'Calendrier des événements';
           default:
-            return 'Chiffres du jour';
+            return 'Calendrier des événements';
         }
     }
   };
@@ -214,7 +221,7 @@ const Sidebar = ({ onPageChange }) => {
                             }}
                             onFocus={(e) => e.target.blur()}
                           >
-                            {category === 'Délégation' && (
+                            {category === 'Délégation'&& selectedSubsubcategory !== 'Liste Athlètes' && (
                               <div style={{ display: 'flex', alignItems: 'center' }}>
                                 <span className={dataFlag.flag[subIndex]}></span>
                                 <img

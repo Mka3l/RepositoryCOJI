@@ -45,8 +45,9 @@ import PlanDeVol from './PlanDeVol/PlanDeVol'
 import CalendrierDesJeux from './CalendrierDesJeux/CalendrierDesJeux';
 import ReferenceMedicale from './ReferenceMedicale/ReferenceMedicale';
 import EtatPaiementEnsemble from './Facturation/EtatDePaiement/EtatDePaimentDivisé/EtatPaiementEnsemble';
-// import CalendrierLien from './CalendrierDesJeux/CalendrierLien';
+//import CalendrierLien from './CalendrierDesJeux/CalendrierLien';
 import url from "../urlHtpp";
+import ListeVehicule from "./Transport/ListeVehicule";
 const getFlagForCountry = (country) => {
   const countryFlags = {
     'Délégation Madagascar': MadagascarFlag,
@@ -345,7 +346,8 @@ const PageDeBase = () => {
             {currentPage === 'Calendrier des événements' && <CalendrierLien />}
 
             {currentPage === 'Référence Médicale' && <ReferenceMedicale />}
-            
+            {currentPage === 'liste vehicule' && <ListeVehicule />}
+
 
 
 
