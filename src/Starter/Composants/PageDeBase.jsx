@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import Sidebar from './SideBar';
 import GeneraliteDelegation from './Final1/FinalDelegationPays/Madagascar/GeneraliteDelegation';
 import Logo from '../../assets/Images/Logo.webp';
@@ -124,7 +124,7 @@ const PageDeBase = () => {
   const handleCardClick = (pageName) => {
     onPageChange(pageName);
   };
-
+  const [delegationTotal,setDelegationTotal] = useState(2);
   const styles = {
     dateText: {
 
@@ -305,7 +305,7 @@ const PageDeBase = () => {
             {/* Afficher le composant correspondant à la page actuelle */}
             {/* Catégories */}
             {currentPage === 'Chiffres du jour' && <Accueille date={dateChoix} />}
-            {currentPage === 'Délégation' && <DelegationEnsemble />}
+            {currentPage === 'Délégation' && <DelegationEnsemble handleChangePage={handlePageChange} />}
 
             {currentPage === 'Hébergement' && < CardHebergement date={dateChoix} />}
             {currentPage === 'Transport' && <TransportClic />}

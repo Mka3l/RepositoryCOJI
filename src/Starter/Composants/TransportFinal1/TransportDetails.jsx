@@ -243,7 +243,7 @@ const TransportDispo = () => {
           </tbody>
         </table>
         <div>
-          <AjoutHebergement Action={"Ajout Trajet"} Titre={"Ajout Trajet"} >
+          <AjoutHebergement Action={"Ajout Trajet"} Titre={"Ajout Trajet"}>
             <p>Date</p>
             <p><input type='datetime-local' ref={datyH}/></p>
             <p>Catégorie</p>
@@ -257,7 +257,7 @@ const TransportDispo = () => {
 
               </select>
             </p>
-            <p>Initule Trajet</p>
+            <p>Motif Trajet</p>
             <p> <input type='text'ref={intitule}/></p>
             <p>Lieu Depart</p>
             <p><input type='text' ref={lieu_depart}/></p>

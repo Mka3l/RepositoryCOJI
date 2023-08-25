@@ -1,224 +1,58 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
+import url from "../../../../urlHtpp";
 
 const DelegationParDisciplineMaldives = () => {
-  const columns = [
-    "Disciplines (19)",
-    "Athlètes Hommes",
-    "Athlètes Femmes",
-    "Encadreurs H/F",
-    "Juges Arbitres",
-    "Président de Fédération",
-    "Responsable Admtif fédération",
-    "Total"
-  ];
-  const rows = [
-    [
-      "Toutes disciplines",
-      77,
-      86,
-      44,
-      16,
-      9,
-      10,
-      242
-    ],
-    [
-      "Athlétisme",
-      12,
-      12,
-      7,
-      3,
-      1,
-      1,
-      36
-    ],
-    [
-      "Badminton (h/f)",
-      6,
-      6,
-      3,
-      2,
-      1,
-      1,
-      19
-    ],
-     [
-      "Basket",
-      4,
-      16,
-      6,
-      3,
-      1,
-      2,
-      32
-    ],
-    [
-      "Boxe (h)",
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      0
-    ],
-    [
-      "Cyclisme (h)",
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      0
-    ],
-    [
-      "Football (h)",
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      0
-    ],
-    [
-      "Haltérophilie (h/f)",
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      0
-    ],
-    [
-      "Handball",
-      15,
-      15,
-      8,
-      2,
-      1,
-      1,
-      42
-    ],
-    [
-      "Judo (h/f)",
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      0
-    ],
-    [
-      "Kick boxing",
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      0
-    ],
-    [
-      "Karaté",
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      0
-    ],
-    [
-      "Lutte",
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      0
-    ],
-    [
-      "Natation",
-      6,
-      6,
-      3,
-      2,
-      1,
-      1,
-      19
-    ],
-    [
-      "Pétanque",
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      0
-    ],
-    [
-      "Rugby à 7 (h)",
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      0
-    ],
-    [
-      "Taekwondo",
-      4,
-      1,
-      3,
-      null,
-      1,
-      1,
-      10
-    ],
-    [
-      "Tennis",
-      4,
-      4,
-      2,
-      null,
-      1,
-      1,
-      12
-    ],
-    [
-      "Tennis de Table (h/f)",
-      5,
-      5,
-      3,
-      2,
-      1,
-      1,
-      17
-    ],
-    [
-      "Volley-ball",
-      14,
-      14,
-      6,
-      2,
-      1,
-      1,
-      38
-    ],
-  ];
+  const [columns,setColumns] = useState([]);
+  const [rows,setRows] = useState([])
   const [expanded, setExpanded] = useState(false);
   const rowsToShow = expanded ? rows : rows.slice(0, 1);
   const firstRowStyle = {
     fontWeight: 'bold',
   };
+  const fetchData = () => {
+    fetch(url.urlHtpp + "repartition-discipline-delegation/nouveau_restauration/Maldives", {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
+    })
+        .then(response => response.json())
+        .then(data => {
+          console.log(data.data); // Vérifiez la structure des données ici
+          var col = []
+          col.push("Disciplines")
+          setRows([])
+          var r = [];
+          var i = 0,g=0;
+          var r2 = [];
+          for(i = 0 ; i < data.data.listFunction.length ; i++){
+            col.push(data.data.listFunction[i].fonction)
+          }
+          col.push("total")
+          setColumns(col)
+          r2.push("Toutes disciplines")
+          for(i = 0 ; i < data.data.total.length ; i++){
+            r2.push(data.data.total[i])
+          }
+          r2.push(data.data.grandtotal)
+          r.push(r2)
+          for(i = 0 ; i < data.data.listDiscipline.length ; i++){
+            r2 = [];
+            r2.push(data.data.listDiscipline[i].nom_discipline);
+            for(g = 0 ; g < data.data.listDiscipline[i].nombre.length ; g++){
+              r2.push(data.data.listDiscipline[i].nombre[g]);
+            }
+            r2.push(data.data.listDiscipline[i].total)
+            r.push(r2)
+          }
+          setRows(r)
+        })
+        .catch(error => {
+          console.log(error);
+        });
+  };
 
+  useEffect(()=>{
+    fetchData()
+  },[])
 
   const buttonStyle = {
     backgroundColor: expanded ? '#7d240c' : '#973116',
@@ -250,46 +84,46 @@ const DelegationParDisciplineMaldives = () => {
     border: '1px solid #ddd',
   };
   return (
-    <div style={{ marginTop: '20px' }}>
-      <button
-        style={buttonStyle}
-        onClick={() => setExpanded(!expanded)}
-      >
-        {expanded ? '-' : '+'} {expanded ? 'Réduire' : 'Afficher plus'}
-      </button>
-      {expanded && (
-        <table style={tableStyle}>
-          <thead>
-            <tr>
-              {columns.map((column, index) => (
-                <th key={index} style={thStyle}>
-                  {column}
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {rowsToShow.map((row, rowIndex) => (
-              <tr key={rowIndex} style={rowIndex === 0 ? firstRowStyle : {}}>
-                {row.map((cell, cellIndex) => (
-                  <td key={cellIndex} style={tdStyle}>
-                    {typeof cell === 'number'
-                      ? cell % 1 !== 0
-                        ? cell.toFixed(2)
-                        : cell
-                      : typeof cell === 'string' && !isNaN(parseFloat(cell.replace(',', '.')))
-                        ? parseFloat(cell.replace(',', '.')).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })
-                        : cell}
-                  </td>
+      <div style={{ marginTop: '20px' }}>
+        <button
+            style={buttonStyle}
+            onClick={() => setExpanded(!expanded)}
+        >
+          {expanded ? '-' : '+'} {expanded ? 'Réduire' : 'Afficher plus'}
+        </button>
+        {expanded && (
+            <table style={tableStyle}>
+              <thead>
+              <tr>
+                {columns.map((column, index) => (
+                    <th key={index} style={thStyle}>
+                      {column}
+                    </th>
                 ))}
               </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
-    </div>
+              </thead>
+              <tbody>
+              {rowsToShow.map((row, rowIndex) => (
+                  <tr key={rowIndex} style={rowIndex === 0 ? firstRowStyle : {}}>
+                    {row.map((cell, cellIndex) => (
+                        <td key={cellIndex} style={tdStyle}>
+                          {typeof cell === 'number'
+                              ? cell % 1 !== 0
+                                  ? cell.toFixed(2)
+                                  : cell
+                              : typeof cell === 'string' && !isNaN(parseFloat(cell.replace(',', '.')))
+                                  ? parseFloat(cell.replace(',', '.')).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+                                  : cell}
+                        </td>
+                    ))}
+                  </tr>
+              ))}
+              </tbody>
+            </table>
+        )}
+      </div>
   );
-  
+
 };
 
 export default DelegationParDisciplineMaldives;

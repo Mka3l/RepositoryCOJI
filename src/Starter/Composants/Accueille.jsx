@@ -70,20 +70,7 @@ const Accueille = (date) => {
       <div>
         <Chiffre date={date}/>
         <div style={{ display:"flex", flexDirection:"row", width:"100%", justifyContent:"space-evenly"}}>
-          {/* <div id="dash" style={{ ...styleDash, }}>
-
-            <h4 style={fontH4}>Facturation </h4>
-            <DashFacture date={date}/>
-            <h4 style={fontH4}>Transport </h4>
-            <DashTransport date={date}/>
-          </div>
-          
-          <div id="dash" style={{ ...styleDash, }}>
-            <h4 style={{ ...fontH4, backgroundColor:'rgb(182, 181, 181)'}}>Hébergement </h4>
-            <DashHeberge date={date}/>
-            <h4 style={fontH4}>Sites de Restauration </h4>
-            <DashRestauration date={date}/>
-          </div> */}
+            
         </div>
      </div>
    

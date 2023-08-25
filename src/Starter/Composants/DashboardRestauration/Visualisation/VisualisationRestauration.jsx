@@ -172,14 +172,13 @@ const VisualisationRestauration = () => {
       }}>
         <h2 className="mb-3 text-center">Visualisation de la restauration</h2>
         
-        
-        <div>
-            <h5 style={sousTitle}>Visualisation de la restauration déjeuner</h5>
-            <VisualisationDejeunerDiner data = {visualisationDiner} />
-        </div>
         <div className="mb-5">
             <h5 style={sousTitle}>Visualisation de la restauration dîner</h5>
             <VisualisationDejeunerDiner data = {visualisationDej} />
+        </div>
+        <div>
+            <h5 style={sousTitle}>Visualisation de la restauration déjeuner</h5>
+            <VisualisationDejeunerDiner data = {visualisationDiner} />
         </div>
       </div>
       <button style={buttonStyle} onClick={handleCombinedClick}>

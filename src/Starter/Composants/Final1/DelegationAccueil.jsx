@@ -19,7 +19,7 @@ const DelegationAccueil = ({onPageChange}) => {
 
   useEffect(()=>{
     console.log("ENTRER")
-    fetch(url.urlHtpp+"dashboard-delegations",{
+    fetch(url.urlHtpp+"dash-delegation",{
       method:'GET',
       headers:{'Content-Type':'application/json'},
     })
@@ -29,11 +29,22 @@ const DelegationAccueil = ({onPageChange}) => {
   },[getPLAN])
 
   return (
-    <div style={cardContainerStyle}>
+    <div>
+    {/* <div style={cardContainerStyle}>
       {repartitionDelegation.map((row, index) => (
-        <CardDelegation key={index} nomPays={row.nom_pays} nombre={row.nbr_par_pays} />
+      row.nom_pays === "Madagascar" && (
+           <CardDelegation key={index} nomPays={row.nom_pays} nombre={row.nbr_par_pays} />
+      )
       ))}
-    </div>
+    </div> */}
+    <div style={cardContainerStyle}>
+    {repartitionDelegation.map((row, index) => (
+    row.nom_pays && (
+         <CardDelegation key={index} nomPays={row.nom_pays} nombre={row.nbr_par_pays} />
+    )
+    ))}
+  </div>
+  </div>
   );
 };
 export default DelegationAccueil;

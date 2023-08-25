@@ -50,6 +50,10 @@ const Card = (date) => {
   const [platServiParJour,setPlats_servi] = useState();
   const [detail_hebergement,setDetail_hebergement] = useState();
   const [nombre_site,setNombre_site] = useState();
+  const [transport,setTransport] = useState();
+  const [voiture_total,setVoitureTotal] = useState();
+  const [voitureLibre,setVoitureLibre] = useState();
+  const [siteRestau,setSiteRestau] = useState();
 
   useEffect(()=>{
     console.log("ENTRER")
@@ -65,6 +69,19 @@ const Card = (date) => {
       setPlats_servi(data.data.platServiParJour),
       setDetail_hebergement(data.data.hebergementDetail),
       setNombre_site(data.data.nombre_site.nombre_total)
+    })
+    .catch(error=>{console.log(error)})
+
+    fetch(url.urlHtpp+"restauration-transport/"+dateChoix,{
+      method:"GET",
+      headers:{"Content-Type":"application/json"}
+    })
+    .then(response=>response.json())
+    .then(data=>{
+      console.log(data.data),
+       setSiteRestau(data.data.nombre_site_resaturation) ,
+       setVoitureTotal(data.data.transport.vehicule_total)
+       setVoitureLibre(data.data.transport.vehicule_repos);
     })
     .catch(error=>{console.log(error)})
   },[])
@@ -172,7 +189,7 @@ const Card = (date) => {
                         </div>
                         <div className="vide">
 
-                          <h6 style={fontSizeH6}>Nombre de plats servis par jour  <br /> <span className="small pt-1 fw-bold" style={fontSizeTEXT}>{numberWithThousandsSeparator(delegationTotal ?? 0)*2}</span>  </h6>
+                          <h6 style={fontSizeH6}>Nombre de site de restauration  <br /> <span className="small pt-1 fw-bold" style={fontSizeTEXT}>{siteRestau}</span>  </h6>
                           <div className="icon">
                             <i className="ri-bar-chart-2-fill"></i>
                           </div>
@@ -194,14 +211,14 @@ const Card = (date) => {
                         <li><a className="dropdown-item" href="#">This Year</a></li>
                       </ul>
                     </div>
-                    <div className="card-body cardBody-4" style={{ textAlign: 'center',width: '100%' }} >
+                    <div className="card-body cardBody-4" style={{ textAlign: 'center',width: '90%' }} >
                       <h5 className="card-title" style={fontSizeCard}>Transport </h5>
                       <div className="d-flex align-items-center">
                         <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
                           <i className="bi bi-cart"></i>
                         </div>
                         <div className="vide">
-                          <h6 style={fontSizeH6}>Véhicules disponibles <br /> <span className="small pt-1 fw-bold" style={fontSizeTEXT}>{"12/100"}</span>  </h6>
+                          <h6 style={fontSizeH6}>Véhicules disponibles <br /> <span className="small pt-1 fw-bold" style={fontSizeTEXT}>{voitureLibre}/{voiture_total}</span>  </h6>
                           <div className="icon">
                             <i className="ri-bar-chart-2-fill"></i>
                           </div>

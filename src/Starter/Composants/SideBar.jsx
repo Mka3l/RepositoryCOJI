@@ -88,7 +88,7 @@ const Sidebar = ({ onPageChange }) => {
             return 'Délégation Mayotte';
           case 'La Réunion':
             return 'Délégation La Réunion';
-            case 'Liste Athlètes':
+            case 'Liste Personnes':
               return 'Liste des Athlètes par Discipline';
           default:
             return 'Délégation';
@@ -133,31 +133,8 @@ const Sidebar = ({ onPageChange }) => {
              
         
 
-      case 'Contacts des Points Focaux':
-        return 'Contacts des Points Focaux';
-
-      case 'Facturation':
-        if (subcategory === 'Etat de paiement') {
-          if (selectedSubsubcategory === '1er acompte') {
-            return '1er acompte';
-          } else if (selectedSubsubcategory === '2ème acompte') {
-            return '2ème acompte';
-          } else if (selectedSubsubcategory === 'Situation Financière') {
-            return 'Situation Financière';
-          } else {
-            return 'Etat de paiement';
-          }
-        } else if (subcategory === 'Factures totalement payées') {
-          return 'Factures totalement payées';
-        } else if (subcategory === 'Factures partiellement payées') {
-          return 'Factures partiellement payées';
-        } else if (subcategory === 'Factures impayées') {
-          return 'Factures impayées';
-        } else if (subcategory === 'Reçu') {
-          return 'Reçu';
-        } else {
-          return 'Facturation';
-        }
+      case 'Contacts des points focaux':
+        return 'Contacts des points focaux';
 
       case 'Calendrier':
         switch (subcategory) {
