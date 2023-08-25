@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 
 const CompetitionAccreditation = () => {
     const columns = [
-        "COMMISSION",
-        "Responsable",
-        "Telephone",
-        "e-mail"
+      "Commission",
+      "Résponsable",
+      "Téléphone",
+      "e-mail"
     ];
 
     const rows = [

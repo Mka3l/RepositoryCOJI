@@ -32,14 +32,14 @@ const components = [
     { title: "Administration Nationale", component: AdministrationNationale },
     { title: "Anti-Dopage", component: AntiDopage },
     { title: "Communication", component: Communication },
-    { title: "Competition et Accreditation", component: CompetitionAccreditation },
-    { title: "Coordonnateur General", component: CoordonnateurGeneral },
-    { title: "Direction Executive", component: DirectionExecutive },
-    { title: "Evenementiel", component: Evenementiel },
-    { title: "Hebergement", component: Hebergement },
+    { title: "Compétition et Accréditation", component: CompetitionAccreditation },
+    { title: "Coordonnateur Général", component: CoordonnateurGeneral },
+    { title: "Direction Exécutive", component: DirectionExecutive },
+    { title: "Evénementiel", component: Evenementiel },
+    { title: "Hébergement", component: Hebergement },
     { title: "Infrastructure", component: Infrastructure },
     { title: "Logistique", component: Logistique },
-    { title: "Medicale", component: Medicale },
+    { title: "Médicale", component: Medicale },
     { title: "Mobilisation Sociale", component: MobilisationSociale },
     { title: "Partenariat", component: Partenariat },
     { title: "Promotion des Jeux", component: PromotionJeux },
@@ -47,12 +47,13 @@ const components = [
     { title: "Protocole Technique", component: ProtocoleTechnique },
     { title: "Relation Publique", component: RelationPublique },
     { title: "Restauration", component: Restauration },
-    { title: "Securite", component: Securite },
-    { title: "Systeme d'Information", component: SystemeInformation },
+    { title: "Sécurité", component: Securite },
+    { title: "Système d'Information", component: SystemeInformation },
     { title: "Transport", component: Transport },
-    { title: "Tresorerie Generale", component: TresorerieGenerale },
+    { title: "Trésorerie Générale", component: TresorerieGenerale },
     { title: "Volet Jeunesse", component: VoletJeunesse },
 ];
+
 
 
 const AApointFocauxEnsemble = () => {

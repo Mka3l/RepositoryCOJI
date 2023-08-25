@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 
 const AntiDopage = () => {
     const columns = [
-        "COMMISSION",
-        "Responsable",
-        "Telephone",
+        "Commission",
+        "Résponsable",
+        "Téléphone",
         "e-mail"
     ];
 

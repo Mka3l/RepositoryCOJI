@@ -2,33 +2,33 @@ import React, { useState } from 'react';
 
 const Communication = () => {
   const columns = [
-    "COMMISSION",
-    "Responsable",
-    "Telephone",
+    "Commission",
+    "Résponsable",
+    "Téléphone",
     "e-mail"
   ];
 
   const rows = [
     [
-        "COMMUNICATION",
-        "Irina RAMALANJAONA",
-        "034 00 135 61",
-        "iramalanjaona@fihariana.com"
+      "COMMUNICATION",
+      "Irina RAMALANJAONA",
+      "034 00 135 61",
+      "iramalanjaona@fihariana.com"
     ],
     [
-        "COMMUNICATION",
-        "Freddo Léandre RAMELSON",
-        "034 93 711 41"
+      "COMMUNICATION",
+      "Freddo Léandre RAMELSON",
+      "034 93 711 41"
     ],
     [
-        "COMMUNICATION",
-        "HARIJAONA Tanjona Niaina",
-        "034 34 697 97"
+      "COMMUNICATION",
+      "HARIJAONA Tanjona Niaina",
+      "034 34 697 97"
     ],
     [
-        "COMMUNICATION",
-        "Tojoniaina RAMANANTSOA",
-        "034 02 544 77"
+      "COMMUNICATION",
+      "Tojoniaina RAMANANTSOA",
+      "034 02 544 77"
     ],
   ];
   const tableStyle = {

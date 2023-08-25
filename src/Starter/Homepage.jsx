@@ -38,7 +38,7 @@ const Homepage = () => {
         }}> 2023 </h3>
       </header>
       <main className="flex-grow-1">
-        <div className="row justify-content-center align-items-center h-100">
+        {/* <div className="row justify-content-center align-items-center h-100">
           <div className="col-md-8 mb-4 border-radius-12">
             <div className="card h-100 shadow">
               <div className="card-body ">
@@ -69,13 +69,13 @@ const Homepage = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
 
         <div className="row justify-content-center align-items-center h-100">
           <div className="col-md-6 mb-4">
             <div className="card h-100 shadow">
               <div className="card-body ">
-                <p className="card-text">
+                <p className="card-text text-center">
                   JI_Data permet de suivre en temps réel l'organisation et les chiffres importants des Jeux des JIOI
                 </p>
               </div>

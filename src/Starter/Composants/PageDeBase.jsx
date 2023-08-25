@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Sidebar from './SideBar';
 import GeneraliteDelegation from './Final1/FinalDelegationPays/Madagascar/GeneraliteDelegation';
 import Logo from '../../assets/Images/Logo.webp';
@@ -46,6 +46,7 @@ import CalendrierDesJeux from './CalendrierDesJeux/CalendrierDesJeux';
 import ReferenceMedicale from './ReferenceMedicale/ReferenceMedicale';
 import EtatPaiementEnsemble from './Facturation/EtatDePaiement/EtatDePaimentDivisé/EtatPaiementEnsemble';
 import CalendrierLien from './CalendrierDesJeux/CalendrierLien';
+import InformationsSurSites from './HebergementFinal/InformationsSurSites/InformationsSurSites';
 const getFlagForCountry = (country) => {
   const countryFlags = {
     'Délégation Madagascar': MadagascarFlag,
@@ -124,7 +125,7 @@ const PageDeBase = () => {
   const handleCardClick = (pageName) => {
     onPageChange(pageName);
   };
-  const [delegationTotal,setDelegationTotal] = useState(2);
+  const [delegationTotal, setDelegationTotal] = useState(2);
   const styles = {
     dateText: {
 
@@ -168,7 +169,7 @@ const PageDeBase = () => {
     marginBottom: '60px',
     boxShadow: '0px 5px 20px -5px',
     marginTop: '60px'
-    
+
   };
 
   var dateFiltre = useRef();
@@ -199,35 +200,35 @@ const PageDeBase = () => {
       <div className="row">
         <div className="container-fluid my-2 mx-0">
           <div className="row">
-            <div className="d-flex align-items-center mb-3"> {/* Logo */}
+            <div className="d-flex align-items-center justify-content-center mb-3"> {/* Logo */}
               <img
-                src={Logo} // Replace with the path to your logo image
+                src={Logo} // Remplacez par le chemin de votre image de logo
                 alt="Logo"
-                style={{ width: '160px', height: '110px', marginRight: '0px' }}
+                style={{ width: '300px', height: 'auto', marginRight: '0px' }}
               />
               {/* Bannière */}
-              <img
-                src={Baniere}
-                alt="Bannière des îles de l'océan Indien"
-                style={{ width: '125%', height: '90px' }}
-              />
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <h1 className="display-4 text-center" style={{
+                  fontSize: '3rem',
+                  fontWeight: 'bold',
+                  color: '#973116',
+                  textShadow: '2px 2px 4px rgba(0, 0, 0, 0.3)',
+                }}>
+                  <p>TABLEAU DE BORD</p>
+                  <p>SUIVI DES JEUX DES ILES DE L'OCEAN INDIEN</p>
+                </h1>
+                <h2 className='text-center' style={{
+                  color: '#973116',
+                  textShadow: '2px 2px 4px rgba(0, 0, 0, 0.3)',
+                  marginTop: 'auto', // Pour pousser "2023" en bas
+                }}>-2023-</h2>
+              </div>
             </div>
+
           </div>
         </div>
         {/* Titre */}
-        <div>
-          <h1 className="display-4 text-center" style={{
-            fontSize: '3rem',
-            fontWeight: 'bold',
-            color: '#973116',
-            textShadow: '2px 2px 4px rgba(0, 0, 0, 0.3)',
-          }}><p>TABLEAU DE BORD</p> <p>SUIVI DES JEUX DES ILES DE L'OCEAN INDIEN</p></h1>
-          <h3 className='text-center' style={{
-            color: '#973116',
-            textShadow: '2px 2px 4px rgba(0, 0, 0, 0.3)',
-          }}>-2023-</h3>
 
-        </div>
       </div>
       <div className="container-fluid my-2">
         <div className="row">
@@ -248,7 +249,7 @@ const PageDeBase = () => {
                   {/* Affichage du drapeau à côté du titre (sauf pour "Chiffres du jour") */}
                   {currentPage !== 'Chiffres du jour' && currentPage !== 'Autres' && currentPage in countryFlags && (
                     <div style={countryInfoStyle} className="country-info">
-                      
+
                       <img src={countryFlags[currentPage]} alt={currentPage} style={countryIconStyle} className="country-icon" />
                     </div>
                   )}
@@ -267,7 +268,7 @@ const PageDeBase = () => {
                             style={{ ...countryIconStyle, marginRight: '10px' }}
                             className="country-icon"
                           />
-                          <span style={{ fontWeight: '600',fontSize: '12pt', textAlign: 'center' }}>{countryNamePays[flag]}</span>
+                          <span style={{ fontWeight: '600', fontSize: '12pt', textAlign: 'center' }}>{countryNamePays[flag]}</span>
 
                         </div>
                       ))}
@@ -297,7 +298,7 @@ const PageDeBase = () => {
                 {/* Élément de la date aligné à droite */}
                 <span style={{ ...styles.dateText, }}>
                   <p>Situation en date du </p>
-                  <input style={{ background: 'none', border: 'none', color: 'brown', fontSize: '20pt', fontWeight: 'bold'}} type="date" value={dateChoix} ref={dateFiltre} onChange={ChangeDataByDate} />
+                  <input style={{ background: 'none', border: 'none', color: 'brown', fontSize: '20pt', fontWeight: 'bold' }} type="date" value={dateChoix} ref={dateFiltre} onChange={ChangeDataByDate} />
                 </span>
               </div>
             </nav>
@@ -313,7 +314,7 @@ const PageDeBase = () => {
             {/* plan de vol */}
             {currentPage === 'Plan de Vol' && <PlanDeVol />}
 
-            {currentPage === 'Restauration' && <RestaurationCard date ={dateChoix} />}
+            {currentPage === 'Restauration' && <RestaurationCard date={dateChoix} />}
             {currentPage === 'Facturation' && <FactureAccueil />}
             {currentPage === 'Autres' && <Accueille date={dateChoix} />}
 
@@ -330,7 +331,8 @@ const PageDeBase = () => {
 
             {/* Hébergement */}
             {currentPage === 'Etat d\'occupation des sites' && < EtatOccupationEnsemble />}
-            {currentPage === 'Répartition des délégations par site d\'hébergement' && <RepartitionHebergementEnsemble />}
+            {currentPage === 'Répartition de délégation par site d\'hébergement' && <RepartitionHebergementEnsemble />}
+            {currentPage === 'Informations sur Sites' && <InformationsSurSites />}
 
             {/* Restauration*/}
             {currentPage === 'Planning Déjeuner' && <PlanDejeuner />}
@@ -339,12 +341,12 @@ const PageDeBase = () => {
 
             {/* Points Focaux*/}
             {currentPage === 'Contacts des Points Focaux' && <AApointFocauxEnsemble />}
-            
+
             {currentPage === 'Calendrier des Jeux' && <CalendrierDesJeux />}
             {currentPage === 'Calendrier des événements' && <CalendrierLien />}
 
             {currentPage === 'Référence Médicale' && <ReferenceMedicale />}
-            
+
 
 
 
@@ -360,7 +362,7 @@ const PageDeBase = () => {
             {currentPage === 'Factures partiellement payées' && <FacturesPayeesPartiellementEnsemble />}
             {currentPage === 'Factures impayées' && <FacturesImpayeesEnsemble />}
             {currentPage === 'Reçu' && <VisuelFacture />}
-            {currentPage=== 'Liste des Athlètes par Discipline' && <DelegationAfficherPerson/>}
+            {currentPage === 'Liste des Athlètes par Discipline' && <DelegationAfficherPerson />}
           </div>
         </div>
       </div>

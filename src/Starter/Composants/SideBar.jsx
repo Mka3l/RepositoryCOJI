@@ -7,6 +7,7 @@ import MaldivesFlag from '../../assets/Images/flag/Maldives.webp'
 import MauriceFlag from '../../assets/Images/flag/Maurice.png'
 import SeychellesFlag from '../../assets/Images/flag/Seychelles.png'
 import blanc from '../../assets/Images/flag/blanc.jpg'
+import { Link, redirect } from 'react-router-dom';
 
 const Sidebar = ({ onPageChange }) => {
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -19,9 +20,9 @@ const Sidebar = ({ onPageChange }) => {
 
     'Chiffres du jour': [],
     'Délégation': ['Madagascar', 'Comores', 'Mayotte', 'Maurice', 'Seychelles', 'Maldives', 'La Réunion','Liste Personnes'],
-    'Calendrier': [ 'Calendrier des Jeux', 'Calendrier des événements'],
+    'Calendrier': [],
     'Plan de Vol': [],
-    'Hébergement': ['Etat d\'occupation des sites', 'Répartition des délégations par site d\'hébergement'],
+    'Hébergement': ['Etat d\'occupation des sites', 'Répartition de délégation par site d\'hébergement', 'Informations sur Sites'],
     'Transport': ['Répartition des véhicules', 'Disponibilité des véhicules', 'Suivi des itinéraires'],
     'Restauration': ['Planning Déjeuner', 'Planning Dîner', 'Visualisation de la Restauration'],
     'Contacts des Points Focaux': [],
@@ -34,7 +35,7 @@ const Sidebar = ({ onPageChange }) => {
     //   'Reçu': [], // Ajoutez les sous-sous-menus ici comme un tableau vide
     // },
     'Référence Médicale': [],
-    'Utilisateurs': []
+    // 'Utilisateurs': []
   };
 
   const dataFlag = {
@@ -52,6 +53,8 @@ const Sidebar = ({ onPageChange }) => {
     onPageChange(getPageNameFromCategory(category));
   };
 
+
+
   const handleSubcategoryClick = (subcategory) => {
     setSelectedSubcategory((prevSubcategory) =>
       prevSubcategory === subcategory ? null : subcategory
@@ -64,8 +67,6 @@ const Sidebar = ({ onPageChange }) => {
     setSelectedSubsubcategory(subsubsubcategory);
     onPageChange(getPageNameFromCategory(selectedCategory, selectedSubcategory, subsubsubcategory));
   };
-
-
 
   const getPageNameFromCategory = (category, subcategory) => {
     switch (category) {
@@ -98,8 +99,10 @@ const Sidebar = ({ onPageChange }) => {
         switch (subcategory) {
           case 'Etat d\'occupation des sites':
             return 'Etat d\'occupation des sites';
-          case 'Répartition des délégations par site d\'hébergement':
-            return 'Répartition des délégations par site d\'hébergement';
+          case 'Répartition de délégation par site d\'hébergement':
+            return 'Répartition de délégation par site d\'hébergement';
+          case 'Informations sur Sites':
+            return 'Informations sur Sites';
           default:
             return 'Hébergement';
         }
@@ -109,6 +112,7 @@ const Sidebar = ({ onPageChange }) => {
           case 'Disponibilité des véhicules':
             return 'Disponibilité des véhicules';
           case 'Suivi des itinéraires':
+            //return 'Suivi de l\'itinéraire réel des véhicules';
             return 'Suivi de l\'itinéraire réel des véhicules';
           default:
             return 'Transport';
@@ -133,21 +137,11 @@ const Sidebar = ({ onPageChange }) => {
              
         
 
-      case 'Contacts des points focaux':
-        return 'Contacts des points focaux';
+      case 'Contacts des Points Focaux':
+        return 'Contacts des Points Focaux';
 
       case 'Calendrier':
-        switch (subcategory) {
-          case 'Liste des Athlètes par Discipline':
-            return 'Liste des Athlètes par Discipline';
-          case 'Calendrier des Jeux':
-            return 'Calendrier des Jeux'
-            ;
-          case 'Calendrier des événements':
             return 'Calendrier des événements';
-          default:
-            return 'Calendrier des événements';
-        }
     }
   };
 

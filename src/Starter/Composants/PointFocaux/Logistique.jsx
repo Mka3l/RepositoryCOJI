@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 
 const Logistique = () => {
   const columns = [
-    "COMMISSION",
-    "Responsable",
-    "Telephone",
-    "e-mail"
+    "Commission",
+        "Résponsable",
+        "Téléphone",
+        "e-mail"
   ];
 
   const rows = [

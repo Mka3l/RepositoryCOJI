@@ -29,22 +29,12 @@ const DelegationAccueil = ({onPageChange}) => {
   },[getPLAN])
 
   return (
-    <div>
-    {/* <div style={cardContainerStyle}>
-      {repartitionDelegation.map((row, index) => (
-      row.nom_pays === "Madagascar" && (
-           <CardDelegation key={index} nomPays={row.nom_pays} nombre={row.nbr_par_pays} />
-      )
-      ))}
-    </div> */}
     <div style={cardContainerStyle}>
-    {repartitionDelegation.map((row, index) => (
-    row.nom_pays && (
-         <CardDelegation key={index} nomPays={row.nom_pays} nombre={row.nbr_par_pays} />
-    )
-    ))}
-  </div>
-  </div>
+      {repartitionDelegation.map((row, index) => (
+        
+        <CardDelegation key={index} nomPays={row.nom_pays} nombre={row.nbr_par_pays} />
+      ))}
+    </div>
   );
 };
 export default DelegationAccueil;
