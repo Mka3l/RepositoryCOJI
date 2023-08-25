@@ -8,8 +8,8 @@
     background-color: #973116;
     border: none;
     border-radius: 50%;
-    width: 200px; /* Largeur fixe du bouton */
-    height: 200px; /* Hauteur fixe du bouton */
+    width: 35%; /* Largeur fixe du bouton */
+    height: 35%; /* Hauteur fixe du bouton */
     padding: 0; /* Supprime le padding pour maintenir la rondeur */
     cursor: pointer;
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
@@ -20,6 +20,7 @@
     position: relative;
     overflow: hidden; /* Pour cacher le contenu qui déborde */
     font-family: 'UrbanFont', sans-serif; /* Appliquez la police personnalisée */
+    margin-top: 10%;
 
   }
   
@@ -55,7 +56,7 @@
   .round-button-content {
     color: white;
     text-align: center;
-    font-size: 18px;
+    font-size: 24px;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
     transition: font-size 0.2s, color 0.2s, transform 0.2s;
     font-family: 'UrbanFont', sans-serif; /* Appliquez la police personnalisée */

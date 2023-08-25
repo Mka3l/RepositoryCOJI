@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from 'react';
 import Sidebar from './SideBar';
 import GeneraliteDelegation from './Final1/FinalDelegationPays/Madagascar/GeneraliteDelegation';
 import Logo from '../../assets/Images/Logo.webp';
-import Baniere from '../../assets/Images/banieredesiles.jpg';
 import VisuelFacture from './Facturation/VisuelFacturation';
 import DelegationComores from './Final1/FinalDelegationPays/Comores/DelegationComores';
 import DelegationMayotte from './Final1/FinalDelegationPays/Mayotte/DelegationMayotte';
@@ -28,26 +27,21 @@ import MauriceFlag from '../../assets/Images/flag/Maurice.png'
 import SeychellesFlag from '../../assets/Images/flag/Seychelles.png'
 
 import MayotteFlag from '../../assets/Images/flag/Mayotte.png'
-import TransportAcceuil from './Transport/TransportAccueil';
 import TransportMap from './Transport/Transport';
-import ConvertToJson from './ExcelTreatment/ConvertToJson';
 import DelegationEnsemble from './Final1/DelegationEnsemble';
-import TransportCard from './Transport/TransportAccueil';
 import TransportClic from './Transport/TransportClic';
 import PlanDejeuner from './DashboardRestauration/PlanDejeuner/PlanDejeuner';
 import VisualisationRestauration from './DashboardRestauration/Visualisation/VisualisationRestauration';
 import PlanDiner from './DashboardRestauration/PlanDiner/PlanDiner';
 import DelegationAfficherPerson from '../Composants/Final1/DelegationAfficherPerson'
-import PointFocaux from './PointFocaux/PointFocaux';
-import AdministrationNationale from './PointFocaux/AdministrationNationale';
 import AApointFocauxEnsemble from './PointFocaux/AApointFocauxEnsemble';
 import PlanDeVol from './PlanDeVol/PlanDeVol'
 import CalendrierDesJeux from './CalendrierDesJeux/CalendrierDesJeux';
 import ReferenceMedicale from './ReferenceMedicale/ReferenceMedicale';
-import EtatPaiementEnsemble from './Facturation/EtatDePaiement/EtatDePaimentDivisé/EtatPaiementEnsemble';
 import CalendrierLien from './CalendrierDesJeux/CalendrierLien';
 import InformationsSurSites from './HebergementFinal/InformationsSurSites/InformationsSurSites';
 import ChefsDeDelegations from './PointFocaux/PointFocaux';
+import EtatDePaiementEnsemble from './Facturation/EtatDePaiement/EtatDePaiementEnsemble';
 const getFlagForCountry = (country) => {
   const countryFlags = {
     'Délégation Madagascar': MadagascarFlag,
@@ -355,7 +349,7 @@ const PageDeBase = () => {
             {currentPage === 'Suivi de l\'itinéraire réel des véhicules' && <TransportMap />}
 
             {/* Facture */}
-            {currentPage === 'Etat de paiement' && <EtatPaiementEnsemble />}
+            {currentPage === 'Etat de paiement' && <EtatDePaiementEnsemble />}
             {currentPage === 'Factures totalement payées' && <FacturesPayeesEnsemble />}
             {currentPage === 'Factures partiellement payées' && <FacturesPayeesPartiellementEnsemble />}
             {currentPage === 'Factures impayées' && <FacturesImpayeesEnsemble />}

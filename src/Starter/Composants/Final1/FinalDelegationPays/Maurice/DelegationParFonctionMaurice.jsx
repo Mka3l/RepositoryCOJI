@@ -126,7 +126,18 @@ const DelegationParFonctionMaurice = () => {
         </tr>
         <tr>
           {columns.map((column, index) => (
-            <th key={index} style={{ ...thStyle, textAlign: 'center' }}> {/* Ajout du style textAlign */}
+            <th key={index} style={{
+              ...thStyle,
+              ...(index === 0 ? { textAlign: 'right' } : { textAlign: 'center' }),
+              position: 'sticky',
+              top: '150px',
+              backgroundColor: 'white',
+              fontFamily: 'Arial, sans-serif',
+              fontSize: '24px', 
+              textAlign: 'center', 
+              textShadow: '2px 2px 4px rgba(0, 0, 0, 0.3)',
+              color: '#333'
+              }}> {/* Ajout du style textAlign */}
               {column}
             </th>
           ))}

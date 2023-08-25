@@ -27,7 +27,16 @@ const VisualisationDejeunerDiner = ({data}) => {
         <thead>
           <tr>
             {columns.map((column, index) => (
-              <th className='text-center' key={index}>{column}</th>
+              <th className='text-center' key={index} style={{
+                position: 'sticky',
+                top: '150px',
+                backgroundColor: 'white',
+                fontFamily: 'Arial, sans-serif',
+                fontSize: '16px', 
+                textAlign: 'center', 
+                textShadow: '2px 2px 4px rgba(0, 0, 0, 0.3)',
+                color: '#333'
+                }}>{column}</th>
             ))}
           </tr>
         </thead>

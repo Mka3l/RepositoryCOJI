@@ -164,7 +164,6 @@ const PlanDejeuner = () => {
   
   return (<div>
       <div id='pdf-content' style={{width: '95%',margin: 'auto'}}>
-        <h2 className="mb-3 text-center">Planning Déjeuner</h2>
         <div style={filtre}>
             <span>Trier par délégation :</span>  
             <select ref={delegationfiltre} onChange={trierDelegation} style={{
@@ -234,7 +233,7 @@ const PlanDejeuner = () => {
       </button>
       {showQRCode &&  <Modal show={showModal} onHide={handleCloseModal}>
           <Modal.Header>
-            <Modal.Title>{'Insertion Rapport Restauration'}</Modal.Title>
+            <Modal.Title >{'Insertion Rapport Restauration'}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
               <p>Importer le rapport de restauration</p>

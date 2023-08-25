@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import RecapEtatOccupation from './RecapEtatOccupation';
 import url from '../../../urlHtpp';
 
 const EtatOccupation = () => {
@@ -612,7 +611,7 @@ const EtatOccupation = () => {
         headers:{"Content-Type":"application/json"}
       })
     .then(response=>response.json())
-    .then(data=>{console.log(data.data),setDataHotel(data.data)})
+    .then(data=>{setDataHotel(data.data)})
     .catch(error=>{console.log(error)})
 
     fetch(url.urlHtpp+"hebergements/card/2023-08-23",{
@@ -643,7 +642,18 @@ const EtatOccupation = () => {
         <thead>
           <tr>
             {columns.map((column, index) => (
-              <th key={index} style={thStyle}>
+              <th key={index} style={{
+                ...thStyle,
+                ...(index === 0 ? { textAlign: 'right' } : { textAlign: 'center' }),
+                position: 'sticky',
+                top: '150px',
+                backgroundColor: 'white',
+                fontFamily: 'Arial, sans-serif',
+                fontSize: '24px', 
+                textAlign: 'center', 
+                textShadow: '2px 2px 4px rgba(0, 0, 0, 0.3)',
+                color: '#333'
+                }}>
                 {column}
               </th>
             ))}

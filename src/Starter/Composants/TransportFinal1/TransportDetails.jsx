@@ -2,8 +2,6 @@ import React, { useEffect, useRef, useState } from 'react';
 import AjoutHebergement from '../HebergementFinal/AjoutHebergement';
 import url from '../../urlHtpp';
 
-import '../../Composants/HebergementFinal/HebergementStyles/HebergementFormulaire.css'
-
 const TransportDispo = () => {
   const carsData = [
     {
@@ -125,6 +123,7 @@ const TransportDispo = () => {
   const [vehicules, setVehicules] = useState([]);
   const [trajet_vehicule,setTrajetVehicule] = useState([])
   const [useListe,setUseListe] = useState(true)
+  const [useListev2,setUseListeV2] = useState(true)
   const [total,setTotal] = useState();
   const [occupe,setOccupe] = useState();
   const [dispo,setDispo] =useState();
@@ -137,13 +136,13 @@ const TransportDispo = () => {
      .then(response=>response.json())
      .then(data=>{console.log(data),setTrajetVehicule(data.data)})
      .catch(error=>console.log(error))
-
+     console.log(url.urlHtpp + "liste-vehicule")
     fetch(url.urlHtpp + "liste-vehicule", {
       method: "GET",
       headers: { 'Content-Type': 'application/json' }
     })
       .then(response => response.json())
-      .then(data => { console.log(data),setVehicules(data.data) })
+      .then(data => { console.log("#################",data),setVehicules(data) })
       .catch(error => console.log(error))
 
       fetch(url.urlHtpp + 'vehicules-excel/card-vehicule', {
@@ -159,7 +158,7 @@ const TransportDispo = () => {
         })
         .catch(error => { console.log(error) });
      
-  }, [useListe])
+  }, [useListe,useListev2])
 
   const totalVehicles = 100;
   const availableVehicles = 57;
@@ -187,6 +186,18 @@ const TransportDispo = () => {
       .catch(error=>{console.log(error)})
   }
 
+  const Terminer =(id,immatriculation,idveh)=>{
+    setUseListeV2(false)
+    alert("Immatriculation : "+immatriculation)
+    fetch(url.urlHtpp+"vehicule-gestion/0&&"+idveh+"&&"+id,{
+      method:"PUT",
+      headers:{"Content-Type":"application/json"}
+    }).then(response=>response.json())
+    .then(data=>{console.log(data)})
+    .catch(error=>{console.log(error)})
+   
+  }
+
 
 
   return (
@@ -205,13 +216,23 @@ const TransportDispo = () => {
       <div>
         <table style={tableStyle}>
           <thead>
-            <tr>
+            <tr style={{
+                        ...thStyle,
+                      
+                        position: 'sticky',
+                        top: '150px',
+                        backgroundColor: 'white',
+                        fontFamily: 'Arial, sans-serif',
+                        fontSize: '16px', 
+                        textAlign: 'center', 
+                        textShadow: '2px 2px 4px rgba(0, 0, 0, 0.3)',
+                        color: '#333'
+                        }}>
               <th style={thStyle}>Date</th>
               <th style={thStyle}>Immatriculation</th>
               <th style={thStyle}>Catégorie</th>
               <th style={thStyle}>Nombre de place</th>
               <th style={thStyle}>Type carburant</th>
-              <th style={thStyle}>Consommation théorique</th>
               <th style={thStyle}>Lieu de départ</th>
               <th style={thStyle}>Lieu d'arrivée</th>
               <th style={thStyle}>Distance</th>
@@ -228,6 +249,7 @@ const TransportDispo = () => {
                 <td style={tdStyle}>{car.lieu_depart}</td>
                 <td style={tdStyle}>{car.lieu_arrive}</td>
                 <td style={tdStyle}>{car.intitule}</td>
+                <td><button onClick={()=>Terminer(car.id,car.immatriculation,car.vehicule_id)} className='btn btn-danger'>Termier</button></td>
                 <td>
                   <AjoutHebergement Action={"Update"} Titre={"Update Trajet"}>
                     <p>Date</p>
@@ -279,7 +301,7 @@ const TransportDispo = () => {
               <p>
                 <input type="number" name="" ref={consommationTheorique} className='form-control' id="" min="0" /> */}
             {/* </p> */}
-            <p><button className="buttonStyle" onClick={AddTransport}> Ajouter</button></p>
+            <p><button className='btn btn-success' onClick={AddTransport}> Ajouter</button></p>
           </AjoutHebergement>
         </div>
       </div>

@@ -15,7 +15,6 @@ import Accueille from './Accueille';
 import RepartitionHebergementEnsemble from './HebergementFinal/RepartitionHebergement/RepartitionHebergementEnsemble';
 import FacturesImpayeesEnsemble from './Facturation/FacturesPayeesImpayees/FacturesImpayeesEnsemble';
 import FacturesPayeesEnsemble from './Facturation/FacturesPayees/FacturesPayeesEnsemble';
-import EtatDePaiementEnsemble from './Facturation/EtatDePaiement/EtatDePaiementEnsemble';
 import CardHebergement from './HebergementFinal/HebergementAccueil';
 import RestaurationCard from './DashboardRestauration/RestaurationAccueil';
 import FacturesPayeesPartiellementEnsemble from './Facturation/FacturesPayeesPartiellement/FacturesPayeesPartiellementEnsemble';
@@ -29,12 +28,8 @@ import MauriceFlag from '../../assets/Images/flag/Maurice.png'
 import SeychellesFlag from '../../assets/Images/flag/Seychelles.png'
 
 import MayotteFlag from '../../assets/Images/flag/Mayotte.png'
-import TransportAcceuil from './Transport/TransportAccueil';
 import TransportMap from './Transport/Transport';
-import ConvertToJson from './ExcelTreatment/ConvertToJson';
-import EtatPaiementEnsemble from './Facturation/EtatDePaiement/EtatDePaimentDivisé/EtatPaiementEnsemble';
 import DelegationEnsemble from './Final1/DelegationEnsemble';
-import TransportCard from './Transport/TransportAccueil';
 import TransportClic from './Transport/TransportClic';
 import PlanDejeuner from './DashboardRestauration/PlanDejeuner/PlanDejeuner';
 import VisualisationRestauration from './DashboardRestauration/Visualisation/VisualisationRestauration';

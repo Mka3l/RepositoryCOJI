@@ -167,7 +167,6 @@ const PlanDiner = () => {
         width: '95%',
         margin: 'auto',
       }}>
-        <h2 className="mb-3 text-center">Planning Dîner</h2>
         <div style={filtre}>
             <span>Trier par délégation :</span>  
             <select ref={delegationfiltre} onChange={trierDelegation} style={{
