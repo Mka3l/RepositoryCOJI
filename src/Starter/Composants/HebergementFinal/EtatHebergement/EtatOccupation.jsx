@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import RecapEtatOccupation from './RecapEtatOccupation';
+import url from '../../../urlHtpp';
 
 const EtatOccupation = () => {
   const columns = [
@@ -565,7 +566,7 @@ const EtatOccupation = () => {
     ]
   ];
   const [expanded, setExpanded] = useState(false);
-  const rowsToShow = expanded ? rows : [];
+  const rowsToShow = rows
 
   const buttonStyle = {
     backgroundColor: expanded ? '#7d240c' : '#973116',
@@ -596,16 +597,48 @@ const EtatOccupation = () => {
     textAlign: 'center',
     border: '1px solid #ddd',
   };
+
+  const [totalSite,setTotalSite] = useState();
+  const [lit_total,setLit_total] = useState();
+  const [lit_occupe,setLit_Occupe] = useState();
+  const [taux,setTaux] = useState();
+  const [dataHotel,setDataHotel] = useState([])
+
+
+
+  useEffect(()=>{
+      fetch(url.urlHtpp+"liste-hotels/2023-08-30",{
+        method:'GET',
+        headers:{"Content-Type":"application/json"}
+      })
+    .then(response=>response.json())
+    .then(data=>{setDataHotel(data.data)})
+    .catch(error=>{console.log(error)})
+
+    fetch(url.urlHtpp+"hebergements/card/2023-08-23",{
+      method :"GET",
+      headers:{"Content-Type":"application/json"}
+    })
+    .then(response=>response.json())
+    .then(data=>{console.log(data.data),
+      setLit_total(data.data.card.total_lit),
+      setLit_Occupe(data.data.card.lit_occupe)
+      setTaux(data.data.card.taux_occupe)
+      setTotalSite(data.data.total)})
+    .catch(error=>{console.log(error)})
+  },[])
+
+
   return (
     <div style={{ marginTop: '20px' }}>
     {/* <button
       style={buttonStyle}
       onClick={() => setExpanded(!expanded)}
     >
-      {/* {expanded ? '-' : '+'} {expanded ? 'Réduire' : 'Afficher plus de détails'} */}
-   {/* </button> */}
+      {expanded ? '-' : '+'} {expanded ? 'Réduire' : 'Afficher plus de détails'}
+    </button> */}
     {/* <RecapEtatOccupation></RecapEtatOccupation> */}
-   
+    
       <table style={tableStyle}>
         <thead>
           <tr>
@@ -617,14 +650,8 @@ const EtatOccupation = () => {
           </tr>
         </thead>
         <tbody>
-        <tr>
-            <td  style={tdStyle}>1</td>
-            <td  style={tdStyle}>2</td>
-            <td  style={tdStyle}>3</td>
-            <td  style={tdStyle}>4</td>
-            <td  style={tdStyle}>5</td>
-          </tr>
-  {rowsToShow.map((row, rowIndex) => (
+       
+  {/* {rowsToShow.map((row, rowIndex) => (
     <tr key={rowIndex}>
       {row.map((cell, cellIndex) => (
         <td key={cellIndex} style={{...tdStyle,fontPalette:'10'}}>
@@ -635,6 +662,33 @@ const EtatOccupation = () => {
               : cell}
         </td>
       ))}
+    </tr>
+  ))} */}
+  <tr>
+    <td style={{...tdStyle,fontPalette:'10' ,fontWeight:"borld"}}>{totalSite}</td>
+    <td style={{...tdStyle,fontPalette:'10',fontWeight:"borld"}}>{lit_total??0}</td>
+    <td style={{...tdStyle,fontPalette:'10',fontWeight:"borld"}}>{lit_occupe??0}</td>
+    <td style={{...tdStyle,fontPalette:'10',fontWeight:"borld"}}>{lit_occupe??0-lit_total??0}</td>
+    <td style={{...tdStyle,fontPalette:'10',fontWeight:"borld"}}>{taux}</td>
+  </tr>
+  {dataHotel.map((row, rowIndex) => (
+    <tr key={rowIndex}>
+      
+        <td style={{...tdStyle,fontPalette:'10'}}>
+         {row.nom_hotel}
+        </td>
+        <td style={{...tdStyle,fontPalette:'10'}}>
+         {row.total_lit}
+        </td>
+        <td style={{...tdStyle,fontPalette:'10'}}>
+         {row.lit_occupe}
+        </td>
+        <td style={{...tdStyle,fontPalette:'10'}}>
+         {row.lit_disponible}
+        </td>
+        <td style={{...tdStyle,fontPalette:'10'}}>
+         {row.taux_occupe}
+        </td>
     </tr>
   ))}
 </tbody>

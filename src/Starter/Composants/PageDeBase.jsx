@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import Sidebar from './SideBar';
 import GeneraliteDelegation from './Final1/FinalDelegationPays/Madagascar/GeneraliteDelegation';
 import Logo from '../../assets/Images/Logo.webp';
@@ -45,6 +45,8 @@ import PlanDeVol from './PlanDeVol/PlanDeVol'
 import CalendrierDesJeux from './CalendrierDesJeux/CalendrierDesJeux';
 import ReferenceMedicale from './ReferenceMedicale/ReferenceMedicale';
 import EtatPaiementEnsemble from './Facturation/EtatDePaiement/EtatDePaimentDivisé/EtatPaiementEnsemble';
+// import CalendrierLien from './CalendrierDesJeux/CalendrierLien';
+import url from "../urlHtpp";
 const getFlagForCountry = (country) => {
   const countryFlags = {
     'Délégation Madagascar': MadagascarFlag,
@@ -123,7 +125,7 @@ const PageDeBase = () => {
   const handleCardClick = (pageName) => {
     onPageChange(pageName);
   };
-
+  const [delegationTotal,setDelegationTotal] = useState(2);
   const styles = {
     dateText: {
 
@@ -247,6 +249,7 @@ const PageDeBase = () => {
                   {/* Affichage du drapeau à côté du titre (sauf pour "Chiffres du jour") */}
                   {currentPage !== 'Chiffres du jour' && currentPage !== 'Autres' && currentPage in countryFlags && (
                     <div style={countryInfoStyle} className="country-info">
+                      
                       <img src={countryFlags[currentPage]} alt={currentPage} style={countryIconStyle} className="country-icon" />
                     </div>
                   )}
@@ -303,7 +306,7 @@ const PageDeBase = () => {
             {/* Afficher le composant correspondant à la page actuelle */}
             {/* Catégories */}
             {currentPage === 'Chiffres du jour' && <Accueille date={dateChoix} />}
-            {currentPage === 'Délégation' && <DelegationEnsemble />}
+            {currentPage === 'Délégation' && <DelegationEnsemble handleChangePage={handlePageChange} />}
 
             {currentPage === 'Hébergement' && < CardHebergement date={dateChoix} />}
             {currentPage === 'Transport' && <TransportClic />}
@@ -339,6 +342,8 @@ const PageDeBase = () => {
             {currentPage === 'Contacts des points focaux' && <AApointFocauxEnsemble />}
             
             {currentPage === 'Calendrier des Jeux' && <CalendrierDesJeux />}
+            {currentPage === 'Calendrier des événements' && <CalendrierLien />}
+
             {currentPage === 'Référence Médicale' && <ReferenceMedicale />}
             
 

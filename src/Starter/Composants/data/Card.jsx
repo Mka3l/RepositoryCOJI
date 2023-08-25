@@ -189,7 +189,7 @@ const Card = (date) => {
                         </div>
                         <div className="vide">
 
-                          <h6 style={fontSizeH6}>Nombre de plats servis par jour  <br /> <span className="small pt-1 fw-bold" style={fontSizeTEXT}>{siteRestau}</span>  </h6>
+                          <h6 style={fontSizeH6}>Nombre de site de restauration  <br /> <span className="small pt-1 fw-bold" style={fontSizeTEXT}>{siteRestau}</span>  </h6>
                           <div className="icon">
                             <i className="ri-bar-chart-2-fill"></i>
                           </div>

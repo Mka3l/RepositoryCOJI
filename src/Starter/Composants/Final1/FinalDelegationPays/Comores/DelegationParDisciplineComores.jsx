@@ -10,6 +10,7 @@ const DelegationParDisciplineComores = () => {
   const firstRowStyle = {
     fontWeight: 'bold',
   };
+
   const fetchData = () => {
     fetch(url.urlHtpp + "repartition-discipline-delegation/nouveau_restauration/Comores", {
       method: 'GET',
@@ -88,7 +89,8 @@ const DelegationParDisciplineComores = () => {
       <div style={{ marginTop: '20px' }}>
         <button
             style={buttonStyle}
-            onClick={() => setExpanded(!expanded)}
+            onClick={() => setExpanded(!expanded)
+        }
         >
           {expanded ? '-' : '+'} {expanded ? 'Réduire' : 'Afficher plus'}
         </button>

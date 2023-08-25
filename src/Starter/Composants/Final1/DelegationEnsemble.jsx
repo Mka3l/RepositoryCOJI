@@ -4,13 +4,24 @@ import DelegationClic from './DelegationClic';
 import AjoutHebergement from '../HebergementFinal/AjoutHebergement';
 import url from '../../urlHtpp';
 import DelegationAfficherPerson from './DelegationAfficherPerson';
-const DelegationEnsemble = () => {
+import {Link} from "react-router-dom";
+const DelegationEnsemble = ({handleChangePage}) => {
   const NameDelegation = [
     { "nom": "Madagascar" }, { "nom": "Maurice" },
     { "nom": "Comores" }, { "nom": "Mayotte" },
     { "nom": "Maldives" }, { "nom": "Seychelle" },
     { "nom": "La Réunion" }
   ];
+
+  const buttonStyle = {
+    backgroundColor: '#eca28e',
+    color: 'white',
+    border: 'none',
+    padding: '5px 10px',
+    borderRadius: '5px',
+    cursor: 'pointer',
+    transition: 'background-color 0.3s ease',
+  };
 
 
   const contact_id = useRef();
@@ -119,7 +130,12 @@ const DelegationEnsemble = () => {
 
 
   return (
-    <div style={{ marginLeft:"50px",marginTop: '20px' }}>
+    <div style={{ marginLeft:"50px",marginTop: '10px' }}>
+      <div style={{alignContent:'left',marginBottom:'5px'}}>
+        <button style={buttonStyle} onClick={e=>{
+          handleChangePage('Liste des Athlètes par Discipline')
+        }}>Liste Personnes</button>
+      </div>
         <h2 style={{
           fontSize: '3rem',
           fontWeight: '900',

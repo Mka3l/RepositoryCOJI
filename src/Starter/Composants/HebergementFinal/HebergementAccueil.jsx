@@ -35,7 +35,7 @@ const CardHebergement = () => {
     .then(data=>{console.log(data),
       setLit_total(data.data.card.total_lit),
       setLit_Occupe(data.data.card.lit_occupe)
-      setTaux(data.data.card.taux_occupation)
+      setTaux(data.data.card.taux_occupe)
       setTotalSite(data.data.total)})
     .catch(error=>{console.log(error)})
   },[])
