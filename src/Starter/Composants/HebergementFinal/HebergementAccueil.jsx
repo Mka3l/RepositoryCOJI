@@ -3,31 +3,42 @@ import AjoutHebergement from './AjoutHebergement';
 import { Button, Modal } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import urlHtpp from '../../urlHtpp';
+import url from '../../urlHtpp';
 
 const CardHebergement = () => {
   //var urlHtpp = "http://127.0.0.1:9090/";
 
-  const data ={
-    "nombre_total":86,
-    "capacite_total_lit":0,
-    "nombre_lit_occupe":3068,
-    "taux_occupation":0
-  }
+  // const data ={
+  //   "nombre_total":86,
+  //   "capacite_total_lit":0,
+  //   "nombre_lit_occupe":3068,
+  //   "taux_occupation":0
+  // }
 
   const [dashHeb,setDashHeb] = useState()
+
+  const [data,setData] = useState()
+  const [totalSite,setTotalSite] = useState();
+  const [lit_total,setLit_total] = useState();
+  const [lit_occupe,setLit_Occupe] = useState();
+  const [taux,setTaux] = useState();
   
 
 
 
-  /*useEffect(()=>{
-    fetch(configUrl.url+"",{
+  useEffect(()=>{
+    fetch(url.urlHtpp+"hebergements/card/2023-08-23",{
       method :"GET",
       headers:{"Content-Type":"application/json"}
     })
     .then(response=>response.json())
-    .then(data=>{console.log(data)})
+    .then(data=>{console.log(data),
+      setLit_total(data.data.card.total_lit),
+      setLit_Occupe(data.data.card.lit_occupe)
+      setTaux(data.data.card.taux_occupation)
+      setTotalSite(data.data.total)})
     .catch(error=>{console.log(error)})
-  },[])*/
+  },[])
 
   
   const cardContainerStyle = {
@@ -102,7 +113,7 @@ const CardHebergement = () => {
           </h5>
           <div className="card-text" style={cardTextContentStyle}>
             <span className="text-success pt-1 fw-bold" style={cardTextValueStyle}>
-              {data.nombre_total}
+              {totalSite}
             </span>
           </div>
         </div>
@@ -116,7 +127,7 @@ const CardHebergement = () => {
           </h5>
           <div className="card-text" style={cardTextContentStyle}>
             <span className="text-success  pt-1 fw-bold" style={cardTextValueStyle}>
-             {data.capacite_total_lit}
+             {lit_total??0}
             </span>
           </div>
         </div>
@@ -130,7 +141,7 @@ const CardHebergement = () => {
           </h5>
           <div className="card-text" style={cardTextContentStyle}>
             <span className="text-success pt-1 fw-bold" style={cardTextValueStyle}>
-             {data.nombre_lit_occupe}
+             {lit_occupe??0}
             </span>
           </div>
         </div>
@@ -144,7 +155,7 @@ const CardHebergement = () => {
           </h5>
             <div className="card-text" style={cardTextContentStyle}>
               <span className="text-success pt-1 fw-bold" style={cardTextValueStyle}>
-                {data.taux_occupation}%
+                {taux}%
               </span>
             </div>
         </div>

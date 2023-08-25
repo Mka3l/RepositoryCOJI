@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import RecapEtatOccupation from './RecapEtatOccupation';
 
 const EtatOccupation = () => {
   const columns = [
@@ -597,13 +598,14 @@ const EtatOccupation = () => {
   };
   return (
     <div style={{ marginTop: '20px' }}>
-    <button
+    {/* <button
       style={buttonStyle}
       onClick={() => setExpanded(!expanded)}
     >
-      {expanded ? '-' : '+'} {expanded ? 'Réduire' : 'Afficher plus de détails'}
-    </button>
-    {expanded && (
+      {/* {expanded ? '-' : '+'} {expanded ? 'Réduire' : 'Afficher plus de détails'} */}
+   {/* </button> */}
+    {/* <RecapEtatOccupation></RecapEtatOccupation> */}
+   
       <table style={tableStyle}>
         <thead>
           <tr>
@@ -615,10 +617,17 @@ const EtatOccupation = () => {
           </tr>
         </thead>
         <tbody>
+        <tr>
+            <td  style={tdStyle}>1</td>
+            <td  style={tdStyle}>2</td>
+            <td  style={tdStyle}>3</td>
+            <td  style={tdStyle}>4</td>
+            <td  style={tdStyle}>5</td>
+          </tr>
   {rowsToShow.map((row, rowIndex) => (
     <tr key={rowIndex}>
       {row.map((cell, cellIndex) => (
-        <td key={cellIndex} style={tdStyle}>
+        <td key={cellIndex} style={{...tdStyle,fontPalette:'10'}}>
           {typeof cell === 'number'
             ? Math.floor(cell) // Utilisation de Math.floor pour afficher la partie entière
             : typeof cell === 'string' && !isNaN(parseFloat(cell.replace(',', '.')))
@@ -631,7 +640,6 @@ const EtatOccupation = () => {
 </tbody>
 
       </table>
-    )}
   </div>
   );
 };

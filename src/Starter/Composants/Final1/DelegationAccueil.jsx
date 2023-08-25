@@ -19,7 +19,7 @@ const DelegationAccueil = ({onPageChange}) => {
 
   useEffect(()=>{
     console.log("ENTRER")
-    fetch(url.urlHtpp+"dashboard-delegations",{
+    fetch(url.urlHtpp+"dash-delegation",{
       method:'GET',
       headers:{'Content-Type':'application/json'},
     })

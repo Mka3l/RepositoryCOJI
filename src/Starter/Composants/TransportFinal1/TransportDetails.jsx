@@ -255,7 +255,7 @@ const TransportDispo = () => {
 
               </select>
             </p>
-            <p>Initule Trajet</p>
+            <p>Motif Trajet</p>
             <p> <input type='text'ref={intitule}/></p>
             <p>Lieu Depart</p>
             <p><input type='text' ref={lieu_depart}/></p>

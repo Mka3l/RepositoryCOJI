@@ -23,13 +23,13 @@ const Sidebar = ({ onPageChange }) => {
     'Restauration': ['Planning Déjeuner', 'Planning Dîner', 'Visualisation de la Restauration'],
     'Contacts des points focaux': [],
     'Plan de Vol': [],
-    'Facturation': {
+    /* 'Facturation': {
       'Etat de paiement': ['1er acompte', '2ème acompte', 'Situation Financière'], // Ajoutez les sous-sous-menus ici comme un tableau vide
       'Factures totalement payées': [],
       'Factures partiellement payées': [],
       'Factures impayées': [], // Ajoutez les sous-sous-menus ici comme un tableau vide
       'Reçu': [], // Ajoutez les sous-sous-menus ici comme un tableau vide
-    },
+    }, */
     'Référence Médicale': [],
     'Autres': ['Liste des Athlètes par Discipline', 'Calendrier des Jeux'],
     'Utilisateurs': []
@@ -132,7 +132,7 @@ const Sidebar = ({ onPageChange }) => {
       case 'Contacts des points focaux':
         return 'Contacts des points focaux';
 
-      case 'Facturation':
+      /* case 'Facturation':
         if (subcategory === 'Etat de paiement') {
           if (selectedSubsubcategory === '1er acompte') {
             return '1er acompte';
@@ -153,7 +153,7 @@ const Sidebar = ({ onPageChange }) => {
           return 'Reçu';
         } else {
           return 'Facturation';
-        }
+        } */
       case 'Autres':
         switch (subcategory) {
           case 'Liste des Athlètes par Discipline':

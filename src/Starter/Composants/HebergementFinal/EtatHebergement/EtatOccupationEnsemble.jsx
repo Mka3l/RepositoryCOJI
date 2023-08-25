@@ -16,10 +16,7 @@ const EtatOccupationEnsemble = () => {
           textAlign: 'center',
         }} className="mb-5 text-center">Etat d'occupation des sites d'Hébergement</h2>
       <div className="mb-5"> {/* Ajout de la classe de marge */}
-        <RecapEtatOccupation /> 
-      </div>
-
-      <div>
+        {/* <RecapEtatOccupation />  */}
         <EtatOccupation />
       </div>
     </div>
