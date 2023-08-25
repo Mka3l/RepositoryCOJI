@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import RecapEtatOccupation from './RecapEtatOccupation';
 import url from '../../../urlHtpp';
 
 const EtatOccupation = () => {
@@ -612,7 +611,7 @@ const EtatOccupation = () => {
         headers:{"Content-Type":"application/json"}
       })
     .then(response=>response.json())
-    .then(data=>{console.log(data.data),setDataHotel(data.data)})
+    .then(data=>{setDataHotel(data.data)})
     .catch(error=>{console.log(error)})
 
     fetch(url.urlHtpp+"hebergements/card/2023-08-23",{
