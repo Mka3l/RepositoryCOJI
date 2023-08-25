@@ -16,7 +16,8 @@ const DelegationAfficherPerson = () => {
   const [delegationList, setDelegationList] = useState([]);
   const [getPLAN,setGetPlan] = useState(true);
   console.log("URL : ",url);
- 
+
+  
 
 
     // setGetPlan(false); // Met à jour l'état pour éviter une boucle infinie
@@ -42,6 +43,16 @@ const DelegationAfficherPerson = () => {
   };
   
   const [expanded, setExpanded] = useState(false);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 15; // Nombre d'éléments par page
+
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const itemsToDisplay = delegationList.slice(startIndex, endIndex);
+
+  const totalPages = Math.ceil(delegationList.length / itemsPerPage);
+
   const buttonStyle = {
     backgroundColor: expanded ? '#7d240c' : '#973116',
     color: 'white',
@@ -92,27 +103,50 @@ const DelegationAfficherPerson = () => {
               ))}
             </tr>
           </thead>
+          
           <tbody>
-            {delegationList.map((row, rowIndex) => ( 
+            {itemsToDisplay.map((row, rowIndex) => ( 
               <tr key={rowIndex}>
-                  <td  style={tdStyle}> {row.contact_id}</td>
-                  <td  style={tdStyle}>{row.nom}</td>
-                  <td  style={tdStyle}>{row.prenom}</td>
-                  <td  style={tdStyle}>{row.nom_badge}</td>
-                  <td  style={tdStyle}>{row.nom_organisation}</td>
-                  <td  style={tdStyle}>{row.nom_fonction}</td>
-                  <td  style={tdStyle}>{row.nom_discipline ?? 0}</td>
-                  <td  style={tdStyle}>{row.genre}</td>
-                  <td  style={tdStyle}>{row.numero_chambre}</td>
-                  <td  style={tdStyle}>{row.printing_status}</td>
+                <td style={tdStyle}>{row.contact_id}</td>
+                <td style={tdStyle}>{row.nom}</td>
+                <td style={tdStyle}>{row.prenom}</td>
+                <td style={tdStyle}>{row.nom_badge}</td>
+                <td style={tdStyle}>{row.nom_organisation}</td>
+                <td style={tdStyle}>{row.nom_fonction}</td>
+                <td style={tdStyle}>{row.nom_discipline ?? 0}</td>
+                <td style={tdStyle}>{row.genre}</td>
+                <td style={tdStyle}>{row.numero_chambre}</td>
+                <td style={tdStyle}>{row.printing_status}</td>
               </tr>
             ))}
           </tbody>
         </table>
       )}
+
+      {expanded && (
+        <div style={{ marginTop: '10px', display: 'flex', justifyContent: 'center' }}>
+          <button
+            onClick={() => setCurrentPage(currentPage - 1)}
+            disabled={currentPage === 1}
+            style={buttonStyle}
+          >
+            Précédent
+          </button>
+          <span style={{ margin: '0 10px' }}>
+            Page {currentPage} sur {totalPages}
+          </span>
+          <button
+            onClick={() => setCurrentPage(currentPage + 1)}
+            disabled={currentPage === totalPages}
+            style={buttonStyle}
+          >
+            Suivant
+          </button>
+        </div>
+      )}
     </div>
   );
-};
+}
 
 
 

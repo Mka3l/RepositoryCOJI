@@ -22,12 +22,20 @@ const Homepage = () => {
           color: 'rgb(255 255 255)',
           textShadow: 'rgb(0 0 0 / 30%) 2px 2px 4px',
           padding: '30px',
-          background:' #2986b3',
+          background: ' #2986b3',
+          borderRadius: '10px',  // Ajout de la propriété pour arrondir les bords
+
         }}>
-          TABLEAU DE BORD DE SUIVI DU XIème JEUX DES ILES DE L'OCEAN INDIEN
+          <p>JI_Data</p>
+          <p>TABLEAU DE BORD DE SUIVI DU XIème JEUX DES ILES DE L'OCEAN INDIEN</p>
         </h1>
-        <h3 className='text-center' style={{color: '#973116', fontSize: '2rem',padding: '30px',
-          background:' #2986b3',}}>- 2023 -</h3>
+        <h3 className='text-center' style={{
+          color: 'rgb(255 255 255)',
+          fontWeight: '900', fontSize: '3rem', padding: '30px',
+          background: ' #2986b3',
+          borderRadius: '10px',  // Ajout de la propriété pour arrondir les bords
+
+        }}> 2023 </h3>
       </header>
       <main className="flex-grow-1">
         <div className="row justify-content-center align-items-center h-100">
@@ -35,30 +43,28 @@ const Homepage = () => {
             <div className="card h-100 shadow">
               <div className="card-body ">
                 <div>
-                <p className="card-text margin-bottom-12 text-align-center">
-                  Merci d'entrer votre identifiant et votre mot de passe
-                </p>
+                  <p className="card-text margin-bottom-12 text-align-center">
+                    Merci d'entrer votre identifiant et votre mot de passe
+                  </p>
                 </div>
-                    <div className="input-container">
-                      <input
-                        type="text"
-                        placeholder="Identifiant"
-                        value={identifiant}
-                        onChange={(e) => setUsername(e.target.value)}
-                      />
-                      <input
-                        type="text"
-                        placeholder="Mot de passe"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                      />
-                    </div>
+                <div className="input-container">
+                  <input
+                    type="text"
+                    placeholder="Identifiant"
+                    value={identifiant}
+                    onChange={(e) => setUsername(e.target.value)}
+                  />
+                  <input
+                    type="text"
+                    placeholder="Mot de passe"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
                 </div>
-                
-              
+              </div>
               <div className="card-footer d-flex justify-content-center">
                 <Link to="/user-manager" className="btn btn-primary">
-                 Se connecter
+                  Se connecter
                 </Link>
               </div>
             </div>
@@ -70,8 +76,7 @@ const Homepage = () => {
             <div className="card h-100 shadow">
               <div className="card-body ">
                 <p className="card-text">
-                  Les pays participants peuvent découvrir la plateforme et enregistrer leurs
-                  délégations avec les athlètes, le staff et le protocole assigné.
+                  JI_Data permet de suivre en temps réel l'organisation et les chiffres importants des Jeux des JIOI
                 </p>
               </div>
               <div className="card-footer d-flex justify-content-center">
@@ -84,7 +89,7 @@ const Homepage = () => {
         </div>
       </main>
       <footer className="mask text-center fixed-bottom small" style={{ background: 'linear-gradient(to top, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0))' }}>
-        <p>© {new Date().getFullYear()} Plateforme de Suivi des Délégations</p>
+        <p>© {new Date().getFullYear()} JI_Data, Plateforme de suivie</p>
       </footer>
     </div>
   );

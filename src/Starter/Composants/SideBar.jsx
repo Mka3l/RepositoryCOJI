@@ -18,7 +18,8 @@ const Sidebar = ({ onPageChange }) => {
   const categoriesWithSubcategories = {
 
     'Chiffres du jour': [],
-    'Délégation': ['Madagascar', 'Comores', 'Mayotte', 'Maurice', 'Seychelles', 'Maldives', 'La Réunion','Liste Athlètes'],
+    'Délégation': ['Madagascar', 'Comores', 'Mayotte', 'Maurice', 'Seychelles', 'Maldives', 'La Réunion','Liste Personnes'],
+    'Calendrier': [ 'Calendrier des Jeux', 'Calendrier des événements'],
     'Hébergement': ['Etat d\'occupation des sites', 'Répartition des délégations par site d\'hébergement'],
     'Transport': ['Disponibilité des véhicules', 'Suivi des itinéraires'],
     'Restauration': ['Planning Déjeuner', 'Planning Dîner', 'Visualisation de la Restauration'],
@@ -32,7 +33,6 @@ const Sidebar = ({ onPageChange }) => {
     //   'Reçu': [], // Ajoutez les sous-sous-menus ici comme un tableau vide
     // },
     'Référence Médicale': [],
-    'Calendrier': [ 'Calendrier des Jeux', 'Calendrier des événements'],
     'Utilisateurs': []
   };
 
