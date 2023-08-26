@@ -142,7 +142,7 @@ const TransportDispo = () => {
       headers: { 'Content-Type': 'application/json' }
     })
       .then(response => response.json())
-      .then(data => { console.log("#################",data),setVehicules(data) })
+      .then(data => { console.log("V_DATA : ", data),setVehicules(data) })
       .catch(error => console.log(error))
 
       fetch(url.urlHtpp + 'vehicules-excel/card-vehicule', {
@@ -216,23 +216,13 @@ const TransportDispo = () => {
       <div>
         <table style={tableStyle}>
           <thead>
-            <tr style={{
-                        ...thStyle,
-                      
-                        position: 'sticky',
-                        top: '150px',
-                        backgroundColor: 'white',
-                        fontFamily: 'Arial, sans-serif',
-                        fontSize: '16px', 
-                        textAlign: 'center', 
-                        textShadow: '2px 2px 4px rgba(0, 0, 0, 0.3)',
-                        color: '#333'
-                        }}>
+            <tr>
               <th style={thStyle}>Date</th>
               <th style={thStyle}>Immatriculation</th>
               <th style={thStyle}>Catégorie</th>
               <th style={thStyle}>Nombre de place</th>
               <th style={thStyle}>Type carburant</th>
+              <th style={thStyle}>Consommation théorique</th>
               <th style={thStyle}>Lieu de départ</th>
               <th style={thStyle}>Lieu d'arrivée</th>
               <th style={thStyle}>Distance</th>

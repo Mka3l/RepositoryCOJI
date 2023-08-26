@@ -42,6 +42,7 @@ import CalendrierLien from './CalendrierDesJeux/CalendrierLien';
 import InformationsSurSites from './HebergementFinal/InformationsSurSites/InformationsSurSites';
 import ChefsDeDelegations from './PointFocaux/PointFocaux';
 import EtatDePaiementEnsemble from './Facturation/EtatDePaiement/EtatDePaiementEnsemble';
+import ListeVehicule from './Transport/ListeVehicule';
 const getFlagForCountry = (country) => {
   const countryFlags = {
     'Délégation Madagascar': MadagascarFlag,
@@ -347,6 +348,7 @@ const PageDeBase = () => {
             {/* Transport */}
             {currentPage === 'Disponibilité des véhicules' && <TransportDispo />}
             {currentPage === 'Suivi de l\'itinéraire réel des véhicules' && <TransportMap />}
+            {currentPage === 'Répartition des véhicules' && <ListeVehicule />}
 
             {/* Facture */}
             {currentPage === 'Etat de paiement' && <EtatDePaiementEnsemble />}

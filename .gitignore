@@ -1,4 +1,9 @@
 node_modules/**
 node_modules
 dist
+.DS_Store/
+.DS_Store
 src/.DS_Store
+src/Starter/.DS_Store
+src/Starter/Composants/.DS_Store
+.gitignore

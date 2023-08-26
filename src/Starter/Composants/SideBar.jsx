@@ -113,6 +113,8 @@ const Sidebar = ({ onPageChange }) => {
             return 'Disponibilité des véhicules';
           case 'Suivi des itinéraires':
             return 'Suivi de l\'itinéraire réel des véhicules';
+          case 'Répartition des véhicules':
+            return 'Répartition des véhicules';
           default:
             return 'Transport';
         }
